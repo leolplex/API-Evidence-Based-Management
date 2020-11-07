@@ -24,7 +24,8 @@ jobs:
     - stage: dev
       name: "build & unit test & sonar qube"
       script:
-      - gradle dependencies
+      - ./gradlew assemble
+      - ./gradlew check
       - gradle build
       - gradle test
       - echo "I want to evaluate static quality code"
