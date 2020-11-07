@@ -3,7 +3,6 @@ language: java
 jdk: openjdk11
 
 script:
-  - ./gradlew check
   - gradle check
   - jdk_switcher use openjdk10
   - # do stuff with OpenJDK 10
