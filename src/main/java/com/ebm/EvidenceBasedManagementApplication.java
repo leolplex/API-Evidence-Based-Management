@@ -8,6 +8,7 @@ public class EvidenceBasedManagementApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EvidenceBasedManagementApplication.class, args);
+		System.out.println("Hola mundo");
 	}
 
 }
