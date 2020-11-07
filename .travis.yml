@@ -5,6 +5,16 @@ jdk: openjdk11
 before_install:
   - chmod +x gradlew
 
-script:
-  - echo "Hello world"
-  - java -version
+
+jobs:
+  include:
+    - stage: build
+      script:
+        - echo "I want to build"
+    - stage: unit test
+      script:
+        - echo "I want to unit test"
+    - stage: Quaility Sonar Cloud
+        script:
+          - echo "I want to evaluate static quality code"
+
