@@ -24,7 +24,6 @@ jobs:
     - stage: dev
       name: "build & unit test & sonar qube"
       script:
-      - gradle check
       - echo "I want to evaluate static quality code"
 
     - script: echo "I want to deploy to heroku"
