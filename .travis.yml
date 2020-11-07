@@ -2,8 +2,4 @@ language: java
 
 jdk: openjdk11
 
-sudo: true
 
-script:
-  - echo 'Hello world'
-  - java -version
