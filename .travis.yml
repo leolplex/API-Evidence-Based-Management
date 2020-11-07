@@ -17,6 +17,7 @@ stage:
   - dev
   - prod
 
+install: skip
 
 jobs:
   include:
