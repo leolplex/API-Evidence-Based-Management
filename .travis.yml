@@ -4,6 +4,11 @@ jdk: openjdk11
 
 before_install:
   - chmod +x gradlew
+  - wget http://services.gradle.org/distributions/gradle-6.0-bin.zip
+  - unzip -qq gradle-6.6-bin.zip
+  - export GRADLE_HOME=$PWD/gradle-6.0
+  - export PATH=$GRADLE_HOME/bin:$PATH
+  - gradle -v
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
