@@ -5,16 +5,22 @@ jdk: openjdk11
 before_install:
   - chmod +x gradlew
 
+stage:
+  - dev
+  - prod
+
 
 jobs:
   include:
-    - stage: build
-      script:
-        - echo "I want to build"
-    - stage: unit test
-      script:
-        - echo "I want to unit test"
-    - stage: Quaility Sonar Cloud
-        script:
-          - echo "I want to evaluate static quality code"
+    - stage: dev
+      name: "build"
+      script: echo "I want to build"
+    - script: echo "I want to unit test"
+      name: "unit test"
+    - script: echo "I want to evaluate static quality code"
+      name: "Sonar Qube"
+
+
+
+
 
