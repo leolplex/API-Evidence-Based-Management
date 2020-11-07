@@ -5,6 +5,14 @@ jdk: openjdk11
 before_install:
   - chmod +x gradlew
 
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
 stage:
   - dev
   - prod
@@ -15,7 +23,6 @@ jobs:
     - stage: dev
       name: "build & unit test & sonar qube"
       script:
-      - gradle dependencies
       - gradle build
       - gradle test
       - echo "I want to evaluate static quality code"
