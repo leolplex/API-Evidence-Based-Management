@@ -24,6 +24,12 @@ stage:
 
 install: skip
 
+addons:
+  sonarcloud:
+    organization: "leolplex"
+    token:
+      secure: $SONAR_TOKEN
+
 jobs:
   include:
     - stage: dev
