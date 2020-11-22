@@ -28,7 +28,7 @@ addons:
   sonarcloud:
     organization: "leolplex"
     token:
-      secure: $SONAR_TOKEN
+      secure: SONAR_TOKEN
 
 jobs:
   include:
