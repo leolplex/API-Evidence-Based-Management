@@ -40,3 +40,10 @@ jobs:
 
     - script: echo "I want to deploy to heroku"
       name: "deploy"
+
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "WebVfh1DF02kL/13UiYEI6qfJhQuA78VELN8NGvo+sr1Qg9gSG05Kr6u0LQldHccPiOJV8L/YLHYXhIpDuA1yoYN39QX4YS2FWb6/azODADU76e+VZB53n4Q49C7lN0v6OLiyHIIwOJljsfOd8uCzakA26AASpsYxylYQ4XbPdEdJQ8jQEQv+y6eBD1hfWIIJKHdNMCFywHUeGp5yK015OEcq7FwzCPwe8CSOaOjN4wvgeMCiYKT2lanqacgAiRPZKzVBnKNOhJqj0TEdY680t3pSQbrm4/lm2LkDaLLFJjpgRd9tnwSntCCKnWOfenNr7/DkxeYpf917q4xP0oFBSziydgWRJeGzRvh9BTncojFXqNWa4Omahu4M7EqIKInabLXVdRTF4BnjFYTBAeWNjYdHOTGeZjkZ8CKv0IZi72zvOLuS64cpqHHhYhVDgURVHYQSpoSzBVJ1VYTAQ7t08ATm4buQnKMLRxVpQ+nWvF/iRefbORJUjxuzkHOLqrqha0Rmiz1sutDYZNNLi0fnb7Yzl5Pg3jG3gfeJZbVM4oA+Uzz7DRB5dKxTNxma8p+ALukNUgjPGjaIIdoLZBnPQrA4aC1+OrCz7rgaqKcqQd9rQZhhalOxklw7dlRx+3QabaBc2zeJKTnWBiyRx1GML3oGnY8uI+Gx9ZcRqfAeho="
+  app: evidence-based-management
