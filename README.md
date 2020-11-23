@@ -3,7 +3,7 @@
 ## TravisCI Pipeline status:
 [![leolplex](https://travis-ci.com/leolplex/API-Evidence-Based-Management.svg?branch=master)](https://travis-ci.org/github/leolplex/API-Evidence-Based-Management)
 
-## sonarcloud status:
+## Sonarcloud status:
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=leolplex_API-Evidence-Based-Management&metric=alert_status)](https://sonarcloud.io/dashboard?id=leolplex_API-Evidence-Based-Management)
 [![SonarCloud Bugs](https://sonarcloud.io/api/project_badges/measure?project=leolplex_API-Evidence-Based-Management&metric=bugs)](https://sonarcloud.io/dashboard?id=leolplex_API-Evidence-Based-Management)
 [![SonarCloud Code Smells](https://sonarcloud.io/api/project_badges/measure?project=leolplex_API-Evidence-Based-Management&metric=code_smells)](https://sonarcloud.io/dashboard?id=leolplex_API-Evidence-Based-Management)
