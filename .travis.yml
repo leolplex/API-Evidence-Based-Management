@@ -42,6 +42,7 @@ jobs:
       name: "deploy"
 
 
-
-
-
+deploy:
+  provider: heroku
+  api_key: gg
+  app: evidence-based-management
