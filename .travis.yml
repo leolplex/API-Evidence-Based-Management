@@ -14,9 +14,7 @@ cache:
   directories:
   - "$HOME/.gradle/caches/"
   - "$HOME/.gradle/wrapper/"
-stage:
-- dev
-- prod
+
 install: skip
 addons:
   sonarcloud:
@@ -26,11 +24,9 @@ jobs:
   - stage: dev
     name: build & unit test & sonar qube
     script:
-    - "./gradlew build"
-    - "./gradlew test"
-    - "./gradlew sonarqube"
-  - script: echo "I want to deploy to heroku"
-    name: deploy
+    - ./gradlew build
+    - ./gradlew test
+    - ./gradlew sonarqube
 deploy:
   provider: heroku
   api_key:
