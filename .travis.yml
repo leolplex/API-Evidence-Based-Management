@@ -1,49 +1,38 @@
 language: java
-
 jdk: openjdk11
-
 before_install:
-  - chmod +x gradlew
-  - wget https://services.gradle.org/distributions/gradle-6.0-bin.zip
-  - unzip -qq gradle-6.0-bin.zip
-  - export GRADLE_HOME=$PWD/gradle-6.0
-  - export PATH=$GRADLE_HOME/bin:$PATH
-  - gradle -v
-
+- chmod +x gradlew
+- wget https://services.gradle.org/distributions/gradle-6.0-bin.zip
+- unzip -qq gradle-6.0-bin.zip
+- export GRADLE_HOME=$PWD/gradle-6.0
+- export PATH=$GRADLE_HOME/bin:$PATH
+- gradle -v
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
 cache:
   directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
 stage:
-  - dev
-  - prod
-
+- dev
+- prod
 install: skip
-
 addons:
   sonarcloud:
-    organization: "leolplex"
-
-
+    organization: leolplex
 jobs:
   include:
-    - stage: dev
-      name: "build & unit test & sonar qube"
-      script:
-      - ./gradlew build
-      - ./gradlew test
-      - ./gradlew sonarqube
-
-    - script: echo "I want to deploy to heroku"
-      name: "deploy"
-
-
+  - stage: dev
+    name: build & unit test & sonar qube
+    script:
+    - "./gradlew build"
+    - "./gradlew test"
+    - "./gradlew sonarqube"
+  - script: echo "I want to deploy to heroku"
+    name: deploy
 deploy:
   provider: heroku
   api_key:
-    secure: "WebVfh1DF02kL/13UiYEI6qfJhQuA78VELN8NGvo+sr1Qg9gSG05Kr6u0LQldHccPiOJV8L/YLHYXhIpDuA1yoYN39QX4YS2FWb6/azODADU76e+VZB53n4Q49C7lN0v6OLiyHIIwOJljsfOd8uCzakA26AASpsYxylYQ4XbPdEdJQ8jQEQv+y6eBD1hfWIIJKHdNMCFywHUeGp5yK015OEcq7FwzCPwe8CSOaOjN4wvgeMCiYKT2lanqacgAiRPZKzVBnKNOhJqj0TEdY680t3pSQbrm4/lm2LkDaLLFJjpgRd9tnwSntCCKnWOfenNr7/DkxeYpf917q4xP0oFBSziydgWRJeGzRvh9BTncojFXqNWa4Omahu4M7EqIKInabLXVdRTF4BnjFYTBAeWNjYdHOTGeZjkZ8CKv0IZi72zvOLuS64cpqHHhYhVDgURVHYQSpoSzBVJ1VYTAQ7t08ATm4buQnKMLRxVpQ+nWvF/iRefbORJUjxuzkHOLqrqha0Rmiz1sutDYZNNLi0fnb7Yzl5Pg3jG3gfeJZbVM4oA+Uzz7DRB5dKxTNxma8p+ALukNUgjPGjaIIdoLZBnPQrA4aC1+OrCz7rgaqKcqQd9rQZhhalOxklw7dlRx+3QabaBc2zeJKTnWBiyRx1GML3oGnY8uI+Gx9ZcRqfAeho="
+    secure: pcImK+O6B/qfz0fQzQJRHir/o/xeK7yv2eKOCEzKl2ueJ7M1xK8k8xoUSTZwVDm3aOInREE2YiUdPvr6I3+QstoImpz6M23VMpMBNgaTnY+sqTTqTac0s6ePuhVltRlomblutfQxI2lfgh4OiYlVy4FeA2wVtMixsRqcdAR0ZsI4lt2dglW/dGLFFoH8tE1u3fi4zF/L1JoiuE8pvSTXXg64Ngt+15g5DRkRNZCvCeq0Hg+KN3d1RLyBmt1DYKTamwkPW7vstu+b0hB9hqt46pkM9eFopBOu3h9mT1HmHGKgHEQRWuhVtZBIN0iy2L1LHqiMtMovqiutVyB3bhZxJGGFqBj03GUsU9Ii5ebAe16S7BpkXQpdNZr2jhHrhWbs4Gfqan8NkByrxhL3KF0fXuqDL0SSGpKRMviJJoBhGbQfEHQZRdfM451xllxErgEj+EM6hzZ4acFV1oUGbg53NZ8nTKvTBlaLJ4H55mHtvoVEI6qS2eT9fOJVXt1tAjNgDbXiOU48elWFE6/rVX89nClb2SRxJz9NArjswOL6MnUOJIf2mLODWCjYzNwDk6cHhNVDwREKPZ2Mm1bUPND8XHBKEzRkqBpgt9NmgXhTyvDrFzidjeo0BaI6zyWlUhrNpRq/ySoxzMIdZwPBl/9/TQfXr34+JsaZs3DN032+eVs=
   app: evidence-based-management
