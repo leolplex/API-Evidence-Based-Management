@@ -2,6 +2,8 @@ package com.ebm.persistence.entity;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.time.LocalDateTime;
 
@@ -81,10 +83,9 @@ class IterationTest {
         assertEquals(endDate, getEndDate, "setEndDate must be .now()");
     }
 
-    @Test
-    void  getAndSetStateInProgress(){
-        // Arrange
-        final String state = "In_Progress";
+    @ParameterizedTest
+    @ValueSource(strings = {"In_Progress", "Completed", "Fail"})
+    void  getAndSetStateInProgress(String state){
 
         //Act
         tester.setState(state);
@@ -94,30 +95,5 @@ class IterationTest {
         assertEquals(state, getState, "setState must be In_Progress");
     }
 
-    @Test
-    void  getAndSetStateCompleted(){
-        // Arrange
-        final String state = "Completed";
-
-        //Act
-        tester.setState(state);
-        final String getState = tester.getState();
-
-        // Assert
-        assertEquals(state, getState, "setState must be Completed");
-    }
-
-    @Test
-    void  getAndSetStateFail(){
-        // Arrange
-        final String state = "Fail";
-
-        //Act
-        tester.setState(state);
-        final String getState = tester.getState();
-
-        // Assert
-        assertEquals(state, getState, "setState must be Fail");
-    }
 
 }
