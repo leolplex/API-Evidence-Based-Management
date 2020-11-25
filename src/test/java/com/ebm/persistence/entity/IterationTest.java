@@ -92,7 +92,7 @@ class IterationTest {
         final String getState = tester.getState();
 
         // Assert
-        assertEquals(state, getState, "setState must be In_Progress");
+        assertEquals(state, getState, "setState must be In_Progress | Completed | Fail");
     }
 
 
