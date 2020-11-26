@@ -26,8 +26,7 @@ jobs:
     script:
     - ./gradlew build
     - ./gradlew test
-    - ./gradlew jacocoTestReport
-    - ./gradlew sonarqube
+    - ./gradlew test jacocoTestReport sonarqube
 deploy:
   provider: heroku
   api_key:
