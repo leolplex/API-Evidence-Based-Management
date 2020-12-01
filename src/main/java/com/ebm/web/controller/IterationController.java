@@ -1,7 +1,7 @@
 package com.ebm.web.controller;
 
+import com.ebm.domain.IterationDomain;
 import com.ebm.domain.service.IterationService;
-import com.ebm.persistence.entity.Iteration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class IterationController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Iteration>> getAll() {
+    public ResponseEntity<List<IterationDomain>> getAll() {
         return new ResponseEntity<>(iterationService.getAll(), HttpStatus.OK);
     }
 }

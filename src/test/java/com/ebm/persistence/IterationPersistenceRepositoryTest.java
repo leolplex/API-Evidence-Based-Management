@@ -1,7 +1,9 @@
 package com.ebm.persistence;
 
+import com.ebm.domain.IterationDomain;
 import com.ebm.persistence.crud.IterationCrudRepository;
 import com.ebm.persistence.entity.Iteration;
+import com.ebm.persistence.mapper.IterationMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -11,13 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 
-class IterationRepositoryTest {
-    IterationRepository tester;
+class IterationPersistenceRepositoryTest {
+    IterationPersistenceRepository tester;
     IterationCrudRepository iterationCrudRepository;
+    IterationMapper mapper;
 
     private Iteration getIteration() {
         Iteration iteration = new Iteration();
@@ -30,10 +32,22 @@ class IterationRepositoryTest {
     }
 
 
+    private IterationDomain getIterationDomain() {
+        IterationDomain iteration = new IterationDomain();
+        iteration.setState("In Progress");
+        iteration.setEndDate(LocalDateTime.now());
+        iteration.setStartDate(LocalDateTime.now());
+        iteration.setGoal("Less rate of bureaucracy");
+        iteration.setId(190);
+        return iteration;
+    }
+
+
     @BeforeEach
     void initEach() {
         iterationCrudRepository = Mockito.mock(IterationCrudRepository.class);
-        tester = new IterationRepository(iterationCrudRepository);
+        mapper = Mockito.mock(IterationMapper.class);
+        tester = new IterationPersistenceRepository(iterationCrudRepository, mapper);
     }
 
     @Test
@@ -43,15 +57,21 @@ class IterationRepositoryTest {
 
     @Test
     void TestGetAllWithData() {
+        List<IterationDomain> iterationsDomain = new ArrayList<>();
+        IterationDomain iterationDomain = getIterationDomain();
+        iterationsDomain.add(iterationDomain);
+
         List<Iteration> iterations = new ArrayList<>();
         Iteration iteration = getIteration();
         iterations.add(iteration);
-        when(iterationCrudRepository.findAll()).thenReturn(iterations);
 
-        List<Iteration> iterationsResult = tester.getAll();
+        when(iterationCrudRepository.findAll()).thenReturn(iterations);
+        when(mapper.toIterations(iterations)).thenReturn(iterationsDomain);
+
+        List<IterationDomain> iterationsResult = tester.getAll();
 
         assertEquals(1, iterationsResult.size(), "getAll must have an iteration");
-        assertEquals(iteration, iterationsResult.toArray()[0], "getAll must have an iteration equal to object defined");
+        assertEquals(iterationDomain, iterationsResult.toArray()[0], "getAll must have an iteration equal to object defined");
     }
 
     @Test
@@ -61,30 +81,38 @@ class IterationRepositoryTest {
 
     @Test
     void TestGetByIdTeamWithData() {
+        List<IterationDomain> iterationsDomain = new ArrayList<>();
+        IterationDomain iterationDomain = getIterationDomain();
+        iterationsDomain.add(iterationDomain);
+
         List<Iteration> iterations = new ArrayList<>();
         Iteration iteration = getIteration();
         iterations.add(iteration);
         when(iterationCrudRepository.getByIdTeam(1)).thenReturn(iterations);
+        when(mapper.toIterations(iterations)).thenReturn(iterationsDomain);
 
-        List<Iteration> iterationsResult = tester.getByIdTeam(1);
+        List<IterationDomain> iterationsResult = tester.getByIdTeam(1);
 
         assertEquals(1, iterationsResult.size(), "getByIdTeam must have an iteration");
-        assertEquals(iteration, iterationsResult.toArray()[0], "getByIdTeam must have an iteration equal to object defined");
+        assertEquals(iterationDomain, iterationsResult.toArray()[0], "getByIdTeam must have an iteration equal to object defined");
 
     }
 
 
     @Test
     void TestSaveNull() {
-        Iteration iteration = getIteration();
-        assertNull(tester.save(iteration), "save must be null");
+        assertNull(tester.save(new IterationDomain()), "save must be null");
     }
 
     @Test
     void TestSaveWithData() {
         Iteration iteration = getIteration();
+        IterationDomain iterationDomain = new IterationDomain();
+        when(mapper.toIterationDomain(iterationDomain)).thenReturn(iteration);
+        when(mapper.toIteration(iteration)).thenReturn(iterationDomain);
+
         when(iterationCrudRepository.save(iteration)).thenReturn(iteration);
-        assertEquals(iteration, tester.save(iteration), "save must be new instance Iteration");
+        assertEquals(iterationDomain, tester.save(iterationDomain), "save must be new instance Iteration");
     }
 
     @Test

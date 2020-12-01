@@ -1,7 +1,7 @@
 package com.ebm.domain.service;
 
+import com.ebm.domain.IterationDomain;
 import com.ebm.domain.repository.IterationRepository;
-import com.ebm.persistence.crud.IterationCrudRepository;
 import com.ebm.persistence.entity.Iteration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,12 +14,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-public class IterationServiceTest {
+class IterationServiceTest {
     IterationService tester;
     IterationRepository iterationRepository;
 
-    private Iteration getIteration() {
-        Iteration iteration = new Iteration();
+    private IterationDomain getIteration() {
+        IterationDomain iteration = new IterationDomain();
         iteration.setState("In Progress");
         iteration.setEndDate(LocalDateTime.now());
         iteration.setStartDate(LocalDateTime.now());
@@ -40,12 +40,12 @@ public class IterationServiceTest {
 
     @Test
     void TestGetAllWithData() {
-        List<Iteration> iterations = new ArrayList<>();
-        Iteration iteration = getIteration();
+        List<IterationDomain> iterations = new ArrayList<>();
+        IterationDomain iteration = getIteration();
         iterations.add(iteration);
         when(iterationRepository.getAll()).thenReturn(iterations);
 
-        List<Iteration> iterationsResult = tester.getAll();
+        List<IterationDomain> iterationsResult = tester.getAll();
 
         assertEquals(1, iterationsResult.size(), "getAll must have an iteration");
         assertEquals(iteration, iterationsResult.toArray()[0], "getAll must have an iteration equal to object defined");

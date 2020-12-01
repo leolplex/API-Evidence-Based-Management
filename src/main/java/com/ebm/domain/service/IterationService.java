@@ -1,7 +1,7 @@
 package com.ebm.domain.service;
 
 import com.ebm.domain.repository.IterationRepository;
-import com.ebm.persistence.entity.Iteration;
+import com.ebm.domain.IterationDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +16,7 @@ public class IterationService {
         this.iterationRepository = iterationRepository;
     }
 
-    public List<Iteration> getAll() {
+    public List<IterationDomain> getAll() {
         return iterationRepository.getAll();
     }
 

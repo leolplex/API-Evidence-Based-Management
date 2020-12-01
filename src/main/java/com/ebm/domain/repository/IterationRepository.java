@@ -1,15 +1,15 @@
 package com.ebm.domain.repository;
 
-import com.ebm.persistence.entity.Iteration;
+import com.ebm.domain.IterationDomain;
 
 import java.util.List;
 
 public interface IterationRepository {
-    List<Iteration> getAll();
+    List<IterationDomain> getAll();
 
-    List<Iteration> getByIdTeam(int idTeam);
+    List<IterationDomain> getByIdTeam(int idTeam);
 
-    Iteration save(Iteration iteration);
+    IterationDomain save(IterationDomain iterationDomain);
 
     boolean delete(int iterationId);
 }

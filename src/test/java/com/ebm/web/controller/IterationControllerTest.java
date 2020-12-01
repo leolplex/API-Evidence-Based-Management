@@ -1,7 +1,7 @@
 package com.ebm.web.controller;
 
+import com.ebm.domain.IterationDomain;
 import com.ebm.domain.service.IterationService;
-import com.ebm.persistence.entity.Iteration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -15,12 +15,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-public class IterationControllerTest {
+class IterationControllerTest {
     IterationController tester;
     IterationService iterationService;
 
-    private Iteration getIteration() {
-        Iteration iteration = new Iteration();
+    private IterationDomain getIteration() {
+        IterationDomain iteration = new IterationDomain();
         iteration.setState("In Progress");
         iteration.setEndDate(LocalDateTime.now());
         iteration.setStartDate(LocalDateTime.now());
@@ -37,13 +37,13 @@ public class IterationControllerTest {
 
     @Test
     void TestGetAllWithoutData() {
-        assertEquals(new ResponseEntity<>(new ArrayList<Iteration>(), HttpStatus.OK), tester.getAll(), "getAll must be []");
+        assertEquals(new ResponseEntity<>(new ArrayList<IterationDomain>(), HttpStatus.OK), tester.getAll(), "getAll must be []");
     }
 
     @Test
     void TestGetAllWithData() {
-        List<Iteration> iterations = new ArrayList<>();
-        Iteration iteration = getIteration();
+        List<IterationDomain> iterations = new ArrayList<>();
+        IterationDomain iteration = getIteration();
         iterations.add(iteration);
 
         when(iterationService.getAll()).thenReturn(iterations);
