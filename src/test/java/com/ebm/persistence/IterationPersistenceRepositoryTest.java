@@ -34,11 +34,11 @@ class IterationPersistenceRepositoryTest {
 
     private IterationDomain getIterationDomain() {
         IterationDomain iteration = new IterationDomain();
-        iteration.setState("In Progress");
-        iteration.setEndDate(LocalDateTime.now());
-        iteration.setStartDate(LocalDateTime.now());
-        iteration.setGoal("Less rate of bureaucracy");
-        iteration.setId(190);
+        iteration.setStateDomain("In Progress");
+        iteration.setEndDateDomain(LocalDateTime.now());
+        iteration.setStartDateDomain(LocalDateTime.now());
+        iteration.setGoalDomain("Less rate of bureaucracy");
+        iteration.setIdDomain(190);
         return iteration;
     }
 
