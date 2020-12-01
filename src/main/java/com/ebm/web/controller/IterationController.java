@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/iterations")
-@CrossOrigin(origins = "http://localhost:4200/,https://leolplex.github.io/", methods = {RequestMethod.GET, RequestMethod.POST})
+@CrossOrigin(origins = {"http://localhost:4200/", "https://leolplex.github.io/"}, methods = {RequestMethod.GET, RequestMethod.POST})
 public class IterationController {
     @Autowired
     private final IterationService iterationService;
