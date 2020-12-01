@@ -51,4 +51,20 @@ class IterationControllerTest {
         assertEquals(new ResponseEntity<>(iterations, HttpStatus.OK), tester.getAll(), "getAll must be new ResponseEntity with a value");
     }
 
+    @Test
+    void TestGetByTeamWithoutData() {
+        assertEquals(new ResponseEntity<>(new ArrayList<IterationDomain>(), HttpStatus.OK), tester.getByTeam(1), "getAll must be []");
+    }
+
+    @Test
+    void TestGetByTeamWithData() {
+        List<IterationDomain> iterations = new ArrayList<>();
+        IterationDomain iteration = getIteration();
+        iterations.add(iteration);
+
+        when(iterationService.getByTeam(1)).thenReturn(iterations);
+
+        assertEquals(new ResponseEntity<>(iterations, HttpStatus.OK), tester.getByTeam(1), "getByTeam must be new ResponseEntity with a value");
+    }
+
 }

@@ -20,4 +20,8 @@ public class IterationService {
         return iterationRepository.getAll();
     }
 
+    public List<IterationDomain> getByTeam(int idTeam) {
+        return iterationRepository.getByIdTeam(idTeam);
+    }
+
 }
