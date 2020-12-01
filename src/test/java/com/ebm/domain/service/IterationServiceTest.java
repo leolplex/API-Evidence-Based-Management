@@ -33,8 +33,9 @@ class IterationServiceTest {
         iterationRepository = Mockito.mock(IterationRepository.class);
         tester = new IterationService(iterationRepository);
     }
+
     @Test
-    void TestGetAllWithOutData(){
+    void TestGetAllWithOutData() {
         assertEquals(new ArrayList<>(), tester.getAll(), "getAll must be []");
     }
 
@@ -46,6 +47,25 @@ class IterationServiceTest {
         when(iterationRepository.getAll()).thenReturn(iterations);
 
         List<IterationDomain> iterationsResult = tester.getAll();
+
+        assertEquals(1, iterationsResult.size(), "getAll must have an iteration");
+        assertEquals(iteration, iterationsResult.toArray()[0], "getAll must have an iteration equal to object defined");
+    }
+
+
+    @Test
+    void TestGetByTeamWithOutData() {
+        assertEquals(new ArrayList<>(), tester.getByTeam(1), "getByTeam must be []");
+    }
+
+    @Test
+    void TestGetByTeamWithData() {
+        List<IterationDomain> iterations = new ArrayList<>();
+        IterationDomain iteration = getIteration();
+        iterations.add(iteration);
+        when(iterationRepository.getByIdTeam(1)).thenReturn(iterations);
+
+        List<IterationDomain> iterationsResult = tester.getByTeam(1);
 
         assertEquals(1, iterationsResult.size(), "getAll must have an iteration");
         assertEquals(iteration, iterationsResult.toArray()[0], "getAll must have an iteration equal to object defined");
