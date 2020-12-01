@@ -11,3 +11,6 @@
 [![SonarCloud Duplicated Lines](https://sonarcloud.io/api/project_badges/measure?project=leolplex_API-Evidence-Based-Management&metric=duplicated_lines_density)](https://sonarcloud.io/dashboard?id=leolplex_API-Evidence-Based-Management)
 [![SonarCloud Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=leolplex_API-Evidence-Based-Management&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=leolplex_API-Evidence-Based-Management)
 
+## Test the API:
+ [Evidence Based Managemen API](https://evidence-based-management.herokuapp.com/ebm/api)
+
