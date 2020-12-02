@@ -2,7 +2,6 @@ package com.ebm.domain.service;
 
 import com.ebm.domain.IterationDomain;
 import com.ebm.domain.repository.IterationRepository;
-import com.ebm.persistence.entity.Iteration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -20,11 +19,11 @@ class IterationServiceTest {
 
     private IterationDomain getIteration() {
         IterationDomain iteration = new IterationDomain();
-        iteration.setStateDomain("In Progress");
-        iteration.setEndDateDomain(LocalDateTime.now());
-        iteration.setStartDateDomain(LocalDateTime.now());
-        iteration.setGoalDomain("Less rate of bureaucracy");
-        iteration.setIdDomain(190);
+        iteration.setState("In Progress");
+        iteration.setEndDate(LocalDateTime.now());
+        iteration.setStartDate(LocalDateTime.now());
+        iteration.setGoal("Less rate of bureaucracy");
+        iteration.setId(190);
         return iteration;
     }
 

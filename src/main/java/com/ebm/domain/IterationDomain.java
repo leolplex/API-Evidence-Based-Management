@@ -5,49 +5,49 @@ import java.time.LocalDateTime;
 
 public class IterationDomain {
 
-    private Integer idDomain;
-    private String goalDomain;
-    private LocalDateTime startDateDomain;
-    private LocalDateTime endDateDomain;
-    private String stateDomain;
+    private Integer id;
+    private String goal;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
+    private String state;
 
-    public Integer getIdDomain() {
-        return idDomain;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdDomain(Integer idDomain) {
-        this.idDomain = idDomain;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getGoalDomain() {
-        return goalDomain;
+    public String getGoal() {
+        return goal;
     }
 
-    public void setGoalDomain(String goalDomain) {
-        this.goalDomain = goalDomain;
+    public void setGoal(String goal) {
+        this.goal = goal;
     }
 
-    public LocalDateTime getStartDateDomain() {
-        return startDateDomain;
+    public LocalDateTime getStartDate() {
+        return startDate;
     }
 
-    public void setStartDateDomain(LocalDateTime startDateDomain) {
-        this.startDateDomain = startDateDomain;
+    public void setStartDate(LocalDateTime startDate) {
+        this.startDate = startDate;
     }
 
-    public LocalDateTime getEndDateDomain() {
-        return endDateDomain;
+    public LocalDateTime getEndDate() {
+        return endDate;
     }
 
-    public void setEndDateDomain(LocalDateTime endDateDomain) {
-        this.endDateDomain = endDateDomain;
+    public void setEndDate(LocalDateTime endDate) {
+        this.endDate = endDate;
     }
 
-    public String getStateDomain() {
-        return stateDomain;
+    public String getState() {
+        return state;
     }
 
-    public void setStateDomain(String stateDomain) {
-        this.stateDomain = stateDomain;
+    public void setState(String state) {
+        this.state = state;
     }
 }

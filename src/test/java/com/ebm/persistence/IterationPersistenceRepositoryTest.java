@@ -2,7 +2,7 @@ package com.ebm.persistence;
 
 import com.ebm.domain.IterationDomain;
 import com.ebm.persistence.crud.IterationCrudRepository;
-import com.ebm.persistence.entity.Iteration;
+import com.ebm.persistence.entity.EntityIteration;
 import com.ebm.persistence.mapper.IterationMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,24 +21,24 @@ class IterationPersistenceRepositoryTest {
     IterationCrudRepository iterationCrudRepository;
     IterationMapper mapper;
 
-    private Iteration getIteration() {
-        Iteration iteration = new Iteration();
-        iteration.setState("In Progress");
-        iteration.setEndDate(LocalDateTime.now());
-        iteration.setStartDate(LocalDateTime.now());
-        iteration.setGoal("Less rate of bureaucracy");
-        iteration.setId(190);
+    private EntityIteration getIteration() {
+        EntityIteration iteration = new EntityIteration();
+        iteration.setEntityState("In Progress");
+        iteration.setEntityEndDate(LocalDateTime.now());
+        iteration.setEntityStartDate(LocalDateTime.now());
+        iteration.setEntityGoal("Less rate of bureaucracy");
+        iteration.setEntityId(190);
         return iteration;
     }
 
 
     private IterationDomain getIterationDomain() {
         IterationDomain iteration = new IterationDomain();
-        iteration.setStateDomain("In Progress");
-        iteration.setEndDateDomain(LocalDateTime.now());
-        iteration.setStartDateDomain(LocalDateTime.now());
-        iteration.setGoalDomain("Less rate of bureaucracy");
-        iteration.setIdDomain(190);
+        iteration.setState("In Progress");
+        iteration.setEndDate(LocalDateTime.now());
+        iteration.setStartDate(LocalDateTime.now());
+        iteration.setGoal("Less rate of bureaucracy");
+        iteration.setId(190);
         return iteration;
     }
 
@@ -61,8 +61,8 @@ class IterationPersistenceRepositoryTest {
         IterationDomain iterationDomain = getIterationDomain();
         iterationsDomain.add(iterationDomain);
 
-        List<Iteration> iterations = new ArrayList<>();
-        Iteration iteration = getIteration();
+        List<EntityIteration> iterations = new ArrayList<>();
+        EntityIteration iteration = getIteration();
         iterations.add(iteration);
 
         when(iterationCrudRepository.findAll()).thenReturn(iterations);
@@ -85,8 +85,8 @@ class IterationPersistenceRepositoryTest {
         IterationDomain iterationDomain = getIterationDomain();
         iterationsDomain.add(iterationDomain);
 
-        List<Iteration> iterations = new ArrayList<>();
-        Iteration iteration = getIteration();
+        List<EntityIteration> iterations = new ArrayList<>();
+        EntityIteration iteration = getIteration();
         iterations.add(iteration);
         when(iterationCrudRepository.getByIdTeam(1)).thenReturn(iterations);
         when(mapper.toIterations(iterations)).thenReturn(iterationsDomain);
@@ -106,7 +106,7 @@ class IterationPersistenceRepositoryTest {
 
     @Test
     void TestSaveWithData() {
-        Iteration iteration = getIteration();
+        EntityIteration iteration = getIteration();
         IterationDomain iterationDomain = new IterationDomain();
         when(mapper.toIterationDomain(iterationDomain)).thenReturn(iteration);
         when(mapper.toIteration(iteration)).thenReturn(iterationDomain);

@@ -22,37 +22,37 @@ class IterationDomainTest {
     void TestInstanceIterationDefaultValues(){
 
         // Act & Assert
-        assertNull(tester.getIdDomain(),"getIdIteration must be null");
-        assertNull(tester.getGoalDomain(),"getGoal must be null");
-        assertNull(tester.getStartDateDomain(),"getStartDate must be null");
-        assertNull(tester.getEndDateDomain(),"getEndDate must be null");
-        assertNull(tester.getStateDomain(),"getState must be null");
+        assertNull(tester.getId(),"getIdIteration must be null");
+        assertNull(tester.getGoal(),"getGoal must be null");
+        assertNull(tester.getStartDate(),"getStartDate must be null");
+        assertNull(tester.getEndDate(),"getEndDate must be null");
+        assertNull(tester.getState(),"getState must be null");
     }
 
     @Test
-    void  getAndSetIdDomain(){
+    void  getAndSetId(){
         // Arrange
         final Integer id = 42;
 
         //Act
-        tester.setIdDomain(id);
-        final Integer getIdDomain = tester.getIdDomain();
+        tester.setId(id);
+        final Integer getId = tester.getId();
 
         // Assert
-        assertEquals(id, getIdDomain, "setIdDomain must be my 42");
+        assertEquals(id, getId, "setId must be my 42");
     }
 
     @Test
-    void  getAndSetGoalDomain(){
+    void  getAndSetGoal(){
         // Arrange
         final String goal = "Set up deployment pipeline & release an empty site to production";
 
         //Act
-        tester.setGoalDomain(goal);
-        final String getGoalDomain = tester.getGoalDomain();
+        tester.setGoal(goal);
+        final String getGoal = tester.getGoal();
 
         // Assert
-        assertEquals(goal, getGoalDomain, "setGoalDomain must be my Set up deployment pipeline & release an empty site to production");
+        assertEquals(goal, getGoal, "setGoal must be my Set up deployment pipeline & release an empty site to production");
     }
 
     @Test
@@ -61,11 +61,11 @@ class IterationDomainTest {
         final LocalDateTime startDate = LocalDateTime.now();
 
         //Act
-        tester.setStartDateDomain(startDate);
-        final LocalDateTime getStartDateDomain = tester.getStartDateDomain();
+        tester.setStartDate(startDate);
+        final LocalDateTime getStartDate = tester.getStartDate();
 
         // Assert
-        assertEquals(startDate, getStartDateDomain, "setStartDateDomain must be .now()");
+        assertEquals(startDate, getStartDate, "setStartDate must be .now()");
     }
 
     @Test
@@ -74,11 +74,11 @@ class IterationDomainTest {
         final LocalDateTime endDate = LocalDateTime.now();
 
         //Act
-        tester.setEndDateDomain(endDate);
-        final LocalDateTime getEndDateDomain = tester.getEndDateDomain();
+        tester.setEndDate(endDate);
+        final LocalDateTime getEndDate = tester.getEndDate();
 
         // Assert
-        assertEquals(endDate, getEndDateDomain, "setEndDateDomain must be .now()");
+        assertEquals(endDate, getEndDate, "setEndDate must be .now()");
     }
 
     @ParameterizedTest
@@ -86,11 +86,11 @@ class IterationDomainTest {
     void  getAndSetStateStates(String state){
 
         //Act
-        tester.setStateDomain(state);
-        final String getStateDomain = tester.getStateDomain();
+        tester.setState(state);
+        final String getState = tester.getState();
 
         // Assert
-        assertEquals(state, getStateDomain, "setStateDomain must be In_Progress | Completed | Fail");
+        assertEquals(state, getState, "setState must be In_Progress | Completed | Fail");
     }
 
 }

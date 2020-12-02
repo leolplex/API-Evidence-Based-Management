@@ -1,7 +1,7 @@
 package com.ebm.persistence.mapper;
 
 import com.ebm.domain.IterationDomain;
-import com.ebm.persistence.entity.Iteration;
+import com.ebm.persistence.entity.EntityIteration;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -11,23 +11,23 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface IterationMapper {
 
-    @Mapping(source = "id", target = "idDomain")
-    @Mapping(source = "goal", target = "goalDomain")
-    @Mapping(source = "startDate", target = "startDateDomain")
-    @Mapping(source = "endDate", target = "endDateDomain")
-    @Mapping(source = "state", target = "stateDomain")
-    List<IterationDomain> toIterations(List<Iteration> iteration);
+    @Mapping(source = "entityId", target = "id")
+    @Mapping(source = "entityGoal", target = "goal")
+    @Mapping(source = "entityStartDate", target = "startDate")
+    @Mapping(source = "entityEndDate", target = "endDate")
+    @Mapping(source = "entityState", target = "state")
+    List<IterationDomain> toIterations(List<EntityIteration> iteration);
 
     @InheritInverseConfiguration
-    List<Iteration> toIterationsDomain(List<IterationDomain> iterationDomain);
+    List<EntityIteration> toIterationsDomain(List<IterationDomain> iterationDomain);
 
-    @Mapping(source = "id", target = "idDomain")
-    @Mapping(source = "goal", target = "goalDomain")
-    @Mapping(source = "startDate", target = "startDateDomain")
-    @Mapping(source = "endDate", target = "endDateDomain")
-    @Mapping(source = "state", target = "stateDomain")
-    IterationDomain toIteration(Iteration iteration);
+    @Mapping(source = "entityId", target = "id")
+    @Mapping(source = "entityGoal", target = "goal")
+    @Mapping(source = "entityStartDate", target = "startDate")
+    @Mapping(source = "entityEndDate", target = "endDate")
+    @Mapping(source = "entityState", target = "state")
+    IterationDomain toIteration(EntityIteration iteration);
 
     @InheritInverseConfiguration
-    Iteration toIterationDomain(IterationDomain iterationDomain);
+    EntityIteration toIterationDomain(IterationDomain iterationDomain);
 }
