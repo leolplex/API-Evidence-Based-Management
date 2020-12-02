@@ -11,6 +11,9 @@ public class EntityIteration {
     @Column(name = "id")
     private Integer entityId;
 
+    @Column(name = "name")
+    private String entityName;
+
     @Column(name = "goal")
     private String entityGoal;
 
@@ -61,5 +64,13 @@ public class EntityIteration {
 
     public void setEntityState(String entityState) {
         this.entityState = entityState;
+    }
+
+    public String getEntityName() {
+        return entityName;
+    }
+
+    public void setEntityName(String entityName) {
+        this.entityName = entityName;
     }
 }

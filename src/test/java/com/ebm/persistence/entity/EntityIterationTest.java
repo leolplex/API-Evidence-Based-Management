@@ -45,6 +45,19 @@ class EntityIterationTest {
     }
 
     @Test
+    void  getAndSetEntityName(){
+        // Arrange
+        final String name = "Iteration 1";
+
+        //Act
+        tester.setEntityName(name);
+        final String getEntityName = tester.getEntityName();
+
+        // Assert
+        assertEquals(name, getEntityName, "setEntityName must be my Iteration 1");
+    }
+
+    @Test
     void  getAndSetEntityGoal(){
         // Arrange
         final String goal = "Set up deployment pipeline & release an empty site to production";

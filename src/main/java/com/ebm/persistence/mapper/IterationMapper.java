@@ -12,6 +12,7 @@ import java.util.List;
 public interface IterationMapper {
 
     @Mapping(source = "entityId", target = "id")
+    @Mapping(source = "entityName", target = "name")
     @Mapping(source = "entityGoal", target = "goal")
     @Mapping(source = "entityStartDate", target = "startDate")
     @Mapping(source = "entityEndDate", target = "endDate")
@@ -22,6 +23,7 @@ public interface IterationMapper {
     List<EntityIteration> toIterationsDomain(List<IterationDomain> iterationDomain);
 
     @Mapping(source = "entityId", target = "id")
+    @Mapping(source = "entityName", target = "name")
     @Mapping(source = "entityGoal", target = "goal")
     @Mapping(source = "entityStartDate", target = "startDate")
     @Mapping(source = "entityEndDate", target = "endDate")

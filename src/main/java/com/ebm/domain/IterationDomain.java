@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 public class IterationDomain {
 
     private Integer id;
+    private String name;
     private String goal;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
@@ -49,5 +50,13 @@ public class IterationDomain {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -43,6 +43,19 @@ class IterationDomainTest {
     }
 
     @Test
+    void  getAndSetName(){
+        // Arrange
+        final String name = "Iteration 1";
+
+        //Act
+        tester.setName(name);
+        final String getName = tester.getName();
+
+        // Assert
+        assertEquals(name, getName, "setName must be my Iteration 1");
+    }
+
+    @Test
     void  getAndSetGoal(){
         // Arrange
         final String goal = "Set up deployment pipeline & release an empty site to production";
