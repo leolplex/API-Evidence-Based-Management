@@ -67,4 +67,17 @@ class IterationControllerTest {
         assertEquals(new ResponseEntity<>(iterations, HttpStatus.OK), tester.getByTeam(1), "getByTeam must be new ResponseEntity with a value");
     }
 
+    @Test
+    void TestSaveNull() {
+        assertEquals(new ResponseEntity<>(HttpStatus.CREATED), tester.save(new IterationDomain()), "save must be null");
+    }
+
+    @Test
+    void TestSaveWithData() {
+        IterationDomain iterationDomain = new IterationDomain();
+        when(iterationService.save(iterationDomain)).thenReturn(iterationDomain);
+
+        assertEquals(new ResponseEntity<>(iterationDomain,HttpStatus.CREATED), tester.save(iterationDomain), "save must be new instance Iteration");
+    }
+
 }

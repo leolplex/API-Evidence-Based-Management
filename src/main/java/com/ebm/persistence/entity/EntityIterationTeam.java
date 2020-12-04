@@ -1,30 +1,47 @@
 package com.ebm.persistence.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "iteration_team")
+@Table(name="iteration_team")
 public class EntityIterationTeam {
-    @Column(name = "id_iteration")
-    private Integer entityIdIteration;
-    @Column(name = "id_team")
-    private Integer entityIdTeam;
+    @EmbeddedId
+    private EntityIterationTeamPK entityId;
 
-    public Integer getEntityIdIteration() {
-        return entityIdIteration;
+    @ManyToOne
+    @MapsId("entityId")
+    @JoinColumn(name = "id_iteration", insertable = false, updatable = false)
+    private EntityIteration entityIteration;
+
+
+    @ManyToOne
+    @JoinColumn(name = "id_team", insertable = false, updatable = false)
+    private EntityTeam entityTeam;
+
+
+    public EntityIterationTeamPK getEntityId() {
+        return entityId;
     }
 
-    public void setEntityIdIteration(Integer entityIdIteration) {
-        this.entityIdIteration = entityIdIteration;
+    public void setEntityId(EntityIterationTeamPK entityId) {
+        this.entityId = entityId;
     }
 
-    public Integer getEntityIdTeam() {
-        return entityIdTeam;
+    public EntityIteration getEntityIteration() {
+        return entityIteration;
     }
 
-    public void setEntityIdTeam(Integer entityIdTeam) {
-        this.entityIdTeam = entityIdTeam;
+    public void setEntityIteration(EntityIteration entityIteration) {
+        this.entityIteration = entityIteration;
     }
+
+    public EntityTeam getEntityTeam() {
+        return entityTeam;
+    }
+
+    public void setEntityTeam(EntityTeam entityTeam) {
+        this.entityTeam = entityTeam;
+    }
+
 }

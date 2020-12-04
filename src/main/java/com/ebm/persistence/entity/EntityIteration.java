@@ -2,6 +2,7 @@ package com.ebm.persistence.entity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name="iteration")
@@ -73,4 +74,5 @@ public class EntityIteration {
     public void setEntityName(String entityName) {
         this.entityName = entityName;
     }
+
 }

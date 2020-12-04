@@ -29,4 +29,9 @@ public class IterationController {
     public ResponseEntity<List<IterationDomain>> getByTeam(@PathVariable("idTeam") int idTeam) {
         return new ResponseEntity<>(iterationService.getByTeam(idTeam), HttpStatus.OK);
     }
+
+    @PostMapping("/save")
+    public ResponseEntity<IterationDomain> save(@RequestBody IterationDomain iterationDomain) {
+        return new ResponseEntity<>(iterationService.save(iterationDomain), HttpStatus.CREATED);
+    }
 }

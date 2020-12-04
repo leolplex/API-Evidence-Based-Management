@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class IterationService {
     @Autowired
-    private IterationRepository iterationRepository;
+    private final IterationRepository iterationRepository;
 
     IterationService(IterationRepository iterationRepository) {
         this.iterationRepository = iterationRepository;
@@ -22,6 +22,10 @@ public class IterationService {
 
     public List<IterationDomain> getByTeam(int idTeam) {
         return iterationRepository.getByIdTeam(idTeam);
+    }
+
+    public IterationDomain save(IterationDomain iterationDomain) {
+        return iterationRepository.save(iterationDomain);
     }
 
 }

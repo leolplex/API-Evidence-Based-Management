@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 class IterationServiceTest {
@@ -68,5 +69,18 @@ class IterationServiceTest {
 
         assertEquals(1, iterationsResult.size(), "getAll must have an iteration");
         assertEquals(iteration, iterationsResult.toArray()[0], "getAll must have an iteration equal to object defined");
+    }
+
+    @Test
+    void TestSaveNull() {
+        assertNull(tester.save(new IterationDomain()), "save must be null");
+    }
+
+    @Test
+    void TestSaveWithData() {
+        IterationDomain iterationDomain = new IterationDomain();
+        when(iterationRepository.save(iterationDomain)).thenReturn(iterationDomain);
+
+        assertEquals(iterationDomain, tester.save(iterationDomain), "save must be new instance Iteration");
     }
 }
