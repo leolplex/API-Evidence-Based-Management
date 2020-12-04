@@ -25,7 +25,7 @@ class EntityTeamTest {
         assertNull(tester.getEntityId(),"getIdIteration must be null");
         assertNull(tester.getEntityName(),"getEntityName must be null");
         assertNull(tester.getEntityDateJoin(),"getEntityDateJoin must be null");
-        assertNull(tester.getEntityTeam(),"getEntityTeam must be null");
+        assertNull(tester.getEntityIterationTeams(),"getEntityIterationTeams must be null");
 
     }
 
@@ -75,11 +75,11 @@ class EntityTeamTest {
         final List<EntityIterationTeam> teams = new ArrayList<>();
 
         //Act
-        tester.setEntityTeam(teams);
-        final List<EntityIterationTeam> getEntityTeam = tester.getEntityTeam();
+        tester.setEntityIterationTeams(teams);
+        final List<EntityIterationTeam> getEntityIterationTeams = tester.getEntityIterationTeams();
 
         // Assert
-        assertEquals(teams, getEntityTeam, "setEntityTeam must be new ArrayList<>()");
+        assertEquals(teams, getEntityIterationTeams, "setEntityIterationTeams must be new ArrayList<>()");
     }
 }
 
