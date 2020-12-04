@@ -20,7 +20,7 @@ public class EntityTeam {
 
 
     @OneToMany(mappedBy = "entityTeam", cascade = {CascadeType.ALL})
-    private List<EntityIterationTeam> entityTeam;
+    private List<EntityIterationTeam> entityIterationTeams;
 
 
     public Integer getEntityId() {
@@ -47,11 +47,11 @@ public class EntityTeam {
         this.entityDateJoin = entityDateJoin;
     }
 
-    public List<EntityIterationTeam> getEntityTeam() {
-        return entityTeam;
+    public List<EntityIterationTeam> getEntityIterationTeams() {
+        return entityIterationTeams;
     }
 
-    public void setEntityTeam(List<EntityIterationTeam> entityTeam) {
-        this.entityTeam = entityTeam;
+    public void setEntityIterationTeams(List<EntityIterationTeam> entityIterationTeams) {
+        this.entityIterationTeams = entityIterationTeams;
     }
 }

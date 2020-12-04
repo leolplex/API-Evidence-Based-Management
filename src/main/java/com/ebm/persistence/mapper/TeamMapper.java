@@ -15,15 +15,15 @@ public interface TeamMapper {
     @Mapping(source = "entityId", target = "id")
     @Mapping(source = "entityName", target = "name")
     @Mapping(source = "entityDateJoin", target = "dateJoin")
-    @Mapping(source = "entityTeam", target = "iterations")
+    @Mapping(source = "entityIterationTeams", target = "iterations")
     TeamDomain toTeam(EntityTeam team);
 
 
     @InheritInverseConfiguration
-    @Mapping(target = "entityTeam.entityId", ignore = true)
-    @Mapping(target = "entityTeam.entityName", ignore = true)
-    @Mapping(target = "entityTeam.entityDateJoin", ignore = true)
-    @Mapping(target = "entityTeam", ignore = true)
+    @Mapping(target = "entityIterationTeams.entityId", ignore = true)
+    @Mapping(target = "entityIterationTeams.entityName", ignore = true)
+    @Mapping(target = "entityIterationTeams.entityDateJoin", ignore = true)
+    @Mapping(target = "entityIterationTeams", ignore = true)
     EntityTeam toTeamDomain(TeamDomain team);
 
 

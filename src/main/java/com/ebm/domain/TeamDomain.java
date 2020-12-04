@@ -1,7 +1,5 @@
 package com.ebm.domain;
 
-import com.ebm.persistence.entity.EntityIteration;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
