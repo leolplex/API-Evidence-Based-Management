@@ -27,6 +27,7 @@ class IterationDomainTest {
         assertNull(tester.getStartDate(),"getStartDate must be null");
         assertNull(tester.getEndDate(),"getEndDate must be null");
         assertNull(tester.getState(),"getState must be null");
+        assertNull(tester.getKva(),"getKva must be null");
     }
 
     @Test
@@ -106,4 +107,17 @@ class IterationDomainTest {
         assertEquals(state, getState, "setState must be In_Progress | Completed | Fail");
     }
 
+
+    @Test
+    void  getAndSetKVA(){
+        // Arrange
+        final KVADomain kvaDomain = new KVADomain();
+
+        //Act
+        tester.setKva(kvaDomain);
+        final KVADomain getKva = tester.getKva();
+
+        // Assert
+        assertEquals(kvaDomain, getKva, "setKva must be new KVADomain()");
+    }
 }

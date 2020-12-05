@@ -1,6 +1,5 @@
 package com.ebm.persistence.entity;
 
-import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
