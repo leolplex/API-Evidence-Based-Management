@@ -29,6 +29,7 @@ class EntityIterationTest {
         assertNull(tester.getEntityStartDate(),"getStartDate must be null");
         assertNull(tester.getEntityEndDate(),"getEndDate must be null");
         assertNull(tester.getEntityState(),"getState must be null");
+        assertNull(tester.getEntityKVAUnrealizedValue(),"getState must be null");
     }
 
     @Test
@@ -109,4 +110,16 @@ class EntityIterationTest {
     }
 
 
+    @Test
+    void  getAndSetEntityKVAUnrealizedValue(){
+        // Arrange
+        final EntityKVAUnrealizedValue entityKVAUnrealizedValue = new EntityKVAUnrealizedValue();
+
+        //Act
+        tester.setEntityKVAUnrealizedValue(entityKVAUnrealizedValue);
+        final EntityKVAUnrealizedValue getEntityKVAUnrealizedValue = tester.getEntityKVAUnrealizedValue();
+
+        // Assert
+        assertEquals(entityKVAUnrealizedValue, getEntityKVAUnrealizedValue, "setEntityKVAUnrealizedValue must be new EntityKVAUnrealizedValue()");
+    }
 }

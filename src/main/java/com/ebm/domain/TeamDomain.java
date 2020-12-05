@@ -41,4 +41,5 @@ public class TeamDomain {
     public void setIterations(List<IterationDomain> iterations) {
         this.iterations = iterations;
     }
+
 }

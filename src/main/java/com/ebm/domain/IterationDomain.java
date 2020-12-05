@@ -12,6 +12,9 @@ public class IterationDomain {
     private LocalDateTime endDate;
     private String state;
 
+    private KVADomain kva;
+
+
     public Integer getId() {
         return id;
     }
@@ -58,5 +61,14 @@ public class IterationDomain {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public KVADomain getKva() {
+        return kva;
+    }
+
+    public void setKva(KVADomain kva) {
+        this.kva = kva;
     }
 }

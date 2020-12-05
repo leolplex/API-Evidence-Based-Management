@@ -17,6 +17,10 @@ public interface IterationMapper {
     @Mapping(source = "entityStartDate", target = "startDate")
     @Mapping(source = "entityEndDate", target = "endDate")
     @Mapping(source = "entityState", target = "state")
+    @Mapping(source = "entityKVAUnrealizedValue", target = "kvaUnrealizedValue")
+    @Mapping(source = "entityKVAUnrealizedValue.entityId", target = "kvaUnrealizedValue.id")
+    @Mapping(source = "entityKVAUnrealizedValue.entityMarketShare", target = "kvaUnrealizedValue.marketShare")
+    @Mapping(source = "entityKVAUnrealizedValue.entityCustomerSatisfactionGap", target = "kvaUnrealizedValue.customerSatisfactionGap")
     List<IterationDomain> toIterations(List<EntityIteration> iteration);
 
     @InheritInverseConfiguration
@@ -28,8 +32,12 @@ public interface IterationMapper {
     @Mapping(source = "entityStartDate", target = "startDate")
     @Mapping(source = "entityEndDate", target = "endDate")
     @Mapping(source = "entityState", target = "state")
+    @Mapping(source = "entityKVAUnrealizedValue.entityId", target = "kva.kvaUnrealizedValue.id")
+    @Mapping(source = "entityKVAUnrealizedValue.entityMarketShare", target = "kva.kvaUnrealizedValue.marketShare")
+    @Mapping(source = "entityKVAUnrealizedValue.entityCustomerSatisfactionGap", target = "kva.kvaUnrealizedValue.customerSatisfactionGap")
     IterationDomain toIteration(EntityIteration iteration);
 
     @InheritInverseConfiguration
+    @Mapping(target = "entityKVAUnrealizedValue", ignore = true)
     EntityIteration toIterationDomain(IterationDomain iterationDomain);
 }

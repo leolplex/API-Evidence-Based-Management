@@ -1,10 +1,12 @@
 package com.ebm.persistence.entity;
 
+import org.hibernate.procedure.spi.ParameterRegistrationImplementor;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="iteration")
+@Table(name = "iteration")
 public class EntityIteration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +27,10 @@ public class EntityIteration {
 
     @Column(name = "state")
     private String entityState;
+
+
+    @OneToOne(mappedBy = "entityIteration")
+    private EntityKVAUnrealizedValue entityKVAUnrealizedValue;
 
     public Integer getEntityId() {
         return entityId;
@@ -74,4 +80,11 @@ public class EntityIteration {
         this.entityName = entityName;
     }
 
+    public EntityKVAUnrealizedValue getEntityKVAUnrealizedValue() {
+        return entityKVAUnrealizedValue;
+    }
+
+    public void setEntityKVAUnrealizedValue(EntityKVAUnrealizedValue entityKVAUnrealizedValue) {
+        this.entityKVAUnrealizedValue = entityKVAUnrealizedValue;
+    }
 }

@@ -14,6 +14,9 @@ public interface TeamIterationsMapper {
     @Mapping(source = "entityIteration.entityStartDate", target = "startDate")
     @Mapping(source = "entityIteration.entityEndDate", target = "endDate")
     @Mapping(source = "entityIteration.entityState", target = "state")
+    @Mapping(source = "entityIteration.entityKVAUnrealizedValue.entityId", target = "kva.kvaUnrealizedValue.id")
+    @Mapping(source = "entityIteration.entityKVAUnrealizedValue.entityMarketShare", target = "kva.kvaUnrealizedValue.marketShare")
+    @Mapping(source = "entityIteration.entityKVAUnrealizedValue.entityCustomerSatisfactionGap", target = "kva.kvaUnrealizedValue.customerSatisfactionGap")
     IterationDomain toTeamIteration(EntityIterationTeam iteration);
 
 

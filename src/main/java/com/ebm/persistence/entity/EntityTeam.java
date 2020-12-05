@@ -54,4 +54,5 @@ public class EntityTeam {
     public void setEntityIterationTeams(List<EntityIterationTeam> entityIterationTeams) {
         this.entityIterationTeams = entityIterationTeams;
     }
+
 }
