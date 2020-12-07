@@ -24,12 +24,13 @@ class EntityIterationTest {
     void InstanceIterationDefaultValues(){
 
         // Act & Assert
-        assertNull(tester.getEntityId(),"getIdIteration must be null");
-        assertNull(tester.getEntityGoal(),"getGoal must be null");
-        assertNull(tester.getEntityStartDate(),"getStartDate must be null");
-        assertNull(tester.getEntityEndDate(),"getEndDate must be null");
-        assertNull(tester.getEntityState(),"getState must be null");
-        assertNull(tester.getEntityKVAUnrealizedValue(),"getState must be null");
+        assertNull(tester.getEntityId(),"getEntityId must be null");
+        assertNull(tester.getEntityGoal(),"getEntityGoal must be null");
+        assertNull(tester.getEntityStartDate(),"getEntityStartDate must be null");
+        assertNull(tester.getEntityEndDate(),"getEntityEndDate must be null");
+        assertNull(tester.getEntityState(),"getEntityState must be null");
+        assertNull(tester.getEntityKVAUnrealizedValue(),"getEntityKVAUnrealizedValue must be null");
+        assertNull(tester.getEntityKVACurrentValue(),"getEntityKVACurrentValue must be null");
     }
 
     @Test
@@ -121,5 +122,18 @@ class EntityIterationTest {
 
         // Assert
         assertEquals(entityKVAUnrealizedValue, getEntityKVAUnrealizedValue, "setEntityKVAUnrealizedValue must be new EntityKVAUnrealizedValue()");
+    }
+
+    @Test
+    void  getAndSetEntityKVACurrentValue(){
+        // Arrange
+        final EntityKVACurrentValue entityKVACurrentValue = new EntityKVACurrentValue();
+
+        //Act
+        tester.setEntityKVACurrentValue(entityKVACurrentValue);
+        final EntityKVACurrentValue getEntityKVACurrentValue = tester.getEntityKVACurrentValue();
+
+        // Assert
+        assertEquals(entityKVACurrentValue, getEntityKVACurrentValue, "setEntityKVACurrentValue must be new EntityKVACurrentValue()");
     }
 }

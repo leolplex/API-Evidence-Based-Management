@@ -31,6 +31,9 @@ public class EntityIteration {
     @OneToOne(mappedBy = "entityIteration")
     private EntityKVAUnrealizedValue entityKVAUnrealizedValue;
 
+    @OneToOne(mappedBy = "entityIteration")
+    private  EntityKVACurrentValue entityKVACurrentValue;
+
     public Integer getEntityId() {
         return entityId;
     }
@@ -85,5 +88,13 @@ public class EntityIteration {
 
     public void setEntityKVAUnrealizedValue(EntityKVAUnrealizedValue entityKVAUnrealizedValue) {
         this.entityKVAUnrealizedValue = entityKVAUnrealizedValue;
+    }
+
+    public EntityKVACurrentValue getEntityKVACurrentValue() {
+        return entityKVACurrentValue;
+    }
+
+    public void setEntityKVACurrentValue(EntityKVACurrentValue entityKVACurrentValue) {
+        this.entityKVACurrentValue = entityKVACurrentValue;
     }
 }

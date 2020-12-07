@@ -10,18 +10,19 @@ class KVADomainTest {
     KVADomain tester;
 
     @BeforeEach
-    void initEach(){
+    void initEach() {
         tester = new KVADomain();
     }
 
     @Test
-    void TestInstanceIterationDefaultValues(){
+    void TestInstanceIterationDefaultValues() {
         // Act & Assert
-        assertNull(tester.getKvaUnrealizedValue(),"getIdIteration must be null");
+        assertNull(tester.getKvaUnrealizedValue(), "getIdIteration must be null");
+        assertNull(tester.getKvaCurrentValue(), "getKvaCurrentValue must be null");
     }
 
     @Test
-    void  getAndSetIterationDefaultValues(){
+    void getAndSetIterationDefaultValues() {
         // Arrange
         final KVAUnrealizedValueDomain kvaUnrealizedValueDomain = new KVAUnrealizedValueDomain();
 
@@ -31,5 +32,18 @@ class KVADomainTest {
 
         // Assert
         assertEquals(kvaUnrealizedValueDomain, getKvaUnrealizedValue, "setKvaUnrealizedValue must be new KVAUnrealizedValueDomain()");
+    }
+
+    @Test
+    void getAndSetKvaCurrentValue() {
+        // Arrange
+        final KVACurrentValue kvaCurrentValue = new KVACurrentValue();
+
+        //Act
+        tester.setKvaCurrentValue(kvaCurrentValue);
+        final KVACurrentValue getKvaCurrentValue = tester.getKvaCurrentValue();
+
+        // Assert
+        assertEquals(kvaCurrentValue, getKvaCurrentValue, "setKvaCurrentValue must be new KVACurrentValue()");
     }
 }

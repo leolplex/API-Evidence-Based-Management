@@ -17,6 +17,12 @@ public interface TeamIterationsMapper {
     @Mapping(source = "entityIteration.entityKVAUnrealizedValue.entityId", target = "kva.kvaUnrealizedValue.id")
     @Mapping(source = "entityIteration.entityKVAUnrealizedValue.entityMarketShare", target = "kva.kvaUnrealizedValue.marketShare")
     @Mapping(source = "entityIteration.entityKVAUnrealizedValue.entityCustomerSatisfactionGap", target = "kva.kvaUnrealizedValue.customerSatisfactionGap")
+    @Mapping(source = "entityIteration.entityKVACurrentValue.entityId", target = "kva.kvaCurrentValue.id")
+    @Mapping(source = "entityIteration.entityKVACurrentValue.entityRevenuePerEmployee", target = "kva.kvaCurrentValue.revenuePerEmployee")
+    @Mapping(source = "entityIteration.entityKVACurrentValue.entityProductCostRatio", target = "kva.kvaCurrentValue.productCostRatio")
+    @Mapping(source = "entityIteration.entityKVACurrentValue.entityEmployeeSatisfaction", target = "kva.kvaCurrentValue.employeeSatisfaction")
+    @Mapping(source = "entityIteration.entityKVACurrentValue.entityCustomerSatisfaction", target = "kva.kvaCurrentValue.customerSatisfaction")
+    @Mapping(source = "entityIteration.entityKVACurrentValue.entityCustomerUsageIndex", target = "kva.kvaCurrentValue.customerUsageIndex")
     IterationDomain toTeamIteration(EntityIterationTeam iteration);
 
 
