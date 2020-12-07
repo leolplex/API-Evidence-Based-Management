@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class IterationPersistenceRepository implements IterationRepository {
@@ -30,9 +31,8 @@ public class IterationPersistenceRepository implements IterationRepository {
     }
 
     @Override
-    public List<Iteration> getByIdTeam(int idTeam) {
-        List<EntityIteration> iterations = iterationCrudRepository.getByIdTeam(idTeam);
-        return mapper.toIterations(iterations);
+    public Optional<Iteration> getIterationById(int idIteration) {
+        return iterationCrudRepository.findById(idIteration).map(iteration -> mapper.toIteration(iteration));
     }
 
     @Override

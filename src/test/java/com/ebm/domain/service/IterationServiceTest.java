@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -18,15 +19,6 @@ class IterationServiceTest {
     IterationService tester;
     IterationRepository iterationRepository;
 
-    private Iteration getIteration() {
-        Iteration iteration = new Iteration();
-        iteration.setState("In Progress");
-        iteration.setEndDate(LocalDateTime.now());
-        iteration.setStartDate(LocalDateTime.now());
-        iteration.setGoal("Less rate of bureaucracy");
-        iteration.setId(190);
-        return iteration;
-    }
 
     @BeforeEach
     void initEach() {
@@ -42,7 +34,7 @@ class IterationServiceTest {
     @Test
     void TestGetAllWithData() {
         List<Iteration> iterations = new ArrayList<>();
-        Iteration iteration = getIteration();
+        Iteration iteration = new Iteration();
         iterations.add(iteration);
         when(iterationRepository.getAll()).thenReturn(iterations);
 
@@ -54,21 +46,18 @@ class IterationServiceTest {
 
 
     @Test
-    void TestGetByTeamWithOutData() {
-        assertEquals(new ArrayList<>(), tester.getByTeam(1), "getByTeam must be []");
+    void TestGetIterationByIdWithOutData() {
+        assertEquals(Optional.empty(), tester.getIterationById(1), "getByTeam must be Optional.empty()");
     }
 
     @Test
-    void TestGetByTeamWithData() {
-        List<Iteration> iterations = new ArrayList<>();
-        Iteration iteration = getIteration();
-        iterations.add(iteration);
-        when(iterationRepository.getByIdTeam(1)).thenReturn(iterations);
+    void TestGetIterationByIdmWithData() {
+        Optional<Iteration> iterations = Optional.of(new Iteration());
+        when(iterationRepository.getIterationById(1)).thenReturn(iterations);
 
-        List<Iteration> iterationsResult = tester.getByTeam(1);
+        Optional<Iteration> iterationsResult = tester.getIterationById(1);
 
-        assertEquals(1, iterationsResult.size(), "getAll must have an iteration");
-        assertEquals(iteration, iterationsResult.toArray()[0], "getAll must have an iteration equal to object defined");
+        assertEquals(iterations, iterationsResult, "getAll must have an iteration");
     }
 
     @Test

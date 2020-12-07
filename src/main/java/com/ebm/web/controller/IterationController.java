@@ -30,11 +30,11 @@ public class IterationController {
         return new ResponseEntity<>(iterationService.getAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/byTeam/{idTeam}")
-    @ApiOperation("Get iterations by team identifier ")
+    @GetMapping("/iteration/{idIteration}")
+    @ApiOperation("Get iterations by id")
     @ApiResponse(code = 200, message = "ok")
-    public ResponseEntity<List<Iteration>> getByTeam( @ApiParam(value = "The id of the team", required = true, example = "7") @PathVariable("idTeam") int idTeam) {
-        return new ResponseEntity<>(iterationService.getByTeam(idTeam), HttpStatus.OK);
+    public ResponseEntity<Iteration> getIterationById(@ApiParam(value = "The id of the iteration", required = true, example = "7") @PathVariable("idIteration") int idIteration) {
+        return iterationService.getIterationById(idIteration).map(iteration -> new ResponseEntity<>(iteration, HttpStatus.OK)).orElse(new ResponseEntity<>((HttpStatus.NOT_FOUND)));
     }
 
     @PostMapping("/save")

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class IterationService {
@@ -20,8 +21,8 @@ public class IterationService {
         return iterationRepository.getAll();
     }
 
-    public List<Iteration> getByTeam(int idTeam) {
-        return iterationRepository.getByIdTeam(idTeam);
+    public Optional<Iteration> getIterationById(int idIteration) {
+        return iterationRepository.getIterationById(idIteration);
     }
 
     public Iteration save(Iteration iteration) {

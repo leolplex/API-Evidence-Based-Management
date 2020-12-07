@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -19,15 +20,7 @@ class IterationControllerTest {
     IterationController tester;
     IterationService iterationService;
 
-    private Iteration getIteration() {
-        Iteration iteration = new Iteration();
-        iteration.setState("In Progress");
-        iteration.setEndDate(LocalDateTime.now());
-        iteration.setStartDate(LocalDateTime.now());
-        iteration.setGoal("Less rate of bureaucracy");
-        iteration.setId(190);
-        return iteration;
-    }
+
 
     @BeforeEach()
     void initEach() {
@@ -43,7 +36,7 @@ class IterationControllerTest {
     @Test
     void TestGetAllWithData() {
         List<Iteration> iterations = new ArrayList<>();
-        Iteration iteration = getIteration();
+        Iteration iteration = new Iteration();
         iterations.add(iteration);
 
         when(iterationService.getAll()).thenReturn(iterations);
@@ -53,18 +46,16 @@ class IterationControllerTest {
 
     @Test
     void TestGetByTeamWithoutData() {
-        assertEquals(new ResponseEntity<>(new ArrayList<Iteration>(), HttpStatus.OK), tester.getByTeam(1), "getAll must be []");
+        assertEquals(new ResponseEntity<>(HttpStatus.NOT_FOUND), tester.getIterationById(1), "getIterationById must be HttpStatus.NOT_FOUND");
     }
 
     @Test
     void TestGetByTeamWithData() {
-        List<Iteration> iterations = new ArrayList<>();
-        Iteration iteration = getIteration();
-        iterations.add(iteration);
+        Optional<Iteration> iterations = Optional.of(new Iteration());
 
-        when(iterationService.getByTeam(1)).thenReturn(iterations);
+        when(iterationService.getIterationById(1)).thenReturn(iterations);
 
-        assertEquals(new ResponseEntity<>(iterations, HttpStatus.OK), tester.getByTeam(1), "getByTeam must be new ResponseEntity with a value");
+        assertEquals(new ResponseEntity<>(iterations.get(), HttpStatus.OK), tester.getIterationById(1), "getIterationById must be new ResponseEntity with a value");
     }
 
     @Test
@@ -77,7 +68,7 @@ class IterationControllerTest {
         Iteration iteration = new Iteration();
         when(iterationService.save(iteration)).thenReturn(iteration);
 
-        assertEquals(new ResponseEntity<>(iteration,HttpStatus.CREATED), tester.save(iteration), "save must be new instance Iteration");
+        assertEquals(new ResponseEntity<>(iteration, HttpStatus.CREATED), tester.save(iteration), "save must be new instance Iteration");
     }
 
 }

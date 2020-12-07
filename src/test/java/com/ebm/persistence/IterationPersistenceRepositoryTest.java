@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doThrow;
@@ -20,27 +21,6 @@ class IterationPersistenceRepositoryTest {
     IterationPersistenceRepository tester;
     IterationCrudRepository iterationCrudRepository;
     IterationMapper mapper;
-
-    private EntityIteration getIteration() {
-        EntityIteration iteration = new EntityIteration();
-        iteration.setEntityState("In Progress");
-        iteration.setEntityEndDate(LocalDateTime.now());
-        iteration.setEntityStartDate(LocalDateTime.now());
-        iteration.setEntityGoal("Less rate of bureaucracy");
-        iteration.setEntityId(190);
-        return iteration;
-    }
-
-
-    private Iteration getIterationDomain() {
-        Iteration iteration = new Iteration();
-        iteration.setState("In Progress");
-        iteration.setEndDate(LocalDateTime.now());
-        iteration.setStartDate(LocalDateTime.now());
-        iteration.setGoal("Less rate of bureaucracy");
-        iteration.setId(190);
-        return iteration;
-    }
 
 
     @BeforeEach
@@ -58,11 +38,11 @@ class IterationPersistenceRepositoryTest {
     @Test
     void TestGetAllWithData() {
         List<Iteration> iterationsDomain = new ArrayList<>();
-        Iteration iterationDomain = getIterationDomain();
+        Iteration iterationDomain = new Iteration();
         iterationsDomain.add(iterationDomain);
 
         List<EntityIteration> iterations = new ArrayList<>();
-        EntityIteration iteration = getIteration();
+        EntityIteration iteration = new EntityIteration();
         iterations.add(iteration);
 
         when(iterationCrudRepository.findAll()).thenReturn(iterations);
@@ -76,25 +56,20 @@ class IterationPersistenceRepositoryTest {
 
     @Test
     void TestGetByIdTeamWithOutData() {
-        assertEquals(new ArrayList<>(), tester.getByIdTeam(0), "getByIdTeam must be []");
+        assertEquals(Optional.empty(), tester.getIterationById(0), "getByIdTeam must be Optional.empty()");
     }
 
     @Test
     void TestGetByIdTeamWithData() {
-        List<Iteration> iterationsDomain = new ArrayList<>();
-        Iteration iterationDomain = getIterationDomain();
-        iterationsDomain.add(iterationDomain);
 
-        List<EntityIteration> iterations = new ArrayList<>();
-        EntityIteration iteration = getIteration();
-        iterations.add(iteration);
-        when(iterationCrudRepository.getByIdTeam(1)).thenReturn(iterations);
-        when(mapper.toIterations(iterations)).thenReturn(iterationsDomain);
+        Optional<Iteration> iterationDomain = Optional.of(new Iteration());
+        Optional<EntityIteration> iterations = Optional.of(new EntityIteration());
+        when(iterationCrudRepository.findById(1)).thenReturn(iterations);
+        when(mapper.toIteration(iterations.get())).thenReturn(iterationDomain.get());
 
-        List<Iteration> iterationsResult = tester.getByIdTeam(1);
+        Optional<Iteration> iterationsResult = tester.getIterationById(1);
 
-        assertEquals(1, iterationsResult.size(), "getByIdTeam must have an iteration");
-        assertEquals(iterationDomain, iterationsResult.toArray()[0], "getByIdTeam must have an iteration equal to object defined");
+        assertEquals(iterationDomain, iterationsResult, "getIterationById must be Optional.of(new EntityIteration())");
 
     }
 
@@ -106,7 +81,7 @@ class IterationPersistenceRepositoryTest {
 
     @Test
     void TestSaveWithData() {
-        EntityIteration iteration = getIteration();
+        EntityIteration iteration = new EntityIteration();
         Iteration iterationDomain = new Iteration();
         when(mapper.toIterationDomain(iterationDomain)).thenReturn(iteration);
         when(mapper.toIteration(iteration)).thenReturn(iterationDomain);
