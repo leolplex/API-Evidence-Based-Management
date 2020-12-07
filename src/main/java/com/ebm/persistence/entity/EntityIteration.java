@@ -36,6 +36,10 @@ public class EntityIteration {
     @OneToOne(mappedBy = "entityIteration")
     private EntityKVAAbilityToInnovate entityKVAAbilityToInnovate;
 
+    @OneToOne(mappedBy = "entityIteration")
+    private EntityKVATimeToMarket entityKVATimeToMarket;
+
+
     public Integer getEntityId() {
         return entityId;
     }
@@ -106,5 +110,13 @@ public class EntityIteration {
 
     public void setEntityKVAAbilityToInnovate(EntityKVAAbilityToInnovate entityKVAAbilityToInnovate) {
         this.entityKVAAbilityToInnovate = entityKVAAbilityToInnovate;
+    }
+
+    public EntityKVATimeToMarket getEntityKVATimeToMarket() {
+        return entityKVATimeToMarket;
+    }
+
+    public void setEntityKVATimeToMarket(EntityKVATimeToMarket entityKVATimeToMarket) {
+        this.entityKVATimeToMarket = entityKVATimeToMarket;
     }
 }

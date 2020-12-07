@@ -162,4 +162,17 @@ public class EntityKVAAbilityToInnovateTest {
         assertEquals(timeSpentContextSwitching, getTimeSpentContextSwitching, "setEntityTimeSpentContextSwitching must be 3");
     }
 
+    @Test
+    void getAndSetEntityIteration() {
+        // Arrange
+        final EntityIteration entityIteration = new EntityIteration();
+
+        //Act
+        tester.setEntityIteration(entityIteration);
+        final EntityIteration getEntityIteration = tester.getEntityIteration();
+
+        // Assert
+        assertEquals(entityIteration, getEntityIteration, "setEntityIteration must be new EntityIteration()");
+    }
+
 }

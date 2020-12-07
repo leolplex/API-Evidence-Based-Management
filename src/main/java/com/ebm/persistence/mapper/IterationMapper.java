@@ -17,15 +17,18 @@ public interface IterationMapper {
     @Mapping(source = "entityStartDate", target = "startDate")
     @Mapping(source = "entityEndDate", target = "endDate")
     @Mapping(source = "entityState", target = "state")
+
     @Mapping(source = "entityKVAUnrealizedValue.entityId", target = "kva.kvaUnrealizedValue.id")
     @Mapping(source = "entityKVAUnrealizedValue.entityMarketShare", target = "kva.kvaUnrealizedValue.marketShare")
     @Mapping(source = "entityKVAUnrealizedValue.entityCustomerSatisfactionGap", target = "kva.kvaUnrealizedValue.customerSatisfactionGap")
+
     @Mapping(source = "entityKVACurrentValue.entityId", target = "kva.kvaCurrentValue.id")
     @Mapping(source = "entityKVACurrentValue.entityRevenuePerEmployee", target = "kva.kvaCurrentValue.revenuePerEmployee")
     @Mapping(source = "entityKVACurrentValue.entityProductCostRatio", target = "kva.kvaCurrentValue.productCostRatio")
     @Mapping(source = "entityKVACurrentValue.entityEmployeeSatisfaction", target = "kva.kvaCurrentValue.employeeSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerSatisfaction", target = "kva.kvaCurrentValue.customerSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerUsageIndex", target = "kva.kvaCurrentValue.customerUsageIndex")
+
     @Mapping(source = "entityKVAAbilityToInnovate.entityId", target = "kva.kvaAbilityToInnovate.id")
     @Mapping(source = "entityKVAAbilityToInnovate.entityFeatureUsageIndex", target = "kva.kvaAbilityToInnovate.featureUsageIndex")
     @Mapping(source = "entityKVAAbilityToInnovate.entityInnovationRate", target = "kva.kvaAbilityToInnovate.innovationRate")
@@ -36,6 +39,15 @@ public interface IterationMapper {
     @Mapping(source = "entityKVAAbilityToInnovate.entityProductionIncidentTrends", target = "kva.kvaAbilityToInnovate.productionIncidentTrends")
     @Mapping(source = "entityKVAAbilityToInnovate.entityActiveCodeBranchesTimeSpentMergingCodeBetweenBranches", target = "kva.kvaAbilityToInnovate.activeCodeBranchesTimeSpentMergingCodeBetweenBranches")
     @Mapping(source = "entityKVAAbilityToInnovate.entityTimeSpentContextSwitching", target = "kva.kvaAbilityToInnovate.timeSpentContextSwitching")
+
+    @Mapping(source = "entityKVATimeToMarket.entityId", target = "kva.kvaTimeToMarket.id")
+    @Mapping(source = "entityKVATimeToMarket.entityBuildAndIntegrationFrequency", target = "kva.kvaTimeToMarket.buildAndIntegrationFrequency")
+    @Mapping(source = "entityKVATimeToMarket.entityReleaseFrequency", target = "kva.kvaTimeToMarket.releaseFrequency")
+    @Mapping(source = "entityKVATimeToMarket.entityReleaseStabilizationPeriod", target = "kva.kvaTimeToMarket.releaseStabilizationPeriod")
+    @Mapping(source = "entityKVATimeToMarket.entityMeanTimeToRepair", target = "kva.kvaTimeToMarket.meanTimeToRepair")
+    @Mapping(source = "entityKVATimeToMarket.entityCycleTime", target = "kva.kvaTimeToMarket.cycleTime")
+    @Mapping(source = "entityKVATimeToMarket.entityLeadTime", target = "kva.kvaTimeToMarket.leadTime")
+    @Mapping(source = "entityKVATimeToMarket.entityTimeToLearn", target = "kva.kvaTimeToMarket.timeToLearn")
     List<Iteration> toIterations(List<EntityIteration> iteration);
 
     @InheritInverseConfiguration
@@ -47,15 +59,18 @@ public interface IterationMapper {
     @Mapping(source = "entityStartDate", target = "startDate")
     @Mapping(source = "entityEndDate", target = "endDate")
     @Mapping(source = "entityState", target = "state")
+
     @Mapping(source = "entityKVAUnrealizedValue.entityId", target = "kva.kvaUnrealizedValue.id")
     @Mapping(source = "entityKVAUnrealizedValue.entityMarketShare", target = "kva.kvaUnrealizedValue.marketShare")
     @Mapping(source = "entityKVAUnrealizedValue.entityCustomerSatisfactionGap", target = "kva.kvaUnrealizedValue.customerSatisfactionGap")
+
     @Mapping(source = "entityKVACurrentValue.entityId", target = "kva.kvaCurrentValue.id")
     @Mapping(source = "entityKVACurrentValue.entityRevenuePerEmployee", target = "kva.kvaCurrentValue.revenuePerEmployee")
     @Mapping(source = "entityKVACurrentValue.entityProductCostRatio", target = "kva.kvaCurrentValue.productCostRatio")
     @Mapping(source = "entityKVACurrentValue.entityEmployeeSatisfaction", target = "kva.kvaCurrentValue.employeeSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerSatisfaction", target = "kva.kvaCurrentValue.customerSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerUsageIndex", target = "kva.kvaCurrentValue.customerUsageIndex")
+
     @Mapping(source = "entityKVAAbilityToInnovate.entityId", target = "kva.kvaAbilityToInnovate.id")
     @Mapping(source = "entityKVAAbilityToInnovate.entityFeatureUsageIndex", target = "kva.kvaAbilityToInnovate.featureUsageIndex")
     @Mapping(source = "entityKVAAbilityToInnovate.entityInnovationRate", target = "kva.kvaAbilityToInnovate.innovationRate")
@@ -66,11 +81,21 @@ public interface IterationMapper {
     @Mapping(source = "entityKVAAbilityToInnovate.entityProductionIncidentTrends", target = "kva.kvaAbilityToInnovate.productionIncidentTrends")
     @Mapping(source = "entityKVAAbilityToInnovate.entityActiveCodeBranchesTimeSpentMergingCodeBetweenBranches", target = "kva.kvaAbilityToInnovate.activeCodeBranchesTimeSpentMergingCodeBetweenBranches")
     @Mapping(source = "entityKVAAbilityToInnovate.entityTimeSpentContextSwitching", target = "kva.kvaAbilityToInnovate.timeSpentContextSwitching")
+
+    @Mapping(source = "entityKVATimeToMarket.entityId", target = "kva.kvaTimeToMarket.id")
+    @Mapping(source = "entityKVATimeToMarket.entityBuildAndIntegrationFrequency", target = "kva.kvaTimeToMarket.buildAndIntegrationFrequency")
+    @Mapping(source = "entityKVATimeToMarket.entityReleaseFrequency", target = "kva.kvaTimeToMarket.releaseFrequency")
+    @Mapping(source = "entityKVATimeToMarket.entityReleaseStabilizationPeriod", target = "kva.kvaTimeToMarket.releaseStabilizationPeriod")
+    @Mapping(source = "entityKVATimeToMarket.entityMeanTimeToRepair", target = "kva.kvaTimeToMarket.meanTimeToRepair")
+    @Mapping(source = "entityKVATimeToMarket.entityCycleTime", target = "kva.kvaTimeToMarket.cycleTime")
+    @Mapping(source = "entityKVATimeToMarket.entityLeadTime", target = "kva.kvaTimeToMarket.leadTime")
+    @Mapping(source = "entityKVATimeToMarket.entityTimeToLearn", target = "kva.kvaTimeToMarket.timeToLearn")
     Iteration toIteration(EntityIteration iteration);
 
     @InheritInverseConfiguration
     @Mapping(target = "entityKVAUnrealizedValue", ignore = true)
     @Mapping(target = "entityKVACurrentValue", ignore = true)
     @Mapping(target = "entityKVAAbilityToInnovate", ignore = true)
+    @Mapping(target = "entityKVATimeToMarket", ignore = true)
     EntityIteration toIterationDomain(Iteration iteration);
 }

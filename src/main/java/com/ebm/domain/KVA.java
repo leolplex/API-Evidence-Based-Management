@@ -4,6 +4,7 @@ public class KVA {
     private KVAUnrealizedValue kvaUnrealizedValue;
     private KVACurrentValue kvaCurrentValue;
     private KVAAbilityToInnovate kvaAbilityToInnovate;
+    private KVATimeToMarket kvaTimeToMarket;
 
     public KVAUnrealizedValue getKvaUnrealizedValue() {
         return kvaUnrealizedValue;
@@ -27,5 +28,13 @@ public class KVA {
 
     public void setKvaAbilityToInnovate(KVAAbilityToInnovate kvaAbilityToInnovate) {
         this.kvaAbilityToInnovate = kvaAbilityToInnovate;
+    }
+
+    public KVATimeToMarket getKvaTimeToMarket() {
+        return kvaTimeToMarket;
+    }
+
+    public void setKvaTimeToMarket(KVATimeToMarket kvaTimeToMarket) {
+        this.kvaTimeToMarket = kvaTimeToMarket;
     }
 }
