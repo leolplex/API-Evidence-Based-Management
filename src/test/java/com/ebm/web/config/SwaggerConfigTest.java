@@ -7,7 +7,7 @@ import springfox.documentation.spring.web.plugins.Docket;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SwaggerConfigTest {
+class SwaggerConfigTest {
 
     private SwaggerConfig tester;
 
