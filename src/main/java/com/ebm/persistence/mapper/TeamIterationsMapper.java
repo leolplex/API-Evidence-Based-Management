@@ -23,7 +23,18 @@ public interface TeamIterationsMapper {
     @Mapping(source = "entityIteration.entityKVACurrentValue.entityEmployeeSatisfaction", target = "kva.kvaCurrentValue.employeeSatisfaction")
     @Mapping(source = "entityIteration.entityKVACurrentValue.entityCustomerSatisfaction", target = "kva.kvaCurrentValue.customerSatisfaction")
     @Mapping(source = "entityIteration.entityKVACurrentValue.entityCustomerUsageIndex", target = "kva.kvaCurrentValue.customerUsageIndex")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityId", target = "kva.kvaAbilityToInnovate.id")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityFeatureUsageIndex", target = "kva.kvaAbilityToInnovate.featureUsageIndex")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityInnovationRate", target = "kva.kvaAbilityToInnovate.innovationRate")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityDefectTrends", target = "kva.kvaAbilityToInnovate.defectTrends")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityOnProductIndex", target = "kva.kvaAbilityToInnovate.onProductIndex")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityInstalledVersionIndex", target = "kva.kvaAbilityToInnovate.installedVersionIndex")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityTechnicalDebt", target = "kva.kvaAbilityToInnovate.technicalDebt")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityProductionIncidentTrends", target = "kva.kvaAbilityToInnovate.productionIncidentTrends")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityActiveCodeBranchesTimeSpentMergingCodeBetweenBranches", target = "kva.kvaAbilityToInnovate.activeCodeBranchesTimeSpentMergingCodeBetweenBranches")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityTimeSpentContextSwitching", target = "kva.kvaAbilityToInnovate.timeSpentContextSwitching")
     Iteration toTeamIteration(EntityIterationTeam iteration);
 
 
 }
+

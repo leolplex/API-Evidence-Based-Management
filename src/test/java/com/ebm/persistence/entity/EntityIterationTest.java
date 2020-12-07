@@ -31,6 +31,7 @@ class EntityIterationTest {
         assertNull(tester.getEntityState(),"getEntityState must be null");
         assertNull(tester.getEntityKVAUnrealizedValue(),"getEntityKVAUnrealizedValue must be null");
         assertNull(tester.getEntityKVACurrentValue(),"getEntityKVACurrentValue must be null");
+        assertNull(tester.getEntityKVAAbilityToInnovate(),"getEntityKVAAbilityToInnovate must be null");
     }
 
     @Test
@@ -135,5 +136,18 @@ class EntityIterationTest {
 
         // Assert
         assertEquals(entityKVACurrentValue, getEntityKVACurrentValue, "setEntityKVACurrentValue must be new EntityKVACurrentValue()");
+    }
+
+    @Test
+    void  getAndSetEntityKVAAbilityToInnovate(){
+        // Arrange
+        final EntityKVAAbilityToInnovate entityKVAAbilityToInnovate = new EntityKVAAbilityToInnovate();
+
+        //Act
+        tester.setEntityKVAAbilityToInnovate(entityKVAAbilityToInnovate);
+        final EntityKVAAbilityToInnovate getEntityKVAAbilityToInnovate = tester.getEntityKVAAbilityToInnovate();
+
+        // Assert
+        assertEquals(entityKVAAbilityToInnovate, getEntityKVAAbilityToInnovate, "setEntityKVAAbilityToInnovate must be new EntityKVAAbilityToInnovate()");
     }
 }

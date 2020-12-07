@@ -27,12 +27,14 @@ public class EntityIteration {
     @Column(name = "state")
     private String entityState;
 
-
     @OneToOne(mappedBy = "entityIteration")
     private EntityKVAUnrealizedValue entityKVAUnrealizedValue;
 
     @OneToOne(mappedBy = "entityIteration")
-    private  EntityKVACurrentValue entityKVACurrentValue;
+    private EntityKVACurrentValue entityKVACurrentValue;
+
+    @OneToOne(mappedBy = "entityIteration")
+    private EntityKVAAbilityToInnovate entityKVAAbilityToInnovate;
 
     public Integer getEntityId() {
         return entityId;
@@ -96,5 +98,13 @@ public class EntityIteration {
 
     public void setEntityKVACurrentValue(EntityKVACurrentValue entityKVACurrentValue) {
         this.entityKVACurrentValue = entityKVACurrentValue;
+    }
+
+    public EntityKVAAbilityToInnovate getEntityKVAAbilityToInnovate() {
+        return entityKVAAbilityToInnovate;
+    }
+
+    public void setEntityKVAAbilityToInnovate(EntityKVAAbilityToInnovate entityKVAAbilityToInnovate) {
+        this.entityKVAAbilityToInnovate = entityKVAAbilityToInnovate;
     }
 }

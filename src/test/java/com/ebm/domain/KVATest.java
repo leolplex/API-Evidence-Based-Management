@@ -19,6 +19,7 @@ class KVATest {
         // Act & Assert
         assertNull(tester.getKvaUnrealizedValue(), "getIdIteration must be null");
         assertNull(tester.getKvaCurrentValue(), "getKvaCurrentValue must be null");
+        assertNull(tester.getKvaAbilityToInnovate(), "getKvaAbilityToInnovate must be null");
     }
 
     @Test
@@ -45,5 +46,18 @@ class KVATest {
 
         // Assert
         assertEquals(kvaCurrentValue, getKvaCurrentValue, "setKvaCurrentValue must be new KVACurrentValue()");
+    }
+
+    @Test
+    void getAndSetKvaAbilityToInnovate() {
+        // Arrange
+        final KVAAbilityToInnovate kvaAbilityToInnovate = new KVAAbilityToInnovate();
+
+        //Act
+        tester.setKvaAbilityToInnovate(kvaAbilityToInnovate);
+        final KVAAbilityToInnovate getKvaAbilityToInnovate = tester.getKvaAbilityToInnovate();
+
+        // Assert
+        assertEquals(kvaAbilityToInnovate, getKvaAbilityToInnovate, "setKvaAbilityToInnovate must be new KVAAbilityToInnovate()");
     }
 }

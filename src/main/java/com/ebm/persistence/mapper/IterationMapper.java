@@ -26,6 +26,16 @@ public interface IterationMapper {
     @Mapping(source = "entityKVACurrentValue.entityEmployeeSatisfaction", target = "kva.kvaCurrentValue.employeeSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerSatisfaction", target = "kva.kvaCurrentValue.customerSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerUsageIndex", target = "kva.kvaCurrentValue.customerUsageIndex")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityId", target = "kva.kvaAbilityToInnovate.id")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityFeatureUsageIndex", target = "kva.kvaAbilityToInnovate.featureUsageIndex")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityInnovationRate", target = "kva.kvaAbilityToInnovate.innovationRate")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityDefectTrends", target = "kva.kvaAbilityToInnovate.defectTrends")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityOnProductIndex", target = "kva.kvaAbilityToInnovate.onProductIndex")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityInstalledVersionIndex", target = "kva.kvaAbilityToInnovate.installedVersionIndex")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityTechnicalDebt", target = "kva.kvaAbilityToInnovate.technicalDebt")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityProductionIncidentTrends", target = "kva.kvaAbilityToInnovate.productionIncidentTrends")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityActiveCodeBranchesTimeSpentMergingCodeBetweenBranches", target = "kva.kvaAbilityToInnovate.activeCodeBranchesTimeSpentMergingCodeBetweenBranches")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityTimeSpentContextSwitching", target = "kva.kvaAbilityToInnovate.timeSpentContextSwitching")
     List<Iteration> toIterations(List<EntityIteration> iteration);
 
     @InheritInverseConfiguration
@@ -46,10 +56,21 @@ public interface IterationMapper {
     @Mapping(source = "entityKVACurrentValue.entityEmployeeSatisfaction", target = "kva.kvaCurrentValue.employeeSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerSatisfaction", target = "kva.kvaCurrentValue.customerSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerUsageIndex", target = "kva.kvaCurrentValue.customerUsageIndex")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityId", target = "kva.kvaAbilityToInnovate.id")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityFeatureUsageIndex", target = "kva.kvaAbilityToInnovate.featureUsageIndex")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityInnovationRate", target = "kva.kvaAbilityToInnovate.innovationRate")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityDefectTrends", target = "kva.kvaAbilityToInnovate.defectTrends")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityOnProductIndex", target = "kva.kvaAbilityToInnovate.onProductIndex")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityInstalledVersionIndex", target = "kva.kvaAbilityToInnovate.installedVersionIndex")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityTechnicalDebt", target = "kva.kvaAbilityToInnovate.technicalDebt")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityProductionIncidentTrends", target = "kva.kvaAbilityToInnovate.productionIncidentTrends")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityActiveCodeBranchesTimeSpentMergingCodeBetweenBranches", target = "kva.kvaAbilityToInnovate.activeCodeBranchesTimeSpentMergingCodeBetweenBranches")
+    @Mapping(source = "entityKVAAbilityToInnovate.entityTimeSpentContextSwitching", target = "kva.kvaAbilityToInnovate.timeSpentContextSwitching")
     Iteration toIteration(EntityIteration iteration);
 
     @InheritInverseConfiguration
     @Mapping(target = "entityKVAUnrealizedValue", ignore = true)
     @Mapping(target = "entityKVACurrentValue", ignore = true)
+    @Mapping(target = "entityKVAAbilityToInnovate", ignore = true)
     EntityIteration toIterationDomain(Iteration iteration);
 }
