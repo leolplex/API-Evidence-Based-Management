@@ -21,7 +21,6 @@ class IterationControllerTest {
     IterationService iterationService;
 
 
-
     @BeforeEach()
     void initEach() {
         iterationService = Mockito.mock(IterationService.class);
@@ -69,6 +68,20 @@ class IterationControllerTest {
         when(iterationService.save(iteration)).thenReturn(iteration);
 
         assertEquals(new ResponseEntity<>(iteration, HttpStatus.CREATED), tester.save(iteration), "save must be new instance Iteration");
+    }
+
+    @Test
+    void TestUpdateNull() {
+        assertEquals(new ResponseEntity<>(HttpStatus.NOT_FOUND), tester.update(1, new Iteration()), "update must be null");
+    }
+
+    @Test
+    void TestUpdateWithData() {
+        Iteration iteration = new Iteration();
+        Optional<Iteration> iterationOptional = Optional.of(iteration);
+        when(iterationService.update(1, iteration)).thenReturn(iterationOptional);
+
+        assertEquals(new ResponseEntity<>(iteration, HttpStatus.OK), tester.update(1, iteration), "update must be new instance Iteration");
     }
 
 }

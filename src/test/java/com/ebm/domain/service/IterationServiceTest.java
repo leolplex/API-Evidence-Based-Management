@@ -72,4 +72,18 @@ class IterationServiceTest {
 
         assertEquals(iteration, tester.save(iteration), "save must be new instance Iteration");
     }
+
+    @Test
+    void TestUpdateNull() {
+        assertNull(tester.update(1, new Iteration()), "update must be null");
+    }
+
+    @Test
+    void TestUpdateWithData() {
+        Iteration iteration = new Iteration();
+        Optional<Iteration> iterationOptional = Optional.of(iteration);
+        when(iterationRepository.update(1, iteration)).thenReturn(iterationOptional);
+
+        assertEquals(iterationOptional, tester.update(1, iteration), "update must be new instance Iteration");
+    }
 }

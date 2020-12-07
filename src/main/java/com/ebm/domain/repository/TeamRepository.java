@@ -9,4 +9,5 @@ public interface TeamRepository {
     List<Team> getAll();
 
     Optional<Team> getTeamById(int idTeam);
+
 }

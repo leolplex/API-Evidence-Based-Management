@@ -43,4 +43,12 @@ public class IterationController {
     public ResponseEntity<Iteration> save(@RequestBody Iteration iteration) {
         return new ResponseEntity<>(iterationService.save(iteration), HttpStatus.CREATED);
     }
+
+
+    @PutMapping("/iteration/{idIteration}")
+    @ApiOperation("Update a iteration by id")
+    @ApiResponse(code = 200, message = "ok")
+    public ResponseEntity<Iteration> update(@PathVariable("idIteration") int idIteration, @RequestBody Iteration iteration) {
+        return iterationService.update(idIteration, iteration).map(iterationResponse -> new ResponseEntity<>(iterationResponse, HttpStatus.OK)).orElse(new ResponseEntity<>((HttpStatus.NOT_FOUND)));
+    }
 }

@@ -29,4 +29,8 @@ public class IterationService {
         return iterationRepository.save(iteration);
     }
 
+    public Optional<Iteration> update(int idIteration, Iteration iteration) {
+        return iterationRepository.update(idIteration, iteration);
+    }
+
 }

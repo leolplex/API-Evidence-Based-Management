@@ -42,6 +42,36 @@ public class IterationPersistenceRepository implements IterationRepository {
     }
 
     @Override
+    public Optional<Iteration> update(int idIteration, Iteration iteration) {
+        return iterationCrudRepository.findById(idIteration).map(iterationDB -> {
+
+
+            if (iteration.getGoal() != null && !iteration.getGoal().isEmpty()) {
+                iterationDB.setEntityGoal(iteration.getGoal());
+            }
+
+            if (iteration.getStartDate() != null) {
+                iterationDB.setEntityStartDate(iteration.getStartDate());
+            }
+
+            if (iteration.getEndDate() != null) {
+                iterationDB.setEntityEndDate(iteration.getEndDate());
+            }
+
+            if (iteration.getState() != null && !iteration.getState().isEmpty()) {
+                iterationDB.setEntityState(iteration.getState());
+            }
+
+            if (iteration.getName() != null && !iteration.getName().isEmpty()) {
+                iterationDB.setEntityName(iteration.getName());
+            }
+
+
+            return mapper.toIteration(iterationCrudRepository.save(iterationDB));
+        });
+    }
+
+    @Override
     public boolean delete(int iterationId) {
         try {
             iterationCrudRepository.deleteById(iterationId);

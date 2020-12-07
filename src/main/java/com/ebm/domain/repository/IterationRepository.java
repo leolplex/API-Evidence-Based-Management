@@ -12,5 +12,7 @@ public interface IterationRepository {
 
     Iteration save(Iteration iteration);
 
+    Optional<Iteration> update(int idIteration, Iteration iteration);
+
     boolean delete(int iterationId);
 }

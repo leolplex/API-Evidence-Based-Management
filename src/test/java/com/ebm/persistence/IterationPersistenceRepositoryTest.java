@@ -105,4 +105,22 @@ class IterationPersistenceRepositoryTest {
         assertFalse(result, "delete must be false");
     }
 
+    @Test
+    void TestUpdateNull() {
+        assertEquals(Optional.empty(), tester.update(1, new Iteration()), "update must be Optional.empty()");
+    }
+
+    @Test
+    void TestUpdateWithData() {
+        Optional<EntityIteration> iteration = Optional.of(new EntityIteration());
+        Optional<Iteration> iterationDomain = Optional.of(new Iteration());
+        iterationDomain.get().setName("My iteration");
+
+        when(iterationCrudRepository.findById(1)).thenReturn(iteration);
+        when(iterationCrudRepository.save(iteration.get())).thenReturn(iteration.get());
+        when(mapper.toIteration(iteration.get())).thenReturn(iterationDomain.get());
+
+        assertEquals(iterationDomain, tester.update(1, iterationDomain.get()), "update must be new instance Iteration");
+    }
+
 }
