@@ -25,3 +25,8 @@ INSERT INTO public.kva_time_to_market OVERRIDING SYSTEM VALUE VALUES (1, '10 by 
 
 INSERT INTO public.kva_unrealized_value OVERRIDING SYSTEM VALUE VALUES (1, '3%', '5/10', 2, 2);
 
+
+
+
+ALTER SEQUENCE iteration_id_seq RESTART WITH 4
+SELECT c.relname FROM pg_class c WHERE c.relkind = 'S';
