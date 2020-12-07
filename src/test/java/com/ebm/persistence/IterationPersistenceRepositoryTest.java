@@ -4,6 +4,7 @@ import com.ebm.domain.Iteration;
 import com.ebm.persistence.crud.IterationCrudRepository;
 import com.ebm.persistence.entity.EntityIteration;
 import com.ebm.persistence.mapper.IterationMapper;
+import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -115,6 +116,38 @@ class IterationPersistenceRepositoryTest {
         Optional<EntityIteration> iteration = Optional.of(new EntityIteration());
         Optional<Iteration> iterationDomain = Optional.of(new Iteration());
         iterationDomain.get().setName("My iteration");
+        iterationDomain.get().setGoal("My Goal");
+        iterationDomain.get().setStartDate(LocalDateTime.now());
+        iterationDomain.get().setEndDate(LocalDateTime.now());
+        iterationDomain.get().setState("My State");
+
+        when(iterationCrudRepository.findById(1)).thenReturn(iteration);
+        when(iterationCrudRepository.save(iteration.get())).thenReturn(iteration.get());
+        when(mapper.toIteration(iteration.get())).thenReturn(iterationDomain.get());
+
+        assertEquals(iterationDomain, tester.update(1, iterationDomain.get()), "update must be new instance Iteration");
+    }
+
+    @Test
+    void TestUpdateWithNullData() {
+        Optional<EntityIteration> iteration = Optional.of(new EntityIteration());
+        Optional<Iteration> iterationDomain = Optional.of(new Iteration());
+
+        when(iterationCrudRepository.findById(1)).thenReturn(iteration);
+        when(iterationCrudRepository.save(iteration.get())).thenReturn(iteration.get());
+        when(mapper.toIteration(iteration.get())).thenReturn(iterationDomain.get());
+
+        assertEquals(iterationDomain, tester.update(1, iterationDomain.get()), "update must be new instance Iteration");
+    }
+
+    @Test
+    void TestUpdateWithEmptyData() {
+        Optional<EntityIteration> iteration = Optional.of(new EntityIteration());
+        Optional<Iteration> iterationDomain = Optional.of(new Iteration());
+
+        iterationDomain.get().setName("");
+        iterationDomain.get().setGoal("");
+        iterationDomain.get().setState("");
 
         when(iterationCrudRepository.findById(1)).thenReturn(iteration);
         when(iterationCrudRepository.save(iteration.get())).thenReturn(iteration.get());
