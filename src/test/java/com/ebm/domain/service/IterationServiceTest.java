@@ -75,7 +75,7 @@ class IterationServiceTest {
 
     @Test
     void TestUpdateNull() {
-        assertNull(tester.update(1, new Iteration()), "update must be null");
+        assertEquals(Optional.empty(), tester.update(1, new Iteration()), "update must be Optional.empty()");
     }
 
     @Test
