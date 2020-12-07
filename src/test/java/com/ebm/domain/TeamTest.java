@@ -10,12 +10,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class TeamDomainTest {
-    TeamDomain tester;
+class TeamTest {
+    Team tester;
 
     @BeforeEach
     void initEach(){
-        tester = new TeamDomain();
+        tester = new Team();
     }
 
     @Test
@@ -44,11 +44,11 @@ class TeamDomainTest {
     @Test
     void  getAndSetIterations(){
         // Arrange
-        final List<IterationDomain> iteration = new ArrayList<>();
+        final List<Iteration> iteration = new ArrayList<>();
 
         //Act
         tester.setIterations(iteration);
-        final List<IterationDomain> getIterations = tester.getIterations();
+        final List<Iteration> getIterations = tester.getIterations();
 
         // Assert
         assertEquals(iteration, getIterations, "setIterations must be my new ArrayList<>()");

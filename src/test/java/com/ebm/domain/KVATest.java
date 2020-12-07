@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class KVADomainTest {
-    KVADomain tester;
+class KVATest {
+    KVA tester;
 
     @BeforeEach
     void initEach() {
-        tester = new KVADomain();
+        tester = new KVA();
     }
 
     @Test
@@ -24,14 +24,14 @@ class KVADomainTest {
     @Test
     void getAndSetIterationDefaultValues() {
         // Arrange
-        final KVAUnrealizedValueDomain kvaUnrealizedValueDomain = new KVAUnrealizedValueDomain();
+        final KVAUnrealizedValue kvaUnrealizedValue = new KVAUnrealizedValue();
 
         //Act
-        tester.setKvaUnrealizedValue(kvaUnrealizedValueDomain);
-        final KVAUnrealizedValueDomain getKvaUnrealizedValue = tester.getKvaUnrealizedValue();
+        tester.setKvaUnrealizedValue(kvaUnrealizedValue);
+        final KVAUnrealizedValue getKvaUnrealizedValue = tester.getKvaUnrealizedValue();
 
         // Assert
-        assertEquals(kvaUnrealizedValueDomain, getKvaUnrealizedValue, "setKvaUnrealizedValue must be new KVAUnrealizedValueDomain()");
+        assertEquals(kvaUnrealizedValue, getKvaUnrealizedValue, "setKvaUnrealizedValue must be new KVAUnrealizedValueDomain()");
     }
 
     @Test

@@ -1,9 +1,9 @@
 package com.ebm.domain.repository;
 
-import com.ebm.domain.TeamDomain;
+import com.ebm.domain.Team;
 
 import java.util.List;
 
 public interface TeamRepository {
-    List<TeamDomain> getAll();
+    List<Team> getAll();
 }

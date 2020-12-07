@@ -1,6 +1,6 @@
 package com.ebm.persistence;
 
-import com.ebm.domain.TeamDomain;
+import com.ebm.domain.Team;
 import com.ebm.domain.repository.TeamRepository;
 import com.ebm.persistence.crud.TeamCrudRepository;
 import com.ebm.persistence.entity.EntityTeam;
@@ -23,7 +23,7 @@ public class TeamPersistenceRepository implements TeamRepository {
     }
 
     @Override
-    public List<TeamDomain> getAll() {
+    public List<Team> getAll() {
         List<EntityTeam> teams = (List<EntityTeam>) teamCrudRepository.findAll();
         return mapper.toTeams(teams);
     }

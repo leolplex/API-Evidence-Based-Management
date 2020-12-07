@@ -1,6 +1,6 @@
 package com.ebm.persistence.mapper;
 
-import com.ebm.domain.IterationDomain;
+import com.ebm.domain.Iteration;
 import com.ebm.persistence.entity.EntityIteration;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -26,10 +26,10 @@ public interface IterationMapper {
     @Mapping(source = "entityKVACurrentValue.entityEmployeeSatisfaction", target = "kva.kvaCurrentValue.employeeSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerSatisfaction", target = "kva.kvaCurrentValue.customerSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerUsageIndex", target = "kva.kvaCurrentValue.customerUsageIndex")
-    List<IterationDomain> toIterations(List<EntityIteration> iteration);
+    List<Iteration> toIterations(List<EntityIteration> iteration);
 
     @InheritInverseConfiguration
-    List<EntityIteration> toIterationsDomain(List<IterationDomain> iterationDomain);
+    List<EntityIteration> toIterationsDomain(List<Iteration> iteration);
 
     @Mapping(source = "entityId", target = "id")
     @Mapping(source = "entityName", target = "name")
@@ -46,10 +46,10 @@ public interface IterationMapper {
     @Mapping(source = "entityKVACurrentValue.entityEmployeeSatisfaction", target = "kva.kvaCurrentValue.employeeSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerSatisfaction", target = "kva.kvaCurrentValue.customerSatisfaction")
     @Mapping(source = "entityKVACurrentValue.entityCustomerUsageIndex", target = "kva.kvaCurrentValue.customerUsageIndex")
-    IterationDomain toIteration(EntityIteration iteration);
+    Iteration toIteration(EntityIteration iteration);
 
     @InheritInverseConfiguration
     @Mapping(target = "entityKVAUnrealizedValue", ignore = true)
     @Mapping(target = "entityKVACurrentValue", ignore = true)
-    EntityIteration toIterationDomain(IterationDomain iterationDomain);
+    EntityIteration toIterationDomain(Iteration iteration);
 }

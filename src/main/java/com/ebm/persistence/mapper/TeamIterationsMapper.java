@@ -1,6 +1,6 @@
 package com.ebm.persistence.mapper;
 
-import com.ebm.domain.IterationDomain;
+import com.ebm.domain.Iteration;
 import com.ebm.persistence.entity.EntityIterationTeam;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -23,7 +23,7 @@ public interface TeamIterationsMapper {
     @Mapping(source = "entityIteration.entityKVACurrentValue.entityEmployeeSatisfaction", target = "kva.kvaCurrentValue.employeeSatisfaction")
     @Mapping(source = "entityIteration.entityKVACurrentValue.entityCustomerSatisfaction", target = "kva.kvaCurrentValue.customerSatisfaction")
     @Mapping(source = "entityIteration.entityKVACurrentValue.entityCustomerUsageIndex", target = "kva.kvaCurrentValue.customerUsageIndex")
-    IterationDomain toTeamIteration(EntityIterationTeam iteration);
+    Iteration toTeamIteration(EntityIterationTeam iteration);
 
 
 }

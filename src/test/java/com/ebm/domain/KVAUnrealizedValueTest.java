@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class KVAUnrealizedValueDomainTest {
-    KVAUnrealizedValueDomain tester;
+class KVAUnrealizedValueTest {
+    KVAUnrealizedValue tester;
 
     @BeforeEach
     void initEach() {
-        tester = new KVAUnrealizedValueDomain();
+        tester = new KVAUnrealizedValue();
     }
 
     @Test

@@ -3,7 +3,7 @@ package com.ebm.domain;
 
 import java.time.LocalDateTime;
 
-public class IterationDomain {
+public class Iteration {
 
     private Integer id;
     private String name;
@@ -12,7 +12,7 @@ public class IterationDomain {
     private LocalDateTime endDate;
     private String state;
 
-    private KVADomain kva;
+    private KVA kva;
 
 
     public Integer getId() {
@@ -64,11 +64,11 @@ public class IterationDomain {
     }
 
 
-    public KVADomain getKva() {
+    public KVA getKva() {
         return kva;
     }
 
-    public void setKva(KVADomain kva) {
+    public void setKva(KVA kva) {
         this.kva = kva;
     }
 }

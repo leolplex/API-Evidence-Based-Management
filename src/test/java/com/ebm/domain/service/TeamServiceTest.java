@@ -1,6 +1,6 @@
 package com.ebm.domain.service;
 
-import com.ebm.domain.TeamDomain;
+import com.ebm.domain.Team;
 import com.ebm.domain.repository.TeamRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -29,13 +29,13 @@ class TeamServiceTest {
 
     @Test
     void  TestGetAllWithData(){
-        List<TeamDomain> teams = new ArrayList<>();
-        TeamDomain team = new TeamDomain();
+        List<Team> teams = new ArrayList<>();
+        Team team = new Team();
         teams.add(team);
 
         when(teamRepository.getAll()).thenReturn(teams);
 
-        List<TeamDomain> teamsResult = tester.getAll();
+        List<Team> teamsResult = tester.getAll();
         assertEquals(1, teamsResult.size(), "getAll must have a team");
         assertEquals(team, teamsResult.toArray()[0], "getAll must have a team equal to object defined");
     }

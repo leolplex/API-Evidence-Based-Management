@@ -10,12 +10,12 @@ import java.time.LocalDateTime;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class IterationDomainTest {
-    IterationDomain tester;
+class IterationTest {
+    Iteration tester;
 
     @BeforeEach
     void initEach() {
-        tester = new IterationDomain();
+        tester = new Iteration();
     }
 
     @Test
@@ -111,13 +111,13 @@ class IterationDomainTest {
     @Test
     void  getAndSetKVA(){
         // Arrange
-        final KVADomain kvaDomain = new KVADomain();
+        final KVA kva = new KVA();
 
         //Act
-        tester.setKva(kvaDomain);
-        final KVADomain getKva = tester.getKva();
+        tester.setKva(kva);
+        final KVA getKva = tester.getKva();
 
         // Assert
-        assertEquals(kvaDomain, getKva, "setKva must be new KVADomain()");
+        assertEquals(kva, getKva, "setKva must be new KVADomain()");
     }
 }

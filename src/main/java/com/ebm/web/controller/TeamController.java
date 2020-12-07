@@ -1,6 +1,6 @@
 package com.ebm.web.controller;
 
-import com.ebm.domain.TeamDomain;
+import com.ebm.domain.Team;
 import com.ebm.domain.service.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,7 +21,7 @@ public class TeamController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<TeamDomain>> getAll() {
+    public ResponseEntity<List<Team>> getAll() {
         return new ResponseEntity<>(teamService.getAll(), HttpStatus.OK);
     }
 }

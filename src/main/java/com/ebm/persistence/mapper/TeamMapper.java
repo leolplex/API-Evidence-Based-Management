@@ -1,7 +1,7 @@
 package com.ebm.persistence.mapper;
 
 
-import com.ebm.domain.TeamDomain;
+import com.ebm.domain.Team;
 import com.ebm.persistence.entity.EntityTeam;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -16,7 +16,7 @@ public interface TeamMapper {
     @Mapping(source = "entityName", target = "name")
     @Mapping(source = "entityDateJoin", target = "dateJoin")
     @Mapping(source = "entityIterationTeams", target = "iterations")
-    TeamDomain toTeam(EntityTeam team);
+    Team toTeam(EntityTeam team);
 
 
     @InheritInverseConfiguration
@@ -24,11 +24,11 @@ public interface TeamMapper {
     @Mapping(target = "entityIterationTeams.entityName", ignore = true)
     @Mapping(target = "entityIterationTeams.entityDateJoin", ignore = true)
     @Mapping(target = "entityIterationTeams", ignore = true)
-    EntityTeam toTeamDomain(TeamDomain team);
+    EntityTeam toTeamDomain(Team team);
 
 
-    List<EntityTeam> toTeamsDomain(List<TeamDomain> teams);
-    List<TeamDomain> toTeams(List<EntityTeam> teams);
+    List<EntityTeam> toTeamsDomain(List<Team> teams);
+    List<Team> toTeams(List<EntityTeam> teams);
 
 }
 

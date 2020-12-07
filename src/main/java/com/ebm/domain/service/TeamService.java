@@ -1,6 +1,6 @@
 package com.ebm.domain.service;
 
-import com.ebm.domain.TeamDomain;
+import com.ebm.domain.Team;
 import com.ebm.domain.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class TeamService {
         this.teamRepository = teamRepository;
     }
 
-    public List<TeamDomain> getAll() {
+    public List<Team> getAll() {
         return teamRepository.getAll();
     }
 

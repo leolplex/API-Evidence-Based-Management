@@ -1,6 +1,6 @@
 package com.ebm.persistence;
 
-import com.ebm.domain.TeamDomain;
+import com.ebm.domain.Team;
 import com.ebm.persistence.crud.TeamCrudRepository;
 import com.ebm.persistence.entity.EntityTeam;
 import com.ebm.persistence.mapper.TeamMapper;
@@ -33,9 +33,9 @@ class TeamPersistenceRepositoryTest {
 
     @Test
     void TestGetAllWithData(){
-        List<TeamDomain> teamsDomain = new ArrayList<>();
-        TeamDomain teamDomain = new TeamDomain();
-        teamsDomain.add(teamDomain);
+        List<Team> teamsDomain = new ArrayList<>();
+        Team team = new Team();
+        teamsDomain.add(team);
 
         List<EntityTeam>  iterations = new ArrayList<>();
         EntityTeam iteration = new EntityTeam();
@@ -45,9 +45,9 @@ class TeamPersistenceRepositoryTest {
         when(mapper.toTeams(iterations)).thenReturn(teamsDomain);
 
 
-        List<TeamDomain> teamsResult = tester.getAll();
+        List<Team> teamsResult = tester.getAll();
         assertEquals(1, teamsResult.size(), "getAll must have a team");
-        assertEquals(teamDomain, teamsResult.toArray()[0], "getAll must have a team equal to object defined");
+        assertEquals(team, teamsResult.toArray()[0], "getAll must have a team equal to object defined");
     }
 
 }

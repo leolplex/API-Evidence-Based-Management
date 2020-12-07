@@ -1,7 +1,7 @@
 package com.ebm.domain.service;
 
+import com.ebm.domain.Iteration;
 import com.ebm.domain.repository.IterationRepository;
-import com.ebm.domain.IterationDomain;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,16 +16,16 @@ public class IterationService {
         this.iterationRepository = iterationRepository;
     }
 
-    public List<IterationDomain> getAll() {
+    public List<Iteration> getAll() {
         return iterationRepository.getAll();
     }
 
-    public List<IterationDomain> getByTeam(int idTeam) {
+    public List<Iteration> getByTeam(int idTeam) {
         return iterationRepository.getByIdTeam(idTeam);
     }
 
-    public IterationDomain save(IterationDomain iterationDomain) {
-        return iterationRepository.save(iterationDomain);
+    public Iteration save(Iteration iteration) {
+        return iterationRepository.save(iteration);
     }
 
 }

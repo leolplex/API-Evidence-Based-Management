@@ -1,6 +1,6 @@
 package com.ebm.web.controller;
 
-import com.ebm.domain.TeamDomain;
+import com.ebm.domain.Team;
 import com.ebm.domain.service.TeamService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,13 +26,13 @@ class TeamControllerTest {
 
     @Test
     void TestGetAllWithoutData() {
-        assertEquals(new ResponseEntity<>(new ArrayList<TeamDomain>(), HttpStatus.OK), tester.getAll(), "getAll must be []");
+        assertEquals(new ResponseEntity<>(new ArrayList<Team>(), HttpStatus.OK), tester.getAll(), "getAll must be []");
     }
 
     @Test
     void TestGetAllWithData() {
-        List<TeamDomain> teams = new ArrayList<>();
-        TeamDomain team = new TeamDomain();
+        List<Team> teams = new ArrayList<>();
+        Team team = new Team();
         teams.add(team);
 
         when(teamService.getAll()).thenReturn(teams);

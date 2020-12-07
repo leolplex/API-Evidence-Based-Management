@@ -1,6 +1,6 @@
 package com.ebm.domain.service;
 
-import com.ebm.domain.IterationDomain;
+import com.ebm.domain.Iteration;
 import com.ebm.domain.repository.IterationRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,8 +18,8 @@ class IterationServiceTest {
     IterationService tester;
     IterationRepository iterationRepository;
 
-    private IterationDomain getIteration() {
-        IterationDomain iteration = new IterationDomain();
+    private Iteration getIteration() {
+        Iteration iteration = new Iteration();
         iteration.setState("In Progress");
         iteration.setEndDate(LocalDateTime.now());
         iteration.setStartDate(LocalDateTime.now());
@@ -41,12 +41,12 @@ class IterationServiceTest {
 
     @Test
     void TestGetAllWithData() {
-        List<IterationDomain> iterations = new ArrayList<>();
-        IterationDomain iteration = getIteration();
+        List<Iteration> iterations = new ArrayList<>();
+        Iteration iteration = getIteration();
         iterations.add(iteration);
         when(iterationRepository.getAll()).thenReturn(iterations);
 
-        List<IterationDomain> iterationsResult = tester.getAll();
+        List<Iteration> iterationsResult = tester.getAll();
 
         assertEquals(1, iterationsResult.size(), "getAll must have an iteration");
         assertEquals(iteration, iterationsResult.toArray()[0], "getAll must have an iteration equal to object defined");
@@ -60,12 +60,12 @@ class IterationServiceTest {
 
     @Test
     void TestGetByTeamWithData() {
-        List<IterationDomain> iterations = new ArrayList<>();
-        IterationDomain iteration = getIteration();
+        List<Iteration> iterations = new ArrayList<>();
+        Iteration iteration = getIteration();
         iterations.add(iteration);
         when(iterationRepository.getByIdTeam(1)).thenReturn(iterations);
 
-        List<IterationDomain> iterationsResult = tester.getByTeam(1);
+        List<Iteration> iterationsResult = tester.getByTeam(1);
 
         assertEquals(1, iterationsResult.size(), "getAll must have an iteration");
         assertEquals(iteration, iterationsResult.toArray()[0], "getAll must have an iteration equal to object defined");
@@ -73,14 +73,14 @@ class IterationServiceTest {
 
     @Test
     void TestSaveNull() {
-        assertNull(tester.save(new IterationDomain()), "save must be null");
+        assertNull(tester.save(new Iteration()), "save must be null");
     }
 
     @Test
     void TestSaveWithData() {
-        IterationDomain iterationDomain = new IterationDomain();
-        when(iterationRepository.save(iterationDomain)).thenReturn(iterationDomain);
+        Iteration iteration = new Iteration();
+        when(iterationRepository.save(iteration)).thenReturn(iteration);
 
-        assertEquals(iterationDomain, tester.save(iterationDomain), "save must be new instance Iteration");
+        assertEquals(iteration, tester.save(iteration), "save must be new instance Iteration");
     }
 }

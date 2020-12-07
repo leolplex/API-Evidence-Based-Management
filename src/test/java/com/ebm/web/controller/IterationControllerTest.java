@@ -1,6 +1,6 @@
 package com.ebm.web.controller;
 
-import com.ebm.domain.IterationDomain;
+import com.ebm.domain.Iteration;
 import com.ebm.domain.service.IterationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,8 +19,8 @@ class IterationControllerTest {
     IterationController tester;
     IterationService iterationService;
 
-    private IterationDomain getIteration() {
-        IterationDomain iteration = new IterationDomain();
+    private Iteration getIteration() {
+        Iteration iteration = new Iteration();
         iteration.setState("In Progress");
         iteration.setEndDate(LocalDateTime.now());
         iteration.setStartDate(LocalDateTime.now());
@@ -37,13 +37,13 @@ class IterationControllerTest {
 
     @Test
     void TestGetAllWithoutData() {
-        assertEquals(new ResponseEntity<>(new ArrayList<IterationDomain>(), HttpStatus.OK), tester.getAll(), "getAll must be []");
+        assertEquals(new ResponseEntity<>(new ArrayList<Iteration>(), HttpStatus.OK), tester.getAll(), "getAll must be []");
     }
 
     @Test
     void TestGetAllWithData() {
-        List<IterationDomain> iterations = new ArrayList<>();
-        IterationDomain iteration = getIteration();
+        List<Iteration> iterations = new ArrayList<>();
+        Iteration iteration = getIteration();
         iterations.add(iteration);
 
         when(iterationService.getAll()).thenReturn(iterations);
@@ -53,13 +53,13 @@ class IterationControllerTest {
 
     @Test
     void TestGetByTeamWithoutData() {
-        assertEquals(new ResponseEntity<>(new ArrayList<IterationDomain>(), HttpStatus.OK), tester.getByTeam(1), "getAll must be []");
+        assertEquals(new ResponseEntity<>(new ArrayList<Iteration>(), HttpStatus.OK), tester.getByTeam(1), "getAll must be []");
     }
 
     @Test
     void TestGetByTeamWithData() {
-        List<IterationDomain> iterations = new ArrayList<>();
-        IterationDomain iteration = getIteration();
+        List<Iteration> iterations = new ArrayList<>();
+        Iteration iteration = getIteration();
         iterations.add(iteration);
 
         when(iterationService.getByTeam(1)).thenReturn(iterations);
@@ -69,15 +69,15 @@ class IterationControllerTest {
 
     @Test
     void TestSaveNull() {
-        assertEquals(new ResponseEntity<>(HttpStatus.CREATED), tester.save(new IterationDomain()), "save must be null");
+        assertEquals(new ResponseEntity<>(HttpStatus.CREATED), tester.save(new Iteration()), "save must be null");
     }
 
     @Test
     void TestSaveWithData() {
-        IterationDomain iterationDomain = new IterationDomain();
-        when(iterationService.save(iterationDomain)).thenReturn(iterationDomain);
+        Iteration iteration = new Iteration();
+        when(iterationService.save(iteration)).thenReturn(iteration);
 
-        assertEquals(new ResponseEntity<>(iterationDomain,HttpStatus.CREATED), tester.save(iterationDomain), "save must be new instance Iteration");
+        assertEquals(new ResponseEntity<>(iteration,HttpStatus.CREATED), tester.save(iteration), "save must be new instance Iteration");
     }
 
 }

@@ -1,14 +1,14 @@
 package com.ebm.domain;
 
-public class KVADomain {
-    private KVAUnrealizedValueDomain kvaUnrealizedValue;
+public class KVA {
+    private KVAUnrealizedValue kvaUnrealizedValue;
     private  KVACurrentValue kvaCurrentValue;
 
-    public KVAUnrealizedValueDomain getKvaUnrealizedValue() {
+    public KVAUnrealizedValue getKvaUnrealizedValue() {
         return kvaUnrealizedValue;
     }
 
-    public void setKvaUnrealizedValue(KVAUnrealizedValueDomain kvaUnrealizedValue) {
+    public void setKvaUnrealizedValue(KVAUnrealizedValue kvaUnrealizedValue) {
         this.kvaUnrealizedValue = kvaUnrealizedValue;
     }
 

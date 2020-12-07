@@ -1,6 +1,6 @@
 package com.ebm.domain;
 
-public class KVAUnrealizedValueDomain {
+public class KVAUnrealizedValue {
     private Integer id;
     private String marketShare;
     private String customerSatisfactionGap;

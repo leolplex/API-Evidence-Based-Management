@@ -1,6 +1,6 @@
 package com.ebm.persistence;
 
-import com.ebm.domain.IterationDomain;
+import com.ebm.domain.Iteration;
 import com.ebm.persistence.crud.IterationCrudRepository;
 import com.ebm.persistence.entity.EntityIteration;
 import com.ebm.persistence.mapper.IterationMapper;
@@ -32,8 +32,8 @@ class IterationPersistenceRepositoryTest {
     }
 
 
-    private IterationDomain getIterationDomain() {
-        IterationDomain iteration = new IterationDomain();
+    private Iteration getIterationDomain() {
+        Iteration iteration = new Iteration();
         iteration.setState("In Progress");
         iteration.setEndDate(LocalDateTime.now());
         iteration.setStartDate(LocalDateTime.now());
@@ -57,8 +57,8 @@ class IterationPersistenceRepositoryTest {
 
     @Test
     void TestGetAllWithData() {
-        List<IterationDomain> iterationsDomain = new ArrayList<>();
-        IterationDomain iterationDomain = getIterationDomain();
+        List<Iteration> iterationsDomain = new ArrayList<>();
+        Iteration iterationDomain = getIterationDomain();
         iterationsDomain.add(iterationDomain);
 
         List<EntityIteration> iterations = new ArrayList<>();
@@ -68,7 +68,7 @@ class IterationPersistenceRepositoryTest {
         when(iterationCrudRepository.findAll()).thenReturn(iterations);
         when(mapper.toIterations(iterations)).thenReturn(iterationsDomain);
 
-        List<IterationDomain> iterationsResult = tester.getAll();
+        List<Iteration> iterationsResult = tester.getAll();
 
         assertEquals(1, iterationsResult.size(), "getAll must have an iteration");
         assertEquals(iterationDomain, iterationsResult.toArray()[0], "getAll must have an iteration equal to object defined");
@@ -81,8 +81,8 @@ class IterationPersistenceRepositoryTest {
 
     @Test
     void TestGetByIdTeamWithData() {
-        List<IterationDomain> iterationsDomain = new ArrayList<>();
-        IterationDomain iterationDomain = getIterationDomain();
+        List<Iteration> iterationsDomain = new ArrayList<>();
+        Iteration iterationDomain = getIterationDomain();
         iterationsDomain.add(iterationDomain);
 
         List<EntityIteration> iterations = new ArrayList<>();
@@ -91,7 +91,7 @@ class IterationPersistenceRepositoryTest {
         when(iterationCrudRepository.getByIdTeam(1)).thenReturn(iterations);
         when(mapper.toIterations(iterations)).thenReturn(iterationsDomain);
 
-        List<IterationDomain> iterationsResult = tester.getByIdTeam(1);
+        List<Iteration> iterationsResult = tester.getByIdTeam(1);
 
         assertEquals(1, iterationsResult.size(), "getByIdTeam must have an iteration");
         assertEquals(iterationDomain, iterationsResult.toArray()[0], "getByIdTeam must have an iteration equal to object defined");
@@ -101,13 +101,13 @@ class IterationPersistenceRepositoryTest {
 
     @Test
     void TestSaveNull() {
-        assertNull(tester.save(new IterationDomain()), "save must be null");
+        assertNull(tester.save(new Iteration()), "save must be null");
     }
 
     @Test
     void TestSaveWithData() {
         EntityIteration iteration = getIteration();
-        IterationDomain iterationDomain = new IterationDomain();
+        Iteration iterationDomain = new Iteration();
         when(mapper.toIterationDomain(iterationDomain)).thenReturn(iteration);
         when(mapper.toIteration(iteration)).thenReturn(iterationDomain);
 
