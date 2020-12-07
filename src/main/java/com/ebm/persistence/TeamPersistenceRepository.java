@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class TeamPersistenceRepository implements TeamRepository {
@@ -27,4 +28,10 @@ public class TeamPersistenceRepository implements TeamRepository {
         List<EntityTeam> teams = (List<EntityTeam>) teamCrudRepository.findAll();
         return mapper.toTeams(teams);
     }
+
+    @Override
+    public Optional<Team> getTeamById(int idTeam) {
+        return teamCrudRepository.findById(idTeam).map(team -> mapper.toTeam(team));
+    }
+
 }

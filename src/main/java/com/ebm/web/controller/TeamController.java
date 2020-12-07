@@ -3,7 +3,9 @@ package com.ebm.web.controller;
 import com.ebm.domain.Team;
 import com.ebm.domain.service.TeamService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,4 +30,18 @@ public class TeamController {
     public ResponseEntity<List<Team>> getAll() {
         return new ResponseEntity<>(teamService.getAll(), HttpStatus.OK);
     }
+
+
+    @GetMapping("/team/{idTeam}")
+    @ApiOperation("Get a team by Id")
+    @ApiResponses(
+            {
+                    @ApiResponse(code = 200, message = "Ok"),
+                    @ApiResponse(code = 404, message = "Team not found")
+            })
+    public ResponseEntity<Team> getTeamById(@ApiParam(value = "The id of the team", required = true, example = "7") @PathVariable("idTeam") int idTeam) {
+        return teamService.getTeamById(idTeam).map(team -> new ResponseEntity<>(team, HttpStatus.OK)).orElse(new ResponseEntity<>((HttpStatus.NOT_FOUND)));
+    }
+
+
 }

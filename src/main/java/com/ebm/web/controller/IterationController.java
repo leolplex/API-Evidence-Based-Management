@@ -3,6 +3,7 @@ package com.ebm.web.controller;
 import com.ebm.domain.Iteration;
 import com.ebm.domain.service.IterationService;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import io.swagger.annotations.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,7 +33,7 @@ public class IterationController {
     @GetMapping("/byTeam/{idTeam}")
     @ApiOperation("Get iterations by team identifier ")
     @ApiResponse(code = 200, message = "ok")
-    public ResponseEntity<List<Iteration>> getByTeam(@PathVariable("idTeam") int idTeam) {
+    public ResponseEntity<List<Iteration>> getByTeam( @ApiParam(value = "The id of the team", required = true, example = "7") @PathVariable("idTeam") int idTeam) {
         return new ResponseEntity<>(iterationService.getByTeam(idTeam), HttpStatus.OK);
     }
 

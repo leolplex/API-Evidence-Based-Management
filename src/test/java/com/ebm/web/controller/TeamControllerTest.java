@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -38,5 +39,24 @@ class TeamControllerTest {
         when(teamService.getAll()).thenReturn(teams);
 
         assertEquals(new ResponseEntity<>(teams, HttpStatus.OK), tester.getAll(), "getAll must be new ResponseEntity with a value");
+    }
+
+
+    @Test
+    void TestGetTeamByIdWithoutData() {
+        int idTeam = 2;
+        assertEquals(new ResponseEntity<>(HttpStatus.NOT_FOUND), tester.getTeamById(idTeam), "getTeamById must be <404 NOT_FOUND Not Found,[]>");
+    }
+
+
+    @Test
+    void TestGetTeamByIdWitData() {
+        int idTeam = 2;
+        Optional<Team> optionalTeam = Optional.of(new Team());
+
+
+        when(teamService.getTeamById(idTeam)).thenReturn(optionalTeam);
+
+        assertEquals(new ResponseEntity<>(optionalTeam.get(), HttpStatus.OK), tester.getTeamById(idTeam), "getTeamById must be new ResponseEntity with a value and status Ok");
     }
 }

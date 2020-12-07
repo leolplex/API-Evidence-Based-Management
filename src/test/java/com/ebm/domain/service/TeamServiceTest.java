@@ -8,6 +8,7 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -28,7 +29,7 @@ class TeamServiceTest {
     }
 
     @Test
-    void  TestGetAllWithData(){
+    void TestGetAllWithData() {
         List<Team> teams = new ArrayList<>();
         Team team = new Team();
         teams.add(team);
@@ -39,4 +40,25 @@ class TeamServiceTest {
         assertEquals(1, teamsResult.size(), "getAll must have a team");
         assertEquals(team, teamsResult.toArray()[0], "getAll must have a team equal to object defined");
     }
+
+
+    @Test
+    void TestGetTeamByIdWithOutData() {
+        int idTeam = 2;
+        assertEquals(Optional.empty(), tester.getTeamById(idTeam), "getTeamById must be new Optional.empty()");
+    }
+
+    @Test
+    void TestGetTeamByIdWithData() {
+        // Arrange
+        int idTeam = 2;
+        Optional<Team> myTeamOptional = Optional.of(new Team());
+        when(teamRepository.getTeamById(idTeam)).thenReturn(myTeamOptional);
+
+        // Act
+        Optional<Team> result = tester.getTeamById(idTeam);
+
+        assertEquals(myTeamOptional, result, "getTeamById must be Optional.of(new Team())");
+    }
+
 }

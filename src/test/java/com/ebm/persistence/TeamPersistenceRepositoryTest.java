@@ -10,6 +10,7 @@ import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
@@ -32,12 +33,12 @@ class TeamPersistenceRepositoryTest {
     }
 
     @Test
-    void TestGetAllWithData(){
+    void TestGetAllWithData() {
         List<Team> teamsDomain = new ArrayList<>();
         Team team = new Team();
         teamsDomain.add(team);
 
-        List<EntityTeam>  iterations = new ArrayList<>();
+        List<EntityTeam> iterations = new ArrayList<>();
         EntityTeam iteration = new EntityTeam();
         iterations.add(iteration);
 
@@ -48,6 +49,29 @@ class TeamPersistenceRepositoryTest {
         List<Team> teamsResult = tester.getAll();
         assertEquals(1, teamsResult.size(), "getAll must have a team");
         assertEquals(team, teamsResult.toArray()[0], "getAll must have a team equal to object defined");
+    }
+
+
+    @Test
+    void TestGetTeamByIdWithOutData() {
+        int idTea = 2;
+        assertEquals(Optional.empty(), tester.getTeamById(idTea), "getTeamById must be Optional.empty()");
+    }
+
+    @Test
+    void TestGetTeamByIdWithData() {
+        int idTeam = 2;
+        Optional<EntityTeam> myEntityTeamOptional = Optional.of(new EntityTeam());
+        Optional<Team> myTeam = Optional.of(new Team());
+
+        when(teamCrudRepository.findById(idTeam)).thenReturn(myEntityTeamOptional);
+        when(mapper.toTeam(myEntityTeamOptional.get())).thenReturn(myTeam.get());
+
+        // Act
+        Optional<Team> result = tester.getTeamById(idTeam);
+
+
+        assertEquals(myTeam, result, "getTeamById must be Optional.of(new Team())");
     }
 
 }
