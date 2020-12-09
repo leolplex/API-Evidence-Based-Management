@@ -32,7 +32,7 @@ public class IterationPersistenceRepository implements IterationRepository {
 
     @Override
     public Optional<Iteration> getIterationById(int idIteration) {
-        return iterationCrudRepository.findById(idIteration).map(iteration -> mapper.toIteration(iteration));
+        return iterationCrudRepository.findById(idIteration).map(mapper::toIteration);
     }
 
     @Override

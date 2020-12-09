@@ -24,7 +24,7 @@ public class KVAUnrealizedValuePersistenceRepository implements KVAUnrealizedVal
 
     @Override
     public Optional<KVAUnrealizedValue> getById(int idKVAUnrealizedValue) {
-        return kvaUnrealizedValueCrudRepository.findById(idKVAUnrealizedValue).map(kvaUnrealizedValue -> mapper.toKVAUnrealizedValue(kvaUnrealizedValue));
+        return kvaUnrealizedValueCrudRepository.findById(idKVAUnrealizedValue).map(mapper::toKVAUnrealizedValue);
     }
 
     @Override

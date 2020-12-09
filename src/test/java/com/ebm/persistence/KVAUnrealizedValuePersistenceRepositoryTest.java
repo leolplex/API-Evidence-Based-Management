@@ -62,9 +62,25 @@ class KVAUnrealizedValuePersistenceRepositoryTest {
     }
 
     @Test
-    void TestUpdateWithData() {
+    void TestUpdateWithNullData() {
         KVAUnrealizedValue kvaUnrealizedValue = new KVAUnrealizedValue();
         EntityKVAUnrealizedValue entityKVAUnrealizedValue = new EntityKVAUnrealizedValue();
+        entityKVAUnrealizedValue.setEntityCustomerSatisfactionGap("My value");
+        entityKVAUnrealizedValue.setEntityMarketShare("My value");
+        when(kvaUnrealizedValueCrudRepository.findById(1)).thenReturn(Optional.of(entityKVAUnrealizedValue));
+        when(mapper.toKVAUnrealizedValue(entityKVAUnrealizedValue)).thenReturn(kvaUnrealizedValue);
+        when(kvaUnrealizedValueCrudRepository.save(entityKVAUnrealizedValue)).thenReturn(entityKVAUnrealizedValue);
+
+        assertEquals(Optional.of(kvaUnrealizedValue), tester.update(1, kvaUnrealizedValue), "update must be new KVAUnrealizedValue()");
+    }
+
+    @Test
+    void TestUpdateWithEmptyData() {
+        KVAUnrealizedValue kvaUnrealizedValue = new KVAUnrealizedValue();
+        EntityKVAUnrealizedValue entityKVAUnrealizedValue = new EntityKVAUnrealizedValue();
+        entityKVAUnrealizedValue.setEntityCustomerSatisfactionGap("");
+        entityKVAUnrealizedValue.setEntityMarketShare("");
+
         when(kvaUnrealizedValueCrudRepository.findById(1)).thenReturn(Optional.of(entityKVAUnrealizedValue));
         when(mapper.toKVAUnrealizedValue(entityKVAUnrealizedValue)).thenReturn(kvaUnrealizedValue);
         when(kvaUnrealizedValueCrudRepository.save(entityKVAUnrealizedValue)).thenReturn(entityKVAUnrealizedValue);
