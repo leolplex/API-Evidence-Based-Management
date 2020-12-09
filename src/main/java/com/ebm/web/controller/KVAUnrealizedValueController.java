@@ -34,4 +34,11 @@ public class KVAUnrealizedValueController {
     public ResponseEntity<KVAUnrealizedValue> save(@RequestBody KVAUnrealizedValue kvaUnrealizedValue) {
         return new ResponseEntity<>(kvaUnrealizedValueService.save(kvaUnrealizedValue), HttpStatus.CREATED);
     }
+
+    @PutMapping("{idKVAUnrealizedValue}")
+    @ApiOperation("Update a KVAUnrealizedValue by id")
+    @ApiResponse(code = 200, message = "ok")
+    public ResponseEntity<KVAUnrealizedValue> update(@PathVariable("idKVAUnrealizedValue") int idKVAUnrealizedValue, @RequestBody KVAUnrealizedValue kvaUnrealizedValue) {
+        return kvaUnrealizedValueService.update(idKVAUnrealizedValue, kvaUnrealizedValue).map(kvaUnrealizedValueResponse -> new ResponseEntity<>(kvaUnrealizedValueResponse, HttpStatus.OK)).orElse(new ResponseEntity<>((HttpStatus.NOT_FOUND)));
+    }
 }

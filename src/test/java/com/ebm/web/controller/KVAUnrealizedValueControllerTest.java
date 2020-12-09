@@ -46,4 +46,17 @@ class KVAUnrealizedValueControllerTest {
         when(kvaUnrealizedValueService.save(kvaUnrealizedValue)).thenReturn(kvaUnrealizedValue);
         assertEquals(new ResponseEntity<>(kvaUnrealizedValue, HttpStatus.CREATED), tester.save(kvaUnrealizedValue), "save must be HttpStatus.CREATED");
     }
+    @Test
+    void TestUpdateNull() {
+        assertEquals(new ResponseEntity<>(HttpStatus.NOT_FOUND), tester.update(1, new KVAUnrealizedValue()), "update must be null");
+    }
+
+    @Test
+    void TestUpdateWithData() {
+        KVAUnrealizedValue kvaUnrealizedValue = new KVAUnrealizedValue();
+        Optional<KVAUnrealizedValue> kvaUnrealizedValueOptional = Optional.of(kvaUnrealizedValue);
+        when(kvaUnrealizedValueService.update(1, kvaUnrealizedValue)).thenReturn(kvaUnrealizedValueOptional);
+
+        assertEquals(new ResponseEntity<>(kvaUnrealizedValue, HttpStatus.OK), tester.update(1, kvaUnrealizedValue), "update must be new instance KVAUnrealizedValue");
+    }
 }
