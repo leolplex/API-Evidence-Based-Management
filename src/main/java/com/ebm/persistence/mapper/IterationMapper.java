@@ -21,6 +21,8 @@ public interface IterationMapper {
     @Mapping(source = "entityKVAUnrealizedValue.entityId", target = "kva.kvaUnrealizedValue.id")
     @Mapping(source = "entityKVAUnrealizedValue.entityMarketShare", target = "kva.kvaUnrealizedValue.marketShare")
     @Mapping(source = "entityKVAUnrealizedValue.entityCustomerSatisfactionGap", target = "kva.kvaUnrealizedValue.customerSatisfactionGap")
+    @Mapping(source = "entityKVAUnrealizedValue.entityIdIteration", target = "kva.kvaUnrealizedValue.idIteration")
+    @Mapping(source = "entityKVAUnrealizedValue.entityIdTeam", target = "kva.kvaUnrealizedValue.idTeam")
 
     @Mapping(source = "entityKVACurrentValue.entityId", target = "kva.kvaCurrentValue.id")
     @Mapping(source = "entityKVACurrentValue.entityRevenuePerEmployee", target = "kva.kvaCurrentValue.revenuePerEmployee")
@@ -63,6 +65,8 @@ public interface IterationMapper {
     @Mapping(source = "entityKVAUnrealizedValue.entityId", target = "kva.kvaUnrealizedValue.id")
     @Mapping(source = "entityKVAUnrealizedValue.entityMarketShare", target = "kva.kvaUnrealizedValue.marketShare")
     @Mapping(source = "entityKVAUnrealizedValue.entityCustomerSatisfactionGap", target = "kva.kvaUnrealizedValue.customerSatisfactionGap")
+    @Mapping(source = "entityKVAUnrealizedValue.entityIdIteration", target = "kva.kvaUnrealizedValue.idIteration")
+    @Mapping(source = "entityKVAUnrealizedValue.entityIdTeam", target = "kva.kvaUnrealizedValue.idTeam")
 
     @Mapping(source = "entityKVACurrentValue.entityId", target = "kva.kvaCurrentValue.id")
     @Mapping(source = "entityKVACurrentValue.entityRevenuePerEmployee", target = "kva.kvaCurrentValue.revenuePerEmployee")

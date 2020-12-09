@@ -20,6 +20,8 @@ class KVAUnrealizedValueTest {
         assertNull(tester.getId(), "getIdIteration must be null");
         assertNull(tester.getCustomerSatisfactionGap(), "getCustomerSatisfactionGap must be null");
         assertNull(tester.getMarketShare(), "getMarketShare must be null");
+        assertNull(tester.getIdIteration(), "getIdIteration must be null");
+        assertNull(tester.getIdTeam(), "getIdTeam must be null");
     }
 
     @Test
@@ -59,5 +61,31 @@ class KVAUnrealizedValueTest {
 
         // Assert
         assertEquals(marketShare, getMarketShare, "setMarketShare must be my ms");
+    }
+
+    @Test
+    void getAndSetIdIteration() {
+        // Arrange
+        final Integer id = 42;
+
+        //Act
+        tester.setIdIteration(id);
+        final Integer getIdIteration = tester.getIdIteration();
+
+        // Assert
+        assertEquals(id, getIdIteration, "setIdIteration must be my 42");
+    }
+
+    @Test
+    void getAndSetIdTeam() {
+        // Arrange
+        final Integer id = 42;
+
+        //Act
+        tester.setIdTeam(id);
+        final Integer getIdTeam = tester.getIdTeam();
+
+        // Assert
+        assertEquals(id, getIdTeam, "setIdTeam must be my 42");
     }
 }

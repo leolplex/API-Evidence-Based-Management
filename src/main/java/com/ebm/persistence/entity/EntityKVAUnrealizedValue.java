@@ -13,9 +13,13 @@ public class EntityKVAUnrealizedValue {
     private String entityMarketShare;
     @Column(name = "customer_or_user_satisfaction_gap")
     private String entityCustomerSatisfactionGap;
+    @Column(name = "id_iteration")
+    private Integer entityIdIteration;
+    @Column(name = "id_team")
+    private Integer entityIdTeam;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_iteration", referencedColumnName = "id")
+    @JoinColumn(name = "id_iteration", referencedColumnName = "id", insertable = false, updatable = false)
     private EntityIteration entityIteration;
 
     public Integer getEntityId() {
@@ -42,12 +46,27 @@ public class EntityKVAUnrealizedValue {
         this.entityCustomerSatisfactionGap = entityCustomerSatisfactionGap;
     }
 
-
     public EntityIteration getEntityIteration() {
         return entityIteration;
     }
 
     public void setEntityIteration(EntityIteration entityIteration) {
         this.entityIteration = entityIteration;
+    }
+
+    public Integer getEntityIdIteration() {
+        return entityIdIteration;
+    }
+
+    public void setEntityIdIteration(Integer entityIdIteration) {
+        this.entityIdIteration = entityIdIteration;
+    }
+
+    public Integer getEntityIdTeam() {
+        return entityIdTeam;
+    }
+
+    public void setEntityIdTeam(Integer entityIdTeam) {
+        this.entityIdTeam = entityIdTeam;
     }
 }

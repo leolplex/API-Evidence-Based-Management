@@ -4,6 +4,8 @@ public class KVAUnrealizedValue {
     private Integer id;
     private String marketShare;
     private String customerSatisfactionGap;
+    private Integer idTeam;
+    private Integer idIteration;
 
     public Integer getId() {
         return id;
@@ -27,5 +29,21 @@ public class KVAUnrealizedValue {
 
     public void setCustomerSatisfactionGap(String customerSatisfactionGap) {
         this.customerSatisfactionGap = customerSatisfactionGap;
+    }
+
+    public Integer getIdTeam() {
+        return idTeam;
+    }
+
+    public void setIdTeam(Integer idTeam) {
+        this.idTeam = idTeam;
+    }
+
+    public Integer getIdIteration() {
+        return idIteration;
+    }
+
+    public void setIdIteration(Integer idIteration) {
+        this.idIteration = idIteration;
     }
 }
