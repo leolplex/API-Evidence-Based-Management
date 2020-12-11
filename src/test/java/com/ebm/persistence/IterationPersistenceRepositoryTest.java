@@ -2,7 +2,10 @@ package com.ebm.persistence;
 
 import com.ebm.domain.Iteration;
 import com.ebm.persistence.crud.IterationCrudRepository;
+import com.ebm.persistence.crud.IterationTeamCrudRepository;
 import com.ebm.persistence.entity.EntityIteration;
+import com.ebm.persistence.entity.EntityIterationTeam;
+import com.ebm.persistence.entity.EntityIterationTeamPK;
 import com.ebm.persistence.mapper.IterationMapper;
 import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,13 +25,15 @@ class IterationPersistenceRepositoryTest {
     IterationPersistenceRepository tester;
     IterationCrudRepository iterationCrudRepository;
     IterationMapper mapper;
+    IterationTeamCrudRepository iterationTeamCrudRepository;
 
 
     @BeforeEach
     void initEach() {
         iterationCrudRepository = Mockito.mock(IterationCrudRepository.class);
         mapper = Mockito.mock(IterationMapper.class);
-        tester = new IterationPersistenceRepository(iterationCrudRepository, mapper);
+        iterationTeamCrudRepository = Mockito.mock(IterationTeamCrudRepository.class);
+        tester = new IterationPersistenceRepository(iterationCrudRepository, mapper, iterationTeamCrudRepository);
     }
 
     @Test
@@ -88,6 +93,17 @@ class IterationPersistenceRepositoryTest {
         when(mapper.toIteration(iteration)).thenReturn(iterationDomain);
 
         when(iterationCrudRepository.save(iteration)).thenReturn(iteration);
+
+        EntityIterationTeam entityIterationTeam = new EntityIterationTeam();
+
+        EntityIterationTeamPK entityIterationTeamPK = new EntityIterationTeamPK();
+        entityIterationTeamPK.setIdIteration(2);
+        entityIterationTeamPK.setIdTeam(2);
+
+        entityIterationTeam.setEntityId(entityIterationTeamPK);
+        when(iterationTeamCrudRepository.save(entityIterationTeam)).thenReturn(entityIterationTeam);
+
+
         assertEquals(iterationDomain, tester.save(iterationDomain), "save must be new instance Iteration");
     }
 

@@ -28,6 +28,7 @@ class IterationTest {
         assertNull(tester.getEndDate(),"getEndDate must be null");
         assertNull(tester.getState(),"getState must be null");
         assertNull(tester.getKva(),"getKva must be null");
+        assertNull(tester.getIdTeam(),"getIdTeam must be null");
     }
 
     @Test
@@ -119,5 +120,18 @@ class IterationTest {
 
         // Assert
         assertEquals(kva, getKva, "setKva must be new KVADomain()");
+    }
+
+    @Test
+    void  getAndSetIdTeam(){
+        // Arrange
+        final Integer idTeam = 42;
+
+        //Act
+        tester.setIdTeam(idTeam);
+        final Integer getIdTeam = tester.getIdTeam();
+
+        // Assert
+        assertEquals(idTeam, getIdTeam, "setIdTeam must be 42");
     }
 }

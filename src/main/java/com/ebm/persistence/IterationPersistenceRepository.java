@@ -4,7 +4,10 @@ package com.ebm.persistence;
 import com.ebm.domain.Iteration;
 import com.ebm.domain.repository.IterationRepository;
 import com.ebm.persistence.crud.IterationCrudRepository;
+import com.ebm.persistence.crud.IterationTeamCrudRepository;
 import com.ebm.persistence.entity.EntityIteration;
+import com.ebm.persistence.entity.EntityIterationTeam;
+import com.ebm.persistence.entity.EntityIterationTeamPK;
 import com.ebm.persistence.mapper.IterationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,12 +19,17 @@ import java.util.Optional;
 public class IterationPersistenceRepository implements IterationRepository {
     @Autowired
     private IterationCrudRepository iterationCrudRepository;
+
+    @Autowired
+    private IterationTeamCrudRepository iterationTeamCrudRepository;
+
     @Autowired
     private IterationMapper mapper;
 
-    IterationPersistenceRepository(IterationCrudRepository iterationCrudRepository, IterationMapper iterationMapper) {
+    IterationPersistenceRepository(IterationCrudRepository iterationCrudRepository, IterationMapper iterationMapper, IterationTeamCrudRepository iterationTeamCrudRepository) {
         this.iterationCrudRepository = iterationCrudRepository;
         this.mapper = iterationMapper;
+        this.iterationTeamCrudRepository = iterationTeamCrudRepository;
     }
 
     @Override
@@ -38,7 +46,17 @@ public class IterationPersistenceRepository implements IterationRepository {
     @Override
     public Iteration save(Iteration iterationDomain) {
         EntityIteration iteration = mapper.toIterationDomain(iterationDomain);
-        return mapper.toIteration(iterationCrudRepository.save(iteration));
+        Iteration entitySaved = mapper.toIteration(iterationCrudRepository.save(iteration));
+
+        EntityIterationTeam entityIterationTeam = new EntityIterationTeam();
+
+        EntityIterationTeamPK entityIterationTeamPK = new EntityIterationTeamPK();
+        entityIterationTeamPK.setIdIteration(entitySaved.getId());
+        entityIterationTeamPK.setIdTeam(entitySaved.getIdTeam());
+
+        entityIterationTeam.setEntityId(entityIterationTeamPK);
+        iterationTeamCrudRepository.save(entityIterationTeam);
+        return entitySaved;
     }
 
     @Override

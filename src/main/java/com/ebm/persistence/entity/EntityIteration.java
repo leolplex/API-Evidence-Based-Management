@@ -27,6 +27,9 @@ public class EntityIteration {
     @Column(name = "state")
     private String entityState;
 
+    @Transient
+    private  Integer entityIdTeam;
+
     @OneToOne(mappedBy = "entityIteration")
     private EntityKVAUnrealizedValue entityKVAUnrealizedValue;
 
@@ -118,5 +121,13 @@ public class EntityIteration {
 
     public void setEntityKVATimeToMarket(EntityKVATimeToMarket entityKVATimeToMarket) {
         this.entityKVATimeToMarket = entityKVATimeToMarket;
+    }
+
+    public Integer getEntityIdTeam() {
+        return entityIdTeam;
+    }
+
+    public void setEntityIdTeam(Integer entityIdTeam) {
+        this.entityIdTeam = entityIdTeam;
     }
 }
