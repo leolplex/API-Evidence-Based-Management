@@ -48,14 +48,17 @@ public class IterationPersistenceRepository implements IterationRepository {
         EntityIteration iteration = mapper.toIterationDomain(iterationDomain);
         Iteration entitySaved = mapper.toIteration(iterationCrudRepository.save(iteration));
 
-        EntityIterationTeam entityIterationTeam = new EntityIterationTeam();
+        if (entitySaved!=null){
+            EntityIterationTeam entityIterationTeam = new EntityIterationTeam();
 
-        EntityIterationTeamPK entityIterationTeamPK = new EntityIterationTeamPK();
-        entityIterationTeamPK.setIdIteration(entitySaved.getId());
-        entityIterationTeamPK.setIdTeam(entitySaved.getIdTeam());
+            EntityIterationTeamPK entityIterationTeamPK = new EntityIterationTeamPK();
+            entityIterationTeamPK.setIdIteration(entitySaved.getId());
+            entityIterationTeamPK.setIdTeam(entitySaved.getIdTeam());
 
-        entityIterationTeam.setEntityId(entityIterationTeamPK);
-        iterationTeamCrudRepository.save(entityIterationTeam);
+            entityIterationTeam.setEntityId(entityIterationTeamPK);
+            iterationTeamCrudRepository.save(entityIterationTeam);
+        }
+
         return entitySaved;
     }
 
