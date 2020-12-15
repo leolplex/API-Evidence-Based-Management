@@ -7,6 +7,8 @@ public class KVACurrentValue {
     private String employeeSatisfaction;
     private String customerSatisfaction;
     private String customerUsageIndex;
+    private Integer idTeam;
+    private Integer idIteration;
 
     public Integer getId() {
         return id;
@@ -54,5 +56,21 @@ public class KVACurrentValue {
 
     public void setCustomerUsageIndex(String customerUsageIndex) {
         this.customerUsageIndex = customerUsageIndex;
+    }
+
+    public Integer getIdTeam() {
+        return idTeam;
+    }
+
+    public void setIdTeam(Integer idTeam) {
+        this.idTeam = idTeam;
+    }
+
+    public Integer getIdIteration() {
+        return idIteration;
+    }
+
+    public void setIdIteration(Integer idIteration) {
+        this.idIteration = idIteration;
     }
 }

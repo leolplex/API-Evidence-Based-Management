@@ -28,6 +28,9 @@ public interface TeamIterationsMapper {
     @Mapping(source = "entityIteration.entityKVACurrentValue.entityEmployeeSatisfaction", target = "kva.kvaCurrentValue.employeeSatisfaction")
     @Mapping(source = "entityIteration.entityKVACurrentValue.entityCustomerSatisfaction", target = "kva.kvaCurrentValue.customerSatisfaction")
     @Mapping(source = "entityIteration.entityKVACurrentValue.entityCustomerUsageIndex", target = "kva.kvaCurrentValue.customerUsageIndex")
+    @Mapping(source = "entityIteration.entityKVAUnrealizedValue.entityIdIteration", target = "kva.kvaCurrentValue.idIteration")
+    @Mapping(source = "entityIteration.entityKVAUnrealizedValue.entityIdTeam", target = "kva.kvaCurrentValue.idTeam")
+
 
     @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityId", target = "kva.kvaAbilityToInnovate.id")
     @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityFeatureUsageIndex", target = "kva.kvaAbilityToInnovate.featureUsageIndex")

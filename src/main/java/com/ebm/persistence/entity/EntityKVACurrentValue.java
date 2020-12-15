@@ -25,6 +25,12 @@ public class EntityKVACurrentValue {
     @Column(name = "customer_usage_index")
     private String entityCustomerUsageIndex;
 
+    @Column(name = "id_iteration")
+    private Integer entityIdIteration;
+
+    @Column(name = "id_team")
+    private Integer entityIdTeam;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_iteration", referencedColumnName = "id")
     private EntityIteration entityIteration;
@@ -75,6 +81,22 @@ public class EntityKVACurrentValue {
 
     public void setEntityCustomerUsageIndex(String entityCustomerUsageIndex) {
         this.entityCustomerUsageIndex = entityCustomerUsageIndex;
+    }
+
+    public Integer getEntityIdIteration() {
+        return entityIdIteration;
+    }
+
+    public void setEntityIdIteration(Integer entityIdIteration) {
+        this.entityIdIteration = entityIdIteration;
+    }
+
+    public Integer getEntityIdTeam() {
+        return entityIdTeam;
+    }
+
+    public void setEntityIdTeam(Integer entityIdTeam) {
+        this.entityIdTeam = entityIdTeam;
     }
 
     public EntityIteration getEntityIteration() {

@@ -24,83 +24,55 @@ class KVACurrentValueTest {
         assertNull(tester.getEmployeeSatisfaction(), "getEmployeeSatisfaction must be null");
         assertNull(tester.getProductCostRatio(), "getProductCostRatio must be null");
         assertNull(tester.getRevenuePerEmployee(), "getRevenuePerEmployee must be null");
+        assertNull(tester.getIdIteration(), "getIdIteration must be null");
+        assertNull(tester.getIdTeam(), "getIdTeam must be null");
     }
 
+
     @Test
-    void getAndSetId() {
+    void getAndSetNewObject() {
         // Arrange
         final Integer id = 42;
+        final String customerSatisfaction = "5/10";
+        final String customerUsageIndex = "13";
+        final String employeeSatisfaction = "7";
+        final String productCostRatio = "134";
+        final String revenuePerEmployee = "10000000";
+        final int idTeam = 1;
+        final int idIteration = 2;
 
         //Act
         tester.setId(id);
+        tester.setCustomerSatisfaction(customerSatisfaction);
+        tester.setCustomerUsageIndex(customerUsageIndex);
+        tester.setEmployeeSatisfaction(employeeSatisfaction);
+        tester.setProductCostRatio(productCostRatio);
+        tester.setRevenuePerEmployee(revenuePerEmployee);
+        tester.setIdTeam(idTeam);
+        tester.setIdIteration(idIteration);
+
+
         final Integer getId = tester.getId();
+        final String getCustomerSatisfaction = tester.getCustomerSatisfaction();
+        final String getCustomerUsageIndex = tester.getCustomerUsageIndex();
+        final String getEmployeeSatisfaction = tester.getEmployeeSatisfaction();
+        final String getProductCostRatio = tester.getProductCostRatio();
+        final String getRevenuePerEmployee = tester.getRevenuePerEmployee();
+        final Integer getIdTeam = tester.getIdTeam();
+        final Integer getIdIteration = tester.getIdIteration();
+
+
 
         // Assert
         assertEquals(id, getId, "setId must be my 42");
-    }
-
-    @Test
-    void getAndSetCustomerSatisfaction() {
-        // Arrange
-        final String customerSatisfaction = "5/10";
-
-        //Act
-        tester.setCustomerSatisfaction(customerSatisfaction);
-        final String getCustomerSatisfaction = tester.getCustomerSatisfaction();
-
-        // Assert
         assertEquals(customerSatisfaction, getCustomerSatisfaction, "setCustomerSatisfaction must be 5/10");
-    }
-
-    @Test
-    void getAndSetCustomerUsageIndex() {
-        // Arrange
-        final String customerUsageIndex = "13";
-
-        //Act
-        tester.setCustomerUsageIndex(customerUsageIndex);
-        final String getCustomerUsageIndex = tester.getCustomerUsageIndex();
-
-        // Assert
         assertEquals(customerUsageIndex, getCustomerUsageIndex, "setCustomerUsageIndex must be 13");
-    }
-
-    @Test
-    void getAndSetEmployeeSatisfaction() {
-        // Arrange
-        final String employeeSatisfaction = "7";
-
-        //Act
-        tester.setEmployeeSatisfaction(employeeSatisfaction);
-        final String getEmployeeSatisfaction = tester.getEmployeeSatisfaction();
-
-        // Assert
         assertEquals(employeeSatisfaction, getEmployeeSatisfaction, "setEmployeeSatisfaction must be 7");
-    }
-
-    @Test
-    void getAndSetProductCostRatio() {
-        // Arrange
-        final String productCostRatio = "134";
-
-        //Act
-        tester.setProductCostRatio(productCostRatio);
-        final String getProductCostRatio = tester.getProductCostRatio();
-
-        // Assert
         assertEquals(productCostRatio, getProductCostRatio, "setProductCostRatio must be 134");
-    }
-
-    @Test
-    void getAndSetRevenuePerEmployee() {
-        // Arrange
-        final String revenuePerEmployee = "10000000";
-
-        //Act
-        tester.setRevenuePerEmployee(revenuePerEmployee);
-        final String getRevenuePerEmployee = tester.getRevenuePerEmployee();
-
-        // Assert
         assertEquals(revenuePerEmployee, getRevenuePerEmployee, "setRevenuePerEmployee must be 10000000");
+        assertEquals(idTeam, getIdTeam, "setIdTeam must be 1");
+        assertEquals(idIteration, getIdIteration, "setIdIteration must be 2");
     }
+
+
 }

@@ -29,7 +29,7 @@ public class KVAUnrealizedValueController {
     }
 
     @PostMapping("/save")
-    @ApiOperation("Create a new KVAUnrealizedValue")
+    @ApiOperation("Save a new KVAUnrealizedValue")
     @ApiResponse(code = 200, message = "ok")
     public ResponseEntity<KVAUnrealizedValue> save(@RequestBody KVAUnrealizedValue kvaUnrealizedValue) {
         return new ResponseEntity<>(kvaUnrealizedValueService.save(kvaUnrealizedValue), HttpStatus.CREATED);

@@ -24,96 +24,55 @@ class EntityKVACurrentValueTest {
         assertNull(tester.getEntityEmployeeSatisfaction(), "getEntityEmployeeSatisfaction must be null");
         assertNull(tester.getEntityProductCostRatio(), "getEntityProductCostRatio must be null");
         assertNull(tester.getEntityRevenuePerEmployee(), "getEntityRevenuePerEmployee must be null");
+        assertNull(tester.getEntityIdIteration(), "getEntityIdIteration must be null");
+        assertNull(tester.getEntityIdTeam(), "getEntityIdTeam must be null");
     }
 
     @Test
-    void getAndSetEntityId() {
+    void getAndSetNewObject() {
         // Arrange
         final Integer id = 42;
+        final String customerSatisfaction = "5/10";
+        final EntityIteration entityIteration = new EntityIteration();
+        final String entityCustomerUsageIndex = "13";
+        final String entityEmployeeSatisfaction = "7";
+        final String entityProductCostRatio = "134";
+        final String entityRevenuePerEmployee = "10000000";
+        final Integer idTeam = 1;
+        final Integer idIteration = 2;
 
         //Act
         tester.setEntityId(id);
+        tester.setEntityCustomerSatisfaction(customerSatisfaction);
+        tester.setEntityIteration(entityIteration);
+        tester.setEntityCustomerUsageIndex(entityCustomerUsageIndex);
+        tester.setEntityEmployeeSatisfaction(entityEmployeeSatisfaction);
+        tester.setEntityProductCostRatio(entityProductCostRatio);
+        tester.setEntityRevenuePerEmployee(entityRevenuePerEmployee);
+        tester.setEntityIdTeam(idTeam);
+        tester.setEntityIdIteration(idIteration);
+
         final Integer getEntityId = tester.getEntityId();
+        final String getEntityCustomerSatisfaction = tester.getEntityCustomerSatisfaction();
+        final EntityIteration getEntityIteration = tester.getEntityIteration();
+        final String getEntityCustomerUsageIndex = tester.getEntityCustomerUsageIndex();
+        final String getEntityEmployeeSatisfaction = tester.getEntityEmployeeSatisfaction();
+        final String getEntityProductCostRatio = tester.getEntityProductCostRatio();
+        final String getEntityRevenuePerEmployee = tester.getEntityRevenuePerEmployee();
+        final Integer getEntityIdTeam = tester.getEntityIdTeam();
+        final Integer getEntityIdIteration = tester.getEntityIdIteration();
+
 
         // Assert
         assertEquals(id, getEntityId, "setEntityId must be my 42");
-    }
-
-    @Test
-    void getAndSetEntityCustomerSatisfaction() {
-        // Arrange
-        final String customerSatisfaction = "5/10";
-
-        //Act
-        tester.setEntityCustomerSatisfaction(customerSatisfaction);
-        final String getEntityCustomerSatisfaction = tester.getEntityCustomerSatisfaction();
-
-        // Assert
         assertEquals(customerSatisfaction, getEntityCustomerSatisfaction, "setEntityCustomerSatisfaction must be 5/10");
-    }
-
-    @Test
-    void getAndSetEntityIteration() {
-        // Arrange
-        final EntityIteration entityIteration = new EntityIteration();
-
-        //Act
-        tester.setEntityIteration(entityIteration);
-        final EntityIteration getEntityIteration = tester.getEntityIteration();
-
-        // Assert
         assertEquals(entityIteration, getEntityIteration, "setEntityIteration must be new EntityIteration()");
-    }
-
-    @Test
-    void getAndSetEntityCustomerUsageIndex() {
-        // Arrange
-        final String entityCustomerUsageIndex = "13";
-
-        //Act
-        tester.setEntityCustomerUsageIndex(entityCustomerUsageIndex);
-        final String getEntityCustomerUsageIndex = tester.getEntityCustomerUsageIndex();
-
-        // Assert
         assertEquals(entityCustomerUsageIndex, getEntityCustomerUsageIndex, "setEntityCustomerUsageIndex must be 13");
-    }
-
-    @Test
-    void getAndSetEntityEmployeeSatisfaction() {
-        // Arrange
-        final String entityEmployeeSatisfaction = "7";
-
-        //Act
-        tester.setEntityEmployeeSatisfaction(entityEmployeeSatisfaction);
-        final String getEntityEmployeeSatisfaction = tester.getEntityEmployeeSatisfaction();
-
-        // Assert
         assertEquals(entityEmployeeSatisfaction, getEntityEmployeeSatisfaction, "setEntityEmployeeSatisfaction must be 7");
-    }
-
-    @Test
-    void getAndSetEntityProductCostRatio() {
-        // Arrange
-        final String entityProductCostRatio = "134";
-
-        //Act
-        tester.setEntityProductCostRatio(entityProductCostRatio);
-        final String getEntityProductCostRatio = tester.getEntityProductCostRatio();
-
-        // Assert
         assertEquals(entityProductCostRatio, getEntityProductCostRatio, "setEntityProductCostRatio must be 134");
-    }
-
-    @Test
-    void getAndSetEntityRevenuePerEmployee() {
-        // Arrange
-        final String entityRevenuePerEmployee = "10000000";
-
-        //Act
-        tester.setEntityRevenuePerEmployee(entityRevenuePerEmployee);
-        final String getEntityRevenuePerEmployee = tester.getEntityRevenuePerEmployee();
-
-        // Assert
         assertEquals(entityRevenuePerEmployee, getEntityRevenuePerEmployee, "setEntityRevenuePerEmployee must be 10000000");
+        assertEquals(idTeam, getEntityIdTeam, "setEntityIdTeam must be 1");
+        assertEquals(idIteration, getEntityIdIteration, "setEntityIdIteration must be 2");
     }
+
 }
