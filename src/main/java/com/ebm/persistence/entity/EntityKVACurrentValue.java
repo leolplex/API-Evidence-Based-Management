@@ -14,7 +14,7 @@ public class EntityKVACurrentValue {
     private String entityRevenuePerEmployee;
 
     @Column(name = "product_cost_ratio")
-    private  String entityProductCostRatio;
+    private String entityProductCostRatio;
 
     @Column(name = "employee_satisfaction")
     private String entityEmployeeSatisfaction;
@@ -32,7 +32,7 @@ public class EntityKVACurrentValue {
     private Integer entityIdTeam;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_iteration", referencedColumnName = "id")
+    @JoinColumn(name = "id_iteration", referencedColumnName = "id", insertable = false, updatable = false)
     private EntityIteration entityIteration;
 
     public Integer getEntityId() {

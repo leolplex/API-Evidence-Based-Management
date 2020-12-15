@@ -3,8 +3,10 @@ package com.ebm.persistence.mapper;
 import com.ebm.domain.KVACurrentValue;
 import com.ebm.persistence.entity.EntityKVACurrentValue;
 import org.mapstruct.InheritInverseConfiguration;
+import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+@Mapper(componentModel = "spring")
 public interface KVACurrentValueMapper {
 
     @Mapping(source = "entityId", target = "id")
@@ -18,6 +20,7 @@ public interface KVACurrentValueMapper {
     KVACurrentValue toKVACurrentValue(EntityKVACurrentValue entityKVACurrentValue);
 
     @InheritInverseConfiguration
+    @Mapping(target = "entityIteration", ignore = true)
     EntityKVACurrentValue toKVACurrentValueDomain(KVACurrentValue kvaCurrentValue);
 
 }
