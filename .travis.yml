@@ -25,7 +25,6 @@ jobs:
     name: build & unit test & sonar qube
     script:
     - ./gradlew build
-    - ./gradlew test
     - ./gradlew test jacocoTestReport sonarqube
 deploy:
   provider: heroku
