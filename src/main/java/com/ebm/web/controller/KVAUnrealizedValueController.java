@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("KVAUnrealizedValue")
+@RequestMapping("/KVAUnrealizedValue")
 @CrossOrigin(origins = {"http://localhost:4200", "https://leolplex.github.io"}, methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT})
 public class KVAUnrealizedValueController {
     @Autowired
