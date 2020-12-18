@@ -37,8 +37,14 @@ public class EntityKVAAbilityToInnovate {
     @Column(name = "time_spent_context_switching")
     private String entityTimeSpentContextSwitching;
 
+    @Column(name = "id_iteration")
+    private Integer entityIdIterationA2I;
+
+    @Column(name = "id_team")
+    private Integer entityIdTeamA2I;
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_iteration", referencedColumnName = "id")
+    @JoinColumn(name = "id_iteration", referencedColumnName = "id", insertable = false, updatable = false)
     private EntityIteration entityIteration;
 
     public Integer getEntityId() {
@@ -127,5 +133,21 @@ public class EntityKVAAbilityToInnovate {
 
     public void setEntityIteration(EntityIteration entityIteration) {
         this.entityIteration = entityIteration;
+    }
+
+    public Integer getEntityIdIterationA2I() {
+        return entityIdIterationA2I;
+    }
+
+    public void setEntityIdIterationA2I(Integer entityIdIterationA2I) {
+        this.entityIdIterationA2I = entityIdIterationA2I;
+    }
+
+    public Integer getEntityIdTeamA2I() {
+        return entityIdTeamA2I;
+    }
+
+    public void setEntityIdTeamA2I(Integer entityIdTeamA2I) {
+        this.entityIdTeamA2I = entityIdTeamA2I;
     }
 }

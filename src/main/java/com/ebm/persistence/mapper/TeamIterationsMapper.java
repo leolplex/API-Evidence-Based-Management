@@ -42,6 +42,9 @@ public interface TeamIterationsMapper {
     @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityProductionIncidentTrends", target = "kva.kvaAbilityToInnovate.productionIncidentTrends")
     @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityActiveCodeBranchesTimeSpentMergingCodeBetweenBranches", target = "kva.kvaAbilityToInnovate.activeCodeBranchesTimeSpentMergingCodeBetweenBranches")
     @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityTimeSpentContextSwitching", target = "kva.kvaAbilityToInnovate.timeSpentContextSwitching")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityIdTeamA2I", target = "kva.kvaAbilityToInnovate.idTeam")
+    @Mapping(source = "entityIteration.entityKVAAbilityToInnovate.entityIdIterationA2I", target = "kva.kvaAbilityToInnovate.idIteration")
+
 
     @Mapping(source = "entityIteration.entityKVATimeToMarket.entityId", target = "kva.kvaTimeToMarket.id")
     @Mapping(source = "entityIteration.entityKVATimeToMarket.entityBuildAndIntegrationFrequency", target = "kva.kvaTimeToMarket.buildAndIntegrationFrequency")
