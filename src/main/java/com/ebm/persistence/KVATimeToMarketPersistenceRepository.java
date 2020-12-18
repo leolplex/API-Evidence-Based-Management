@@ -31,29 +31,34 @@ public class KVATimeToMarketPersistenceRepository implements KVATimeToMarketRepo
     @Override
     public Optional<KVATimeToMarket> update(int idKVATimeToMarket, KVATimeToMarket kvaTimeToMarket) {
         return kvaTimeToMarketCrudRepository.findById(idKVATimeToMarket).map(kvaTimeToMarketDB -> {
-            if (kvaTimeToMarket.getBuildAndIntegrationFrequency() != null && !kvaTimeToMarket.getBuildAndIntegrationFrequency().isEmpty()) {
+            if (isEmptyOrNull(kvaTimeToMarket.getBuildAndIntegrationFrequency())) {
                 kvaTimeToMarketDB.setEntityBuildAndIntegrationFrequency(kvaTimeToMarket.getBuildAndIntegrationFrequency());
             }
-            if (kvaTimeToMarket.getReleaseFrequency() != null && !kvaTimeToMarket.getReleaseFrequency().isEmpty()) {
+            if (isEmptyOrNull(kvaTimeToMarket.getReleaseFrequency())) {
                 kvaTimeToMarketDB.setEntityReleaseFrequency(kvaTimeToMarket.getReleaseFrequency());
             }
-            if (kvaTimeToMarket.getReleaseStabilizationPeriod() != null && !kvaTimeToMarket.getReleaseStabilizationPeriod().isEmpty()) {
+            if (isEmptyOrNull(kvaTimeToMarket.getReleaseStabilizationPeriod())) {
                 kvaTimeToMarketDB.setEntityReleaseStabilizationPeriod(kvaTimeToMarket.getReleaseStabilizationPeriod());
             }
-            if (kvaTimeToMarket.getMeanTimeToRepair() != null && !kvaTimeToMarket.getMeanTimeToRepair().isEmpty()) {
+            if (isEmptyOrNull(kvaTimeToMarket.getMeanTimeToRepair())) {
                 kvaTimeToMarketDB.setEntityMeanTimeToRepair(kvaTimeToMarket.getMeanTimeToRepair());
             }
-            if (kvaTimeToMarket.getCycleTime() != null && !kvaTimeToMarket.getCycleTime().isEmpty()) {
+            if (isEmptyOrNull(kvaTimeToMarket.getCycleTime())) {
                 kvaTimeToMarketDB.setEntityCycleTime(kvaTimeToMarket.getCycleTime());
             }
-            if (kvaTimeToMarket.getLeadTime() != null && !kvaTimeToMarket.getLeadTime().isEmpty()) {
+            if (isEmptyOrNull(kvaTimeToMarket.getLeadTime())) {
                 kvaTimeToMarketDB.setEntityLeadTime(kvaTimeToMarket.getLeadTime());
             }
-            if (kvaTimeToMarket.getTimeToLearn() != null && !kvaTimeToMarket.getTimeToLearn().isEmpty()) {
+            if (isEmptyOrNull(kvaTimeToMarket.getTimeToLearn())) {
                 kvaTimeToMarketDB.setEntityTimeToLearn(kvaTimeToMarket.getTimeToLearn());
             }
 
             return mapper.toKVATimeToMarket((kvaTimeToMarketCrudRepository.save(kvaTimeToMarketDB)));
         });
     }
+
+    private boolean isEmptyOrNull(String value) {
+        return value != null && !value.isEmpty();
+    }
+
 }
