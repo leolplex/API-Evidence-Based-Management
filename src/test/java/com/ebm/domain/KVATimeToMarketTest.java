@@ -25,110 +25,65 @@ class KVATimeToMarketTest {
         assertNull(tester.getCycleTime(), "getCycleTime must be null");
         assertNull(tester.getLeadTime(), "getLeadTime must be null");
         assertNull(tester.getTimeToLearn(), "getTimeToLearn must be null");
+        assertNull(tester.getIdTeam(), "getIdTeam must be null");
+        assertNull(tester.getIdIteration(), "getIdIteration must be null");
     }
 
     @Test
     void getAndSetId() {
         // Arrange
         final Integer id = 42;
+        final String buildAndIntegrationFrequency = "10 by week";
+        final String releaseFrequency = "Monthly";
+        final String releaseStabilizationPeriod = "3 days";
+        final String meanTimeToRepair = "3/5";
+        final String cycleTime = "1 month";
+        final String leadTime = "3 months";
+        final String timeToLearn = "1 month";
+        final Integer idTeam = 2;
+        final Integer idIteration = 6;
+
 
         //Act
         tester.setId(id);
+        tester.setBuildAndIntegrationFrequency(buildAndIntegrationFrequency);
+        tester.setReleaseFrequency(releaseFrequency);
+        tester.setReleaseStabilizationPeriod(releaseStabilizationPeriod);
+        tester.setMeanTimeToRepair(meanTimeToRepair);
+        tester.setCycleTime(cycleTime);
+        tester.setLeadTime(leadTime);
+        tester.setTimeToLearn(timeToLearn);
+        tester.setIdTeam(idTeam);
+        tester.setIdIteration(idIteration);
+
+
+
         final Integer getId = tester.getId();
+        final String getBuildAndIntegrationFrequency = tester.getBuildAndIntegrationFrequency();
+        final String getReleaseFrequency = tester.getReleaseFrequency();
+        final String getReleaseStabilizationPeriod = tester.getReleaseStabilizationPeriod();
+        final String getMeanTimeToRepair = tester.getMeanTimeToRepair();
+        final String getCycleTime = tester.getCycleTime();
+        final String getLeadTime = tester.getLeadTime();
+        final String getTimeToLearn = tester.getTimeToLearn();
+        final Integer getIdIteration = tester.getIdIteration();
+        final Integer getIdTeam = tester.getIdTeam();
+
+
 
         // Assert
         assertEquals(id, getId, "setId must be my 42");
-    }
-
-    @Test
-    void getAndSetBuildAndIntegrationFrequency() {
-        // Arrange
-        final String buildAndIntegrationFrequency = "10 by week";
-
-        //Act
-        tester.setBuildAndIntegrationFrequency(buildAndIntegrationFrequency);
-        final String getBuildAndIntegrationFrequency = tester.getBuildAndIntegrationFrequency();
-
-        // Assert
         assertEquals(buildAndIntegrationFrequency, getBuildAndIntegrationFrequency, "setBuildAndIntegrationFrequency must be 10 by week");
-    }
-
-    @Test
-    void getAndSetReleaseFrequency() {
-        // Arrange
-        final String releaseFrequency = "Monthly";
-
-        //Act
-        tester.setReleaseFrequency(releaseFrequency);
-        final String getReleaseFrequency = tester.getReleaseFrequency();
-
-        // Assert
         assertEquals(releaseFrequency, getReleaseFrequency, "setReleaseFrequency must be Monthly");
-    }
-
-    @Test
-    void getAndSetReleaseStabilizationPeriod() {
-        // Arrange
-        final String releaseStabilizationPeriod = "3 days";
-
-        //Act
-        tester.setReleaseStabilizationPeriod(releaseStabilizationPeriod);
-        final String getReleaseStabilizationPeriod = tester.getReleaseStabilizationPeriod();
-
-        // Assert
         assertEquals(releaseStabilizationPeriod, getReleaseStabilizationPeriod, "setReleaseStabilizationPeriod must be 3 days");
-    }
-
-    @Test
-    void getAndSetMeanTimeToRepair() {
-        // Arrange
-        final String meanTimeToRepair = "3/5";
-
-        //Act
-        tester.setMeanTimeToRepair(meanTimeToRepair);
-        final String getMeanTimeToRepair = tester.getMeanTimeToRepair();
-
-        // Assert
         assertEquals(meanTimeToRepair, getMeanTimeToRepair, "setMeanTimeToRepair must be 3/5");
-    }
-
-    @Test
-    void getAndSetCycleTime() {
-        // Arrange
-        final String cycleTime = "1 month";
-
-        //Act
-        tester.setCycleTime(cycleTime);
-        final String getCycleTime = tester.getCycleTime();
-
-        // Assert
         assertEquals(cycleTime, getCycleTime, "setCycleTime must be 1 month");
-    }
-
-    @Test
-    void getAndSetLeadTime() {
-        // Arrange
-        final String leadTime = "3 months";
-
-        //Act
-        tester.setLeadTime(leadTime);
-        final String getLeadTime = tester.getLeadTime();
-
-        // Assert
         assertEquals(leadTime, getLeadTime, "setLeadTime must be 3 months");
-    }
-
-    @Test
-    void getAndSetTimeToLearn() {
-        // Arrange
-        final String timeToLearn = "1 month";
-
-        //Act
-        tester.setTimeToLearn(timeToLearn);
-        final String getTimeToLearn = tester.getTimeToLearn();
-
-        // Assert
         assertEquals(timeToLearn, getTimeToLearn, "setTimeToLearn must be 1 month");
+        assertEquals(idIteration, getIdIteration, "setIdTeam must be my 2");
+        assertEquals(idTeam, getIdTeam, "setIdIteration must be my 6");
+
+
     }
 
 }

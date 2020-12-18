@@ -24,8 +24,8 @@ class EntityKVACurrentValueTest {
         assertNull(tester.getEntityEmployeeSatisfaction(), "getEntityEmployeeSatisfaction must be null");
         assertNull(tester.getEntityProductCostRatio(), "getEntityProductCostRatio must be null");
         assertNull(tester.getEntityRevenuePerEmployee(), "getEntityRevenuePerEmployee must be null");
-        assertNull(tester.getEntityIdIteration(), "getEntityIdIteration must be null");
-        assertNull(tester.getEntityIdTeam(), "getEntityIdTeam must be null");
+        assertNull(tester.getEntityIdIterationCV(), "getEntityIdIteration must be null");
+        assertNull(tester.getEntityIdTeamCV(), "getEntityIdTeam must be null");
     }
 
     @Test
@@ -38,8 +38,8 @@ class EntityKVACurrentValueTest {
         final String entityEmployeeSatisfaction = "7";
         final String entityProductCostRatio = "134";
         final String entityRevenuePerEmployee = "10000000";
-        final Integer idTeam = 1;
-        final Integer idIteration = 2;
+        final Integer idTeamCV = 1;
+        final Integer idIterationCV = 2;
 
         //Act
         tester.setEntityId(id);
@@ -49,8 +49,8 @@ class EntityKVACurrentValueTest {
         tester.setEntityEmployeeSatisfaction(entityEmployeeSatisfaction);
         tester.setEntityProductCostRatio(entityProductCostRatio);
         tester.setEntityRevenuePerEmployee(entityRevenuePerEmployee);
-        tester.setEntityIdTeam(idTeam);
-        tester.setEntityIdIteration(idIteration);
+        tester.setEntityIdTeamCV(idTeamCV);
+        tester.setEntityIdIterationCV(idIterationCV);
 
         final Integer getEntityId = tester.getEntityId();
         final String getEntityCustomerSatisfaction = tester.getEntityCustomerSatisfaction();
@@ -59,8 +59,8 @@ class EntityKVACurrentValueTest {
         final String getEntityEmployeeSatisfaction = tester.getEntityEmployeeSatisfaction();
         final String getEntityProductCostRatio = tester.getEntityProductCostRatio();
         final String getEntityRevenuePerEmployee = tester.getEntityRevenuePerEmployee();
-        final Integer getEntityIdTeam = tester.getEntityIdTeam();
-        final Integer getEntityIdIteration = tester.getEntityIdIteration();
+        final Integer getEntityIdTeam = tester.getEntityIdTeamCV();
+        final Integer getEntityIdIteration = tester.getEntityIdIterationCV();
 
 
         // Assert
@@ -71,8 +71,8 @@ class EntityKVACurrentValueTest {
         assertEquals(entityEmployeeSatisfaction, getEntityEmployeeSatisfaction, "setEntityEmployeeSatisfaction must be 7");
         assertEquals(entityProductCostRatio, getEntityProductCostRatio, "setEntityProductCostRatio must be 134");
         assertEquals(entityRevenuePerEmployee, getEntityRevenuePerEmployee, "setEntityRevenuePerEmployee must be 10000000");
-        assertEquals(idTeam, getEntityIdTeam, "setEntityIdTeam must be 1");
-        assertEquals(idIteration, getEntityIdIteration, "setEntityIdIteration must be 2");
+        assertEquals(idTeamCV, getEntityIdTeam, "setEntityIdTeam must be 1");
+        assertEquals(idIterationCV, getEntityIdIteration, "setEntityIdIteration must be 2");
     }
 
 }

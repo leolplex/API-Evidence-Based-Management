@@ -10,6 +10,9 @@ public class KVATimeToMarket {
     private String cycleTime;
     private String leadTime;
     private String timeToLearn;
+    private Integer idTeam;
+    private Integer idIteration;
+
 
     public Integer getId() {
         return id;
@@ -73,5 +76,21 @@ public class KVATimeToMarket {
 
     public void setTimeToLearn(String timeToLearn) {
         this.timeToLearn = timeToLearn;
+    }
+
+    public Integer getIdTeam() {
+        return idTeam;
+    }
+
+    public void setIdTeam(Integer idTeam) {
+        this.idTeam = idTeam;
+    }
+
+    public Integer getIdIteration() {
+        return idIteration;
+    }
+
+    public void setIdIteration(Integer idIteration) {
+        this.idIteration = idIteration;
     }
 }

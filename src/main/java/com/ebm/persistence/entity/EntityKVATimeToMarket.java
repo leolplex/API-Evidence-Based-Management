@@ -31,8 +31,14 @@ public class EntityKVATimeToMarket {
     @Column(name = "time_to_learn")
     private String entityTimeToLearn;
 
+    @Column(name = "id_team")
+    private Integer entityIdTeamT2M;
+
+    @Column(name = "id_iteration")
+    private Integer entityIdIterationT2M;
+
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_iteration", referencedColumnName = "id")
+    @JoinColumn(name = "id_iteration", referencedColumnName = "id", insertable = false, updatable = false)
     private EntityIteration entityIteration;
 
     public Integer getEntityId() {
@@ -105,5 +111,21 @@ public class EntityKVATimeToMarket {
 
     public void setEntityIteration(EntityIteration entityIteration) {
         this.entityIteration = entityIteration;
+    }
+
+    public Integer getEntityIdTeamT2M() {
+        return entityIdTeamT2M;
+    }
+
+    public void setEntityIdTeamT2M(Integer entityIdTeamT2M) {
+        this.entityIdTeamT2M = entityIdTeamT2M;
+    }
+
+    public Integer getEntityIdIterationT2M() {
+        return entityIdIterationT2M;
+    }
+
+    public void setEntityIdIterationT2M(Integer entityIdIterationT2M) {
+        this.entityIdIterationT2M = entityIdIterationT2M;
     }
 }

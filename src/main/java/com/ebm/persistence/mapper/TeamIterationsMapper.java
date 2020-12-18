@@ -51,6 +51,8 @@ public interface TeamIterationsMapper {
     @Mapping(source = "entityIteration.entityKVATimeToMarket.entityCycleTime", target = "kva.kvaTimeToMarket.cycleTime")
     @Mapping(source = "entityIteration.entityKVATimeToMarket.entityLeadTime", target = "kva.kvaTimeToMarket.leadTime")
     @Mapping(source = "entityIteration.entityKVATimeToMarket.entityTimeToLearn", target = "kva.kvaTimeToMarket.timeToLearn")
+    @Mapping(source = "entityIteration.entityKVATimeToMarket.entityIdTeamT2M", target = "kva.kvaTimeToMarket.idTeam")
+    @Mapping(source = "entityIteration.entityKVATimeToMarket.entityIdIterationT2M", target = "kva.kvaTimeToMarket.idIteration")
     Iteration toTeamIteration(EntityIterationTeam iteration);
 
 

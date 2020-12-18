@@ -26,10 +26,10 @@ public class EntityKVACurrentValue {
     private String entityCustomerUsageIndex;
 
     @Column(name = "id_iteration")
-    private Integer entityIdIteration;
+    private Integer entityIdIterationCV;
 
     @Column(name = "id_team")
-    private Integer entityIdTeam;
+    private Integer entityIdTeamCV;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_iteration", referencedColumnName = "id", insertable = false, updatable = false)
@@ -83,27 +83,27 @@ public class EntityKVACurrentValue {
         this.entityCustomerUsageIndex = entityCustomerUsageIndex;
     }
 
-    public Integer getEntityIdIteration() {
-        return entityIdIteration;
-    }
-
-    public void setEntityIdIteration(Integer entityIdIteration) {
-        this.entityIdIteration = entityIdIteration;
-    }
-
-    public Integer getEntityIdTeam() {
-        return entityIdTeam;
-    }
-
-    public void setEntityIdTeam(Integer entityIdTeam) {
-        this.entityIdTeam = entityIdTeam;
-    }
-
     public EntityIteration getEntityIteration() {
         return entityIteration;
     }
 
     public void setEntityIteration(EntityIteration entityIteration) {
         this.entityIteration = entityIteration;
+    }
+
+    public Integer getEntityIdIterationCV() {
+        return entityIdIterationCV;
+    }
+
+    public void setEntityIdIterationCV(Integer entityIdIterationCV) {
+        this.entityIdIterationCV = entityIdIterationCV;
+    }
+
+    public Integer getEntityIdTeamCV() {
+        return entityIdTeamCV;
+    }
+
+    public void setEntityIdTeamCV(Integer entityIdTeamCV) {
+        this.entityIdTeamCV = entityIdTeamCV;
     }
 }

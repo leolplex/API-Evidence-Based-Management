@@ -15,8 +15,8 @@ public interface KVACurrentValueMapper {
     @Mapping(source = "entityEmployeeSatisfaction", target = "employeeSatisfaction")
     @Mapping(source = "entityCustomerSatisfaction", target = "customerSatisfaction")
     @Mapping(source = "entityCustomerUsageIndex", target = "customerUsageIndex")
-    @Mapping(source = "entityIdIteration", target = "idIteration")
-    @Mapping(source = "entityIdTeam", target = "idTeam")
+    @Mapping(source = "entityIdIterationCV", target = "idIteration")
+    @Mapping(source = "entityIdTeamCV", target = "idTeam")
     KVACurrentValue toKVACurrentValue(EntityKVACurrentValue entityKVACurrentValue);
 
     @InheritInverseConfiguration

@@ -13,11 +13,11 @@ import java.util.Optional;
 @Repository
 public class KVACurrentValuePersistenceRepository implements KVACurrentValueRepository {
     @Autowired
-    private  final KVACurrentValueCrudRepository kvaCurrentValueCrudRepository;
+    private final KVACurrentValueCrudRepository kvaCurrentValueCrudRepository;
     @Autowired
     private final KVACurrentValueMapper mapper;
 
-    KVACurrentValuePersistenceRepository( KVACurrentValueCrudRepository kvaCurrentValueCrudRepository, KVACurrentValueMapper kvaCurrentValueMapper){
+    KVACurrentValuePersistenceRepository(KVACurrentValueCrudRepository kvaCurrentValueCrudRepository, KVACurrentValueMapper kvaCurrentValueMapper) {
         this.kvaCurrentValueCrudRepository = kvaCurrentValueCrudRepository;
         this.mapper = kvaCurrentValueMapper;
     }
@@ -30,22 +30,22 @@ public class KVACurrentValuePersistenceRepository implements KVACurrentValueRepo
 
     @Override
     public Optional<KVACurrentValue> update(int idKVACurrentValue, KVACurrentValue kvaCurrentValue) {
-        return kvaCurrentValueCrudRepository.findById(idKVACurrentValue).map(kvaCurrentValueDB->{
-            if (kvaCurrentValue.getRevenuePerEmployee() != null && !kvaCurrentValue.getRevenuePerEmployee().isEmpty()){
+        return kvaCurrentValueCrudRepository.findById(idKVACurrentValue).map(kvaCurrentValueDB -> {
+            if (kvaCurrentValue.getRevenuePerEmployee() != null && !kvaCurrentValue.getRevenuePerEmployee().isEmpty()) {
                 kvaCurrentValueDB.setEntityRevenuePerEmployee(kvaCurrentValue.getRevenuePerEmployee());
             }
-            if (kvaCurrentValue.getProductCostRatio() != null && !kvaCurrentValue.getProductCostRatio().isEmpty()){
+            if (kvaCurrentValue.getProductCostRatio() != null && !kvaCurrentValue.getProductCostRatio().isEmpty()) {
                 kvaCurrentValueDB.setEntityProductCostRatio(kvaCurrentValue.getProductCostRatio());
             }
 
-            if (kvaCurrentValue.getEmployeeSatisfaction() != null && !kvaCurrentValue.getEmployeeSatisfaction().isEmpty()){
+            if (kvaCurrentValue.getEmployeeSatisfaction() != null && !kvaCurrentValue.getEmployeeSatisfaction().isEmpty()) {
                 kvaCurrentValueDB.setEntityEmployeeSatisfaction(kvaCurrentValue.getEmployeeSatisfaction());
             }
 
-            if (kvaCurrentValue.getCustomerSatisfaction() != null && !kvaCurrentValue.getCustomerSatisfaction().isEmpty()){
+            if (kvaCurrentValue.getCustomerSatisfaction() != null && !kvaCurrentValue.getCustomerSatisfaction().isEmpty()) {
                 kvaCurrentValueDB.setEntityCustomerSatisfaction(kvaCurrentValue.getCustomerSatisfaction());
             }
-            if (kvaCurrentValue.getCustomerUsageIndex() != null && !kvaCurrentValue.getCustomerUsageIndex().isEmpty()){
+            if (kvaCurrentValue.getCustomerUsageIndex() != null && !kvaCurrentValue.getCustomerUsageIndex().isEmpty()) {
                 kvaCurrentValueDB.setEntityCustomerUsageIndex(kvaCurrentValue.getCustomerUsageIndex());
             }
 
