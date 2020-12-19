@@ -18,8 +18,8 @@ public interface KVAAbilityToInnovateMapper {
     @Mapping(source = "entityProductionIncidentTrends", target = "productionIncidentTrends")
     @Mapping(source = "entityActiveCodeBranchesTimeSpentMergingCodeBetweenBranches", target = "activeCodeBranchesTimeSpentMergingCodeBetweenBranches")
     @Mapping(source = "entityTimeSpentContextSwitching", target = "timeSpentContextSwitching")
-    @Mapping(source = "entityIdIterationA2I", target = "idTeam")
-    @Mapping(source = "entityIdTeamA2I", target = "idIteration")
+    @Mapping(source = "entityIdTeamA2I", target = "idTeam")
+    @Mapping(source = "entityIdIterationA2I", target = "idIteration")
     KVAAbilityToInnovate toKVAAbilityToInnovate(EntityKVAAbilityToInnovate entityKVAAbilityToInnovate);
 
     @InheritInverseConfiguration
