@@ -37,13 +37,10 @@ public class KVAUnrealizedValuePersistenceRepository implements KVAUnrealizedVal
     public Optional<KVAUnrealizedValue> update(int idKVAUnrealizedValue, KVAUnrealizedValue kvaUnrealizedValue) {
         return kvaUnrealizedValueCrudRepository.findById(idKVAUnrealizedValue).map(kvaUnrealizedValueDB -> {
 
-            if (kvaUnrealizedValue.getMarketShare() != null && !kvaUnrealizedValue.getMarketShare().isEmpty()) {
-                kvaUnrealizedValueDB.setEntityMarketShare(kvaUnrealizedValue.getMarketShare());
-            }
-
-            if (kvaUnrealizedValue.getCustomerSatisfactionGap() != null && !kvaUnrealizedValue.getCustomerSatisfactionGap().isEmpty()) {
-                kvaUnrealizedValueDB.setEntityCustomerSatisfactionGap(kvaUnrealizedValue.getCustomerSatisfactionGap());
-            }
+            kvaUnrealizedValue.setId(kvaUnrealizedValueDB.getEntityId());
+            kvaUnrealizedValue.setIdIteration(kvaUnrealizedValueDB.getEntityIdIteration());
+            kvaUnrealizedValue.setIdTeam(kvaUnrealizedValueDB.getEntityIdTeam());
+            kvaUnrealizedValueDB = mapper.toKVAUnrealizedValueDomain(kvaUnrealizedValue);
 
             return mapper.toKVAUnrealizedValue(kvaUnrealizedValueCrudRepository.save(kvaUnrealizedValueDB));
         });

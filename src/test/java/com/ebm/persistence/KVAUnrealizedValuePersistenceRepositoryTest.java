@@ -67,6 +67,7 @@ class KVAUnrealizedValuePersistenceRepositoryTest {
         EntityKVAUnrealizedValue entityKVAUnrealizedValue = new EntityKVAUnrealizedValue();
         when(kvaUnrealizedValueCrudRepository.findById(1)).thenReturn(Optional.of(entityKVAUnrealizedValue));
         when(mapper.toKVAUnrealizedValue(entityKVAUnrealizedValue)).thenReturn(kvaUnrealizedValue);
+        when(mapper.toKVAUnrealizedValueDomain(kvaUnrealizedValue)).thenReturn(entityKVAUnrealizedValue);
         when(kvaUnrealizedValueCrudRepository.save(entityKVAUnrealizedValue)).thenReturn(entityKVAUnrealizedValue);
 
         assertEquals(Optional.of(kvaUnrealizedValue), tester.update(1, kvaUnrealizedValue), "update must be new KVAUnrealizedValue()");
@@ -82,6 +83,7 @@ class KVAUnrealizedValuePersistenceRepositoryTest {
 
         when(kvaUnrealizedValueCrudRepository.findById(1)).thenReturn(Optional.of(entityKVAUnrealizedValue));
         when(mapper.toKVAUnrealizedValue(entityKVAUnrealizedValue)).thenReturn(kvaUnrealizedValue);
+        when(mapper.toKVAUnrealizedValueDomain(kvaUnrealizedValue)).thenReturn(entityKVAUnrealizedValue);
         when(kvaUnrealizedValueCrudRepository.save(entityKVAUnrealizedValue)).thenReturn(entityKVAUnrealizedValue);
 
         assertEquals(Optional.of(kvaUnrealizedValue), tester.update(1, kvaUnrealizedValue), "update must be new KVAUnrealizedValue()");
@@ -95,6 +97,7 @@ class KVAUnrealizedValuePersistenceRepositoryTest {
         kvaUnrealizedValue.setMarketShare("My value");
         when(kvaUnrealizedValueCrudRepository.findById(1)).thenReturn(Optional.of(entityKVAUnrealizedValue));
         when(mapper.toKVAUnrealizedValue(entityKVAUnrealizedValue)).thenReturn(kvaUnrealizedValue);
+        when(mapper.toKVAUnrealizedValueDomain(kvaUnrealizedValue)).thenReturn(entityKVAUnrealizedValue);
         when(kvaUnrealizedValueCrudRepository.save(entityKVAUnrealizedValue)).thenReturn(entityKVAUnrealizedValue);
 
         assertEquals(Optional.of(kvaUnrealizedValue), tester.update(1, kvaUnrealizedValue), "update must be new KVAUnrealizedValue()");

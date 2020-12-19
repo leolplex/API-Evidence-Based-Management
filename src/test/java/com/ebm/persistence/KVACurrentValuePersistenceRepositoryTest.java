@@ -51,6 +51,7 @@ class KVACurrentValuePersistenceRepositoryTest {
         EntityKVACurrentValue entityKVACurrentValue = new EntityKVACurrentValue();
         when(kvaCurrentValueCrudRepository.findById(1)).thenReturn(Optional.of(entityKVACurrentValue));
         when(mapper.toKVACurrentValue(entityKVACurrentValue)).thenReturn(kvaCurrentValue);
+        when(mapper.toKVACurrentValueDomain(kvaCurrentValue)).thenReturn(entityKVACurrentValue);
         when(kvaCurrentValueCrudRepository.save(entityKVACurrentValue)).thenReturn(entityKVACurrentValue);
 
         assertEquals(Optional.of(kvaCurrentValue), tester.update(1, kvaCurrentValue), "update must be new KVAUnrealizedValue()");
@@ -71,6 +72,7 @@ class KVACurrentValuePersistenceRepositoryTest {
 
         when(kvaCurrentValueCrudRepository.findById(1)).thenReturn(Optional.of(entityKVACurrentValue));
         when(mapper.toKVACurrentValue(entityKVACurrentValue)).thenReturn(kvaCurrentValue);
+        when(mapper.toKVACurrentValueDomain(kvaCurrentValue)).thenReturn(entityKVACurrentValue);
         when(kvaCurrentValueCrudRepository.save(entityKVACurrentValue)).thenReturn(entityKVACurrentValue);
 
         assertEquals(Optional.of(kvaCurrentValue), tester.update(1, kvaCurrentValue), "update must be new KVAUnrealizedValue()");
@@ -102,6 +104,7 @@ class KVACurrentValuePersistenceRepositoryTest {
 
         when(kvaCurrentValueCrudRepository.findById(1)).thenReturn(Optional.of(entityKVACurrentValue));
         when(mapper.toKVACurrentValue(entityKVACurrentValue)).thenReturn(kvaCurrentValue);
+        when(mapper.toKVACurrentValueDomain(kvaCurrentValue)).thenReturn(entityKVACurrentValue);
         when(kvaCurrentValueCrudRepository.save(entityKVACurrentValue)).thenReturn(entityKVACurrentValue);
 
         assertEquals(Optional.of(kvaCurrentValue), tester.update(1, kvaCurrentValue), "update must be new KVAUnrealizedValue()");

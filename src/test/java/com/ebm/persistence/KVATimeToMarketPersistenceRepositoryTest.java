@@ -48,6 +48,7 @@ class KVATimeToMarketPersistenceRepositoryTest {
         EntityKVATimeToMarket entityKVATimeToMarket = new EntityKVATimeToMarket();
         when(kvaTimeToMarketCrudRepository.findById(1)).thenReturn(Optional.of(entityKVATimeToMarket));
         when(mapper.toKVATimeToMarket(entityKVATimeToMarket)).thenReturn(kvaTimeToMarket);
+        when(mapper.toKVATimeToMarketDomain(kvaTimeToMarket)).thenReturn(entityKVATimeToMarket);
         when(kvaTimeToMarketCrudRepository.save(entityKVATimeToMarket)).thenReturn(entityKVATimeToMarket);
 
         assertEquals(Optional.of(kvaTimeToMarket), tester.update(1, kvaTimeToMarket), "update must be new KVATimeToMarket()");
@@ -70,6 +71,7 @@ class KVATimeToMarketPersistenceRepositoryTest {
 
         when(kvaTimeToMarketCrudRepository.findById(1)).thenReturn(Optional.of(entityKVATimeToMarket));
         when(mapper.toKVATimeToMarket(entityKVATimeToMarket)).thenReturn(kvaTimeToMarket);
+        when(mapper.toKVATimeToMarketDomain(kvaTimeToMarket)).thenReturn(entityKVATimeToMarket);
         when(kvaTimeToMarketCrudRepository.save(entityKVATimeToMarket)).thenReturn(entityKVATimeToMarket);
 
         assertEquals(Optional.of(kvaTimeToMarket), tester.update(1, kvaTimeToMarket), "update must be new KVATimeToMarket()");
@@ -103,6 +105,7 @@ class KVATimeToMarketPersistenceRepositoryTest {
 
         when(kvaTimeToMarketCrudRepository.findById(1)).thenReturn(Optional.of(entityKVATimeToMarket));
         when(mapper.toKVATimeToMarket(entityKVATimeToMarket)).thenReturn(kvaTimeToMarket);
+        when(mapper.toKVATimeToMarketDomain(kvaTimeToMarket)).thenReturn(entityKVATimeToMarket);
         when(kvaTimeToMarketCrudRepository.save(entityKVATimeToMarket)).thenReturn(entityKVATimeToMarket);
 
         assertEquals(Optional.of(kvaTimeToMarket), tester.update(1, kvaTimeToMarket), "update must be new KVATimeToMarket()");

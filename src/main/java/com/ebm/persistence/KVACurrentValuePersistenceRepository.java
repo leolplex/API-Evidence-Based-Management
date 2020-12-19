@@ -31,23 +31,12 @@ public class KVACurrentValuePersistenceRepository implements KVACurrentValueRepo
     @Override
     public Optional<KVACurrentValue> update(int idKVACurrentValue, KVACurrentValue kvaCurrentValue) {
         return kvaCurrentValueCrudRepository.findById(idKVACurrentValue).map(kvaCurrentValueDB -> {
-            if (kvaCurrentValue.getRevenuePerEmployee() != null && !kvaCurrentValue.getRevenuePerEmployee().isEmpty()) {
-                kvaCurrentValueDB.setEntityRevenuePerEmployee(kvaCurrentValue.getRevenuePerEmployee());
-            }
-            if (kvaCurrentValue.getProductCostRatio() != null && !kvaCurrentValue.getProductCostRatio().isEmpty()) {
-                kvaCurrentValueDB.setEntityProductCostRatio(kvaCurrentValue.getProductCostRatio());
-            }
 
-            if (kvaCurrentValue.getEmployeeSatisfaction() != null && !kvaCurrentValue.getEmployeeSatisfaction().isEmpty()) {
-                kvaCurrentValueDB.setEntityEmployeeSatisfaction(kvaCurrentValue.getEmployeeSatisfaction());
-            }
+            kvaCurrentValue.setId(kvaCurrentValueDB.getEntityId());
+            kvaCurrentValue.setIdIteration(kvaCurrentValueDB.getEntityIdIterationCV());
+            kvaCurrentValue.setIdTeam(kvaCurrentValueDB.getEntityIdTeamCV());
 
-            if (kvaCurrentValue.getCustomerSatisfaction() != null && !kvaCurrentValue.getCustomerSatisfaction().isEmpty()) {
-                kvaCurrentValueDB.setEntityCustomerSatisfaction(kvaCurrentValue.getCustomerSatisfaction());
-            }
-            if (kvaCurrentValue.getCustomerUsageIndex() != null && !kvaCurrentValue.getCustomerUsageIndex().isEmpty()) {
-                kvaCurrentValueDB.setEntityCustomerUsageIndex(kvaCurrentValue.getCustomerUsageIndex());
-            }
+            kvaCurrentValueDB = mapper.toKVACurrentValueDomain(kvaCurrentValue);
 
             return mapper.toKVACurrentValue((kvaCurrentValueCrudRepository.save(kvaCurrentValueDB)));
         });

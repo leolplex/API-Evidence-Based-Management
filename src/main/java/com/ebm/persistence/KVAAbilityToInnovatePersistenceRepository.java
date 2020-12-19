@@ -42,8 +42,5 @@ public class KVAAbilityToInnovatePersistenceRepository implements KVAAbilityToIn
         });
     }
 
-    private boolean isEmptyOrNull(String value) {
-        return value != null && !value.isEmpty();
-    }
 
 }

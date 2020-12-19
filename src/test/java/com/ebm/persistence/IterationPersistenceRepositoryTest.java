@@ -140,6 +140,8 @@ class IterationPersistenceRepositoryTest {
         when(iterationCrudRepository.findById(1)).thenReturn(iteration);
         when(iterationCrudRepository.save(iteration.get())).thenReturn(iteration.get());
         when(mapper.toIteration(iteration.get())).thenReturn(iterationDomain.get());
+        when(mapper.toIterationDomain(iterationDomain.get())).thenReturn(iteration.get());
+
 
         assertEquals(iterationDomain, tester.update(1, iterationDomain.get()), "update must be new instance Iteration");
     }
@@ -152,6 +154,7 @@ class IterationPersistenceRepositoryTest {
         when(iterationCrudRepository.findById(1)).thenReturn(iteration);
         when(iterationCrudRepository.save(iteration.get())).thenReturn(iteration.get());
         when(mapper.toIteration(iteration.get())).thenReturn(iterationDomain.get());
+        when(mapper.toIterationDomain(iterationDomain.get())).thenReturn(iteration.get());
 
         assertEquals(iterationDomain, tester.update(1, iterationDomain.get()), "update must be new instance Iteration");
     }
@@ -168,6 +171,7 @@ class IterationPersistenceRepositoryTest {
         when(iterationCrudRepository.findById(1)).thenReturn(iteration);
         when(iterationCrudRepository.save(iteration.get())).thenReturn(iteration.get());
         when(mapper.toIteration(iteration.get())).thenReturn(iterationDomain.get());
+        when(mapper.toIterationDomain(iterationDomain.get())).thenReturn(iteration.get());
 
         assertEquals(iterationDomain, tester.update(1, iterationDomain.get()), "update must be new instance Iteration");
     }

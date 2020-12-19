@@ -48,7 +48,7 @@ public class IterationPersistenceRepository implements IterationRepository {
         EntityIteration iteration = mapper.toIterationDomain(iterationDomain);
         Iteration entitySaved = mapper.toIteration(iterationCrudRepository.save(iteration));
 
-        if (entitySaved!=null){
+        if (entitySaved != null) {
             EntityIterationTeam entityIterationTeam = new EntityIterationTeam();
 
             EntityIterationTeamPK entityIterationTeamPK = new EntityIterationTeamPK();
@@ -66,27 +66,9 @@ public class IterationPersistenceRepository implements IterationRepository {
     public Optional<Iteration> update(int idIteration, Iteration iteration) {
         return iterationCrudRepository.findById(idIteration).map(iterationDB -> {
 
-
-            if (iteration.getGoal() != null && !iteration.getGoal().isEmpty()) {
-                iterationDB.setEntityGoal(iteration.getGoal());
-            }
-
-            if (iteration.getStartDate() != null) {
-                iterationDB.setEntityStartDate(iteration.getStartDate());
-            }
-
-            if (iteration.getEndDate() != null) {
-                iterationDB.setEntityEndDate(iteration.getEndDate());
-            }
-
-            if (iteration.getState() != null && !iteration.getState().isEmpty()) {
-                iterationDB.setEntityState(iteration.getState());
-            }
-
-            if (iteration.getName() != null && !iteration.getName().isEmpty()) {
-                iterationDB.setEntityName(iteration.getName());
-            }
-
+            iteration.setId(iterationDB.getEntityId());
+            iteration.setIdTeam(iterationDB.getEntityIdTeam());
+            iterationDB = mapper.toIterationDomain(iteration);
 
             return mapper.toIteration(iterationCrudRepository.save(iterationDB));
         });

@@ -31,34 +31,13 @@ public class KVATimeToMarketPersistenceRepository implements KVATimeToMarketRepo
     @Override
     public Optional<KVATimeToMarket> update(int idKVATimeToMarket, KVATimeToMarket kvaTimeToMarket) {
         return kvaTimeToMarketCrudRepository.findById(idKVATimeToMarket).map(kvaTimeToMarketDB -> {
-            if (isEmptyOrNull(kvaTimeToMarket.getBuildAndIntegrationFrequency())) {
-                kvaTimeToMarketDB.setEntityBuildAndIntegrationFrequency(kvaTimeToMarket.getBuildAndIntegrationFrequency());
-            }
-            if (isEmptyOrNull(kvaTimeToMarket.getReleaseFrequency())) {
-                kvaTimeToMarketDB.setEntityReleaseFrequency(kvaTimeToMarket.getReleaseFrequency());
-            }
-            if (isEmptyOrNull(kvaTimeToMarket.getReleaseStabilizationPeriod())) {
-                kvaTimeToMarketDB.setEntityReleaseStabilizationPeriod(kvaTimeToMarket.getReleaseStabilizationPeriod());
-            }
-            if (isEmptyOrNull(kvaTimeToMarket.getMeanTimeToRepair())) {
-                kvaTimeToMarketDB.setEntityMeanTimeToRepair(kvaTimeToMarket.getMeanTimeToRepair());
-            }
-            if (isEmptyOrNull(kvaTimeToMarket.getCycleTime())) {
-                kvaTimeToMarketDB.setEntityCycleTime(kvaTimeToMarket.getCycleTime());
-            }
-            if (isEmptyOrNull(kvaTimeToMarket.getLeadTime())) {
-                kvaTimeToMarketDB.setEntityLeadTime(kvaTimeToMarket.getLeadTime());
-            }
-            if (isEmptyOrNull(kvaTimeToMarket.getTimeToLearn())) {
-                kvaTimeToMarketDB.setEntityTimeToLearn(kvaTimeToMarket.getTimeToLearn());
-            }
+            kvaTimeToMarket.setId(kvaTimeToMarketDB.getEntityId());
+            kvaTimeToMarket.setIdIteration(kvaTimeToMarketDB.getEntityIdIterationT2M());
+            kvaTimeToMarket.setIdTeam(kvaTimeToMarketDB.getEntityIdTeamT2M());
+            kvaTimeToMarketDB = mapper.toKVATimeToMarketDomain(kvaTimeToMarket);
 
             return mapper.toKVATimeToMarket((kvaTimeToMarketCrudRepository.save(kvaTimeToMarketDB)));
         });
-    }
-
-    private boolean isEmptyOrNull(String value) {
-        return value != null && !value.isEmpty();
     }
 
 }
