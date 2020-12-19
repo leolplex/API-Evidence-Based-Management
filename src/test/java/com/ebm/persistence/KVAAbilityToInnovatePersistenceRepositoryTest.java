@@ -47,6 +47,7 @@ class KVAAbilityToInnovatePersistenceRepositoryTest {
         KVAAbilityToInnovate kvaAbilityToInnovate = new KVAAbilityToInnovate();
         EntityKVAAbilityToInnovate entityKVAAbilityToInnovate = new EntityKVAAbilityToInnovate();
         when(kvaAbilityToInnovateCrudRepository.findById(1)).thenReturn(Optional.of(entityKVAAbilityToInnovate));
+        when(mapper.toKVAAbilityToInnovateDomain(kvaAbilityToInnovate)).thenReturn(entityKVAAbilityToInnovate);
         when(mapper.toKVAAbilityToInnovate(entityKVAAbilityToInnovate)).thenReturn(kvaAbilityToInnovate);
         when(kvaAbilityToInnovateCrudRepository.save(entityKVAAbilityToInnovate)).thenReturn(entityKVAAbilityToInnovate);
 
@@ -71,6 +72,7 @@ class KVAAbilityToInnovatePersistenceRepositoryTest {
         kvaAbilityToInnovate.setIdIteration(null);
 
         when(kvaAbilityToInnovateCrudRepository.findById(1)).thenReturn(Optional.of(entityKVAAbilityToInnovate));
+        when(mapper.toKVAAbilityToInnovateDomain(kvaAbilityToInnovate)).thenReturn(entityKVAAbilityToInnovate);
         when(mapper.toKVAAbilityToInnovate(entityKVAAbilityToInnovate)).thenReturn(kvaAbilityToInnovate);
         when(kvaAbilityToInnovateCrudRepository.save(entityKVAAbilityToInnovate)).thenReturn(entityKVAAbilityToInnovate);
 
@@ -95,6 +97,7 @@ class KVAAbilityToInnovatePersistenceRepositoryTest {
         kvaAbilityToInnovate.setIdIteration(6);
 
         when(kvaAbilityToInnovateCrudRepository.findById(1)).thenReturn(Optional.of(entityKVAAbilityToInnovate));
+        when(mapper.toKVAAbilityToInnovateDomain(kvaAbilityToInnovate)).thenReturn(entityKVAAbilityToInnovate);
         when(mapper.toKVAAbilityToInnovate(entityKVAAbilityToInnovate)).thenReturn(kvaAbilityToInnovate);
         when(kvaAbilityToInnovateCrudRepository.save(entityKVAAbilityToInnovate)).thenReturn(entityKVAAbilityToInnovate);
 

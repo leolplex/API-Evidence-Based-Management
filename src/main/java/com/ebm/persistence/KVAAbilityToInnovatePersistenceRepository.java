@@ -32,33 +32,10 @@ public class KVAAbilityToInnovatePersistenceRepository implements KVAAbilityToIn
     public Optional<KVAAbilityToInnovate> update(int idKVAAbilityToInnovate, KVAAbilityToInnovate kvaAbilityToInnovate) {
         return kvaAbilityToInnovateCrudRepository.findById(idKVAAbilityToInnovate).map(kvaAbilityToInnovateDB -> {
 
-            if (isEmptyOrNull(kvaAbilityToInnovate.getFeatureUsageIndex())) {
-                kvaAbilityToInnovateDB.setEntityFeatureUsageIndex(kvaAbilityToInnovate.getFeatureUsageIndex());
-            }
-            if (isEmptyOrNull(kvaAbilityToInnovate.getInnovationRate())) {
-                kvaAbilityToInnovateDB.setEntityInnovationRate(kvaAbilityToInnovate.getInnovationRate());
-            }
-            if (isEmptyOrNull(kvaAbilityToInnovate.getDefectTrends())) {
-                kvaAbilityToInnovateDB.setEntityDefectTrends(kvaAbilityToInnovate.getDefectTrends());
-            }
-            if (isEmptyOrNull(kvaAbilityToInnovate.getOnProductIndex())) {
-                kvaAbilityToInnovateDB.setEntityOnProductIndex(kvaAbilityToInnovate.getOnProductIndex());
-            }
-            if (isEmptyOrNull(kvaAbilityToInnovate.getInstalledVersionIndex())) {
-                kvaAbilityToInnovateDB.setEntityInstalledVersionIndex(kvaAbilityToInnovate.getInstalledVersionIndex());
-            }
-            if (isEmptyOrNull(kvaAbilityToInnovate.getTechnicalDebt())) {
-                kvaAbilityToInnovateDB.setEntityTechnicalDebt(kvaAbilityToInnovate.getTechnicalDebt());
-            }
-            if (isEmptyOrNull(kvaAbilityToInnovate.getProductionIncidentTrends())) {
-                kvaAbilityToInnovateDB.setEntityProductionIncidentTrends(kvaAbilityToInnovate.getProductionIncidentTrends());
-            }
-            if (isEmptyOrNull(kvaAbilityToInnovate.getActiveCodeBranchesTimeSpentMergingCodeBetweenBranches())) {
-                kvaAbilityToInnovateDB.setEntityActiveCodeBranchesTimeSpentMergingCodeBetweenBranches(kvaAbilityToInnovate.getActiveCodeBranchesTimeSpentMergingCodeBetweenBranches());
-            }
-            if (isEmptyOrNull(kvaAbilityToInnovate.getTimeSpentContextSwitching())) {
-                kvaAbilityToInnovateDB.setEntityTimeSpentContextSwitching(kvaAbilityToInnovate.getTimeSpentContextSwitching());
-            }
+            kvaAbilityToInnovate.setId(kvaAbilityToInnovateDB.getEntityId());
+            kvaAbilityToInnovate.setIdIteration(kvaAbilityToInnovateDB.getEntityIdIterationA2I());
+            kvaAbilityToInnovate.setIdTeam(kvaAbilityToInnovateDB.getEntityIdTeamA2I());
+            kvaAbilityToInnovateDB = mapper.toKVAAbilityToInnovateDomain(kvaAbilityToInnovate);
 
 
             return mapper.toKVAAbilityToInnovate(kvaAbilityToInnovateCrudRepository.save(kvaAbilityToInnovateDB));
