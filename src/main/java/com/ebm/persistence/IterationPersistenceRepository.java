@@ -44,6 +44,11 @@ public class IterationPersistenceRepository implements IterationRepository {
     }
 
     @Override
+    public Iteration getLastIteration(int idTeam) {
+        return mapper.toIteration(iterationCrudRepository.getLastIteration(idTeam));
+    }
+
+    @Override
     public Iteration save(Iteration iterationDomain) {
         EntityIteration iteration = mapper.toIterationDomain(iterationDomain);
         Iteration entitySaved = mapper.toIteration(iterationCrudRepository.save(iteration));

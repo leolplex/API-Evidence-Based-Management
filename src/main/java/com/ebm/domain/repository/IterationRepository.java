@@ -10,6 +10,8 @@ public interface IterationRepository {
 
     Optional<Iteration> getIterationById(int idIteration);
 
+    Iteration getLastIteration(int idTeam);
+
     Iteration save(Iteration iteration);
 
     Optional<Iteration> update(int idIteration, Iteration iteration);

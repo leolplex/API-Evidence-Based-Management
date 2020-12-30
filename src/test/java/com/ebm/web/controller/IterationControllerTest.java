@@ -84,4 +84,18 @@ class IterationControllerTest {
         assertEquals(new ResponseEntity<>(iteration, HttpStatus.OK), tester.update(1, iteration), "update must be new instance Iteration");
     }
 
+    @Test
+    void TestGetLastIterationWithoutData() {
+        assertEquals(new ResponseEntity<>(HttpStatus.OK), tester.getLastIteration(1), "getLastIteration must be []");
+    }
+
+    @Test
+    void TestGetLastIterationWithData() {
+        Iteration iteration = new Iteration();
+
+        when(iterationService.getLastIteration(1)).thenReturn(iteration);
+
+        assertEquals(new ResponseEntity<>(iteration, HttpStatus.OK), tester.getLastIteration(1), "getLastIteration-1 must be new ResponseEntity with a value");
+    }
+
 }

@@ -176,4 +176,23 @@ class IterationPersistenceRepositoryTest {
         assertEquals(iterationDomain, tester.update(1, iterationDomain.get()), "update must be new instance Iteration");
     }
 
+
+    @Test
+    void TestGetIterationById() {
+        assertNull(tester.getLastIteration(1), "getLastIteration must be null");
+    }
+
+
+    @Test
+    void TestGetIterationByIdWithData() {
+        EntityIteration iteration = new EntityIteration();
+        Iteration iterationDomain = new Iteration();
+        when(iterationCrudRepository.getLastIteration(1)).thenReturn(iteration);
+        when(mapper.toIteration(iteration)).thenReturn(iterationDomain);
+
+        Iteration iterationResult = tester.getLastIteration(1);
+
+        assertEquals(iterationDomain, iterationResult, "getLastIteration must be new Iteration()");
+    }
+
 }

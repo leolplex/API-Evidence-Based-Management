@@ -25,6 +25,10 @@ public class IterationService {
         return iterationRepository.getIterationById(idIteration);
     }
 
+    public Iteration getLastIteration(int idTeam) {
+        return iterationRepository.getLastIteration(idTeam);
+    }
+
     public Iteration save(Iteration iteration) {
         return iterationRepository.save(iteration);
     }

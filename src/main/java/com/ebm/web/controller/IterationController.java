@@ -51,4 +51,12 @@ public class IterationController {
     public ResponseEntity<Iteration> update(@PathVariable("idIteration") int idIteration, @RequestBody Iteration iteration) {
         return iterationService.update(idIteration, iteration).map(iterationResponse -> new ResponseEntity<>(iterationResponse, HttpStatus.OK)).orElse(new ResponseEntity<>((HttpStatus.NOT_FOUND)));
     }
+
+
+    @GetMapping("/last/{idTeam}")
+    @ApiOperation("Get last iteration by team")
+    @ApiResponse(code = 200, message = "ok")
+    public ResponseEntity<Iteration> getLastIteration(@ApiParam(value = "The id of the team", required = true, example = "7") @PathVariable("idTeam") int idTeam) {
+        return new ResponseEntity<>(iterationService.getLastIteration(idTeam), HttpStatus.OK);
+    }
 }

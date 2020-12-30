@@ -46,12 +46,28 @@ class IterationServiceTest {
 
 
     @Test
+    void TestGetLastIteration() {
+        assertNull(tester.getLastIteration(1), "getLastIteration must be null");
+    }
+
+    @Test
+    void TestGetLastIterationWithData() {
+        Iteration iteration = new Iteration();
+        when(iterationRepository.getLastIteration(1)).thenReturn(iteration);
+
+        Iteration iterationResult = tester.getLastIteration(1);
+
+        assertEquals(iteration, iterationResult, "getLastIteration must have an iteration");
+    }
+
+
+    @Test
     void TestGetIterationByIdWithOutData() {
         assertEquals(Optional.empty(), tester.getIterationById(1), "getByTeam must be Optional.empty()");
     }
 
     @Test
-    void TestGetIterationByIdmWithData() {
+    void TestGetIterationByIdWithData() {
         Optional<Iteration> iterations = Optional.of(new Iteration());
         when(iterationRepository.getIterationById(1)).thenReturn(iterations);
 
