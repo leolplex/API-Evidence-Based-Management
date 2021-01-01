@@ -40,11 +40,12 @@ public class UsersController {
     private AuthenticationManager authenticationManager;
 
 
-    public UsersController(UsersService usersService, EBMUserDetailService ebmUserDetailService, JWTUtil jwtUtil, AuthenticationManager authenticationManager) {
+    public UsersController(UsersService usersService, EBMUserDetailService ebmUserDetailService, JWTUtil jwtUtil, AuthenticationManager authenticationManager, PasswordEncoder encoder) {
         this.usersService = usersService;
         this.userDetailService = ebmUserDetailService;
         this.jwtUtil = jwtUtil;
         this.authenticationManager = authenticationManager;
+        this.encoder = encoder;
     }
 
     @PostMapping("/signup")

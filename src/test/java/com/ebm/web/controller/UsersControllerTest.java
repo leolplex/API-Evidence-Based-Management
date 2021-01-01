@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Optional;
 
@@ -23,6 +24,7 @@ class UsersControllerTest {
     EBMUserDetailService ebmUserDetailService;
     JWTUtil jwtUtil;
     AuthenticationManager authenticationManager;
+    PasswordEncoder encoder;
 
     @BeforeEach()
     void initEach() {
@@ -30,7 +32,8 @@ class UsersControllerTest {
         ebmUserDetailService = Mockito.mock(EBMUserDetailService.class);
         jwtUtil = Mockito.mock(JWTUtil.class);
         authenticationManager = Mockito.mock(AuthenticationManager.class);
-        tester = new UsersController(usersService, ebmUserDetailService, jwtUtil, authenticationManager);
+        encoder = Mockito.mock(PasswordEncoder.class);
+        tester = new UsersController(usersService, ebmUserDetailService, jwtUtil, authenticationManager, encoder);
     }
 
     @Test
