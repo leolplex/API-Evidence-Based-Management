@@ -16,8 +16,12 @@ public class JWTUtil {
     @Value("${ebm.app.jwtSecret}")
     private String KEY;
 
-    JWTUtil(String key) {
-        this.KEY = key;
+    public String getKEY() {
+        return KEY;
+    }
+
+    public void setKEY(String KEY) {
+        this.KEY = KEY;
     }
 
     public String generateToken(UserDetails userDetails, Date dateNow, Date dateExpiration) {

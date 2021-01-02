@@ -33,7 +33,9 @@ class JWTUtilTest {
     @BeforeEach
     void initEach() {
         // Arrange
-        tester = new JWTUtil("Ph4nth3r4");
+        tester = new JWTUtil();
+        tester.setKEY("Ph4nth3r4");
+        tester.getKEY();
         usersRepository = Mockito.mock(UsersRepository.class);
         ebmUserDetailService = Mockito.mock(EBMUserDetailService.class);
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
