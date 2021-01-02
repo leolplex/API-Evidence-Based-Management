@@ -3,10 +3,7 @@ package com.ebm.web.controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Basic Controller which is called for unhandled errors
@@ -17,7 +14,7 @@ public class AppErrorController implements ErrorController {
     private final static String PATH = "/error";
 
     @Override
-    @RequestMapping(value = PATH, method = RequestMethod.GET)
+    @GetMapping(value = PATH)
     @ResponseBody
     public String getErrorPath() {
         return "No Mapping Found";
