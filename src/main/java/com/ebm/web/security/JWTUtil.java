@@ -14,21 +14,21 @@ import java.util.Date;
 @Component
 public class JWTUtil {
     @Value("${ebm.app.jwtSecret}")
-    private String KEY;
+    private String key;
 
-    public String getKEY() {
-        return KEY;
+    public String getKey() {
+        return key;
     }
 
-    public void setKEY(String KEY) {
-        this.KEY = KEY;
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String generateToken(UserDetails userDetails, Date dateNow, Date dateExpiration) {
         return Jwts.builder().setSubject(userDetails.getUsername())
                 .setIssuedAt(dateNow) // new Date()
                 .setExpiration(dateExpiration) // new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)
-                .signWith(SignatureAlgorithm.HS256, KEY).compact();
+                .signWith(SignatureAlgorithm.HS256, key).compact();
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {
@@ -55,7 +55,7 @@ public class JWTUtil {
 
     private Claims getClaims(String token) {
         try {
-            return Jwts.parser().setSigningKey(KEY).parseClaimsJws(token).getBody();
+            return Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();
         } catch (ExpiredJwtException e) {
 
             return new DefaultClaims();

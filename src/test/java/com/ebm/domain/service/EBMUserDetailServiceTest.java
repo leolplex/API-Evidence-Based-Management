@@ -12,7 +12,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-public class EBMUserDetailServiceTest {
+class EBMUserDetailServiceTest {
     EBMUserDetailService tester;
     UsersRepository usersRepository;
 
@@ -31,7 +31,7 @@ public class EBMUserDetailServiceTest {
 
         UserDetails result = tester.loadUserByUsername("myUser");
 
-        assertEquals(result.getUsername(), "myUser", "loadUserByUsername must contain myUser");
+        assertEquals("myUser", result.getUsername(), "loadUserByUsername must contain myUser");
     }
 
 }
