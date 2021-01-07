@@ -50,4 +50,19 @@ class UsersServiceTest {
         assertEquals(users, usersResult, "getUserById must have an user");
     }
 
+
+    @Test
+    void TestFindByUserNameWithOutData() {
+        assertEquals(Optional.empty(), tester.findByUserName("myusername"), "findByUserName must be Optional.empty()");
+    }
+
+    @Test
+    void TestFindByUserNameWithData() {
+        Optional<Users> users = Optional.of(new Users());
+        when(usersRepository.findByUserName("myuser")).thenReturn(users);
+
+        Optional<Users> usersResult = tester.findByUserName("myuser");
+
+        assertEquals(users, usersResult, "findByUserName must have an user");
+    }
 }

@@ -82,4 +82,11 @@ public class UsersController {
         }
 
     }
+
+    @GetMapping("/checkusername/{userName}")
+    @ApiOperation("Check unique username, true does not exist user, false exist user")
+    @ApiResponse(code = 200, message = "ok")
+    public ResponseEntity<Boolean> checkUserName(@ApiParam(value = "The username", required = true, example = "myusername") @PathVariable("userName") String userName) {
+        return new ResponseEntity<>(usersService.findByUserName(userName).isEmpty(), HttpStatus.OK);
+    }
 }

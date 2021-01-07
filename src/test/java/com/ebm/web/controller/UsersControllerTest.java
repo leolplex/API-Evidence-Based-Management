@@ -63,4 +63,17 @@ class UsersControllerTest {
         assertEquals(new ResponseEntity<>(users.get(), HttpStatus.OK), tester.getUserById(1), "getUserById-1 must be new ResponseEntity with a value");
     }
 
+    @Test
+    void TestFindByUserNameWithoutData() {
+        assertEquals(new ResponseEntity<>(true, HttpStatus.OK), tester.checkUserName("myuser"), "checkUserName must be []");
+    }
+
+    @Test
+    void TestFindByUserNameWithData() {
+        Optional<Users> users = Optional.of(new Users());
+
+        when(usersService.findByUserName("myuser")).thenReturn(users);
+
+        assertEquals(new ResponseEntity<>(false, HttpStatus.OK), tester.checkUserName("myuser"), "checkUserName must be new ResponseEntity with a value");
+    }
 }
