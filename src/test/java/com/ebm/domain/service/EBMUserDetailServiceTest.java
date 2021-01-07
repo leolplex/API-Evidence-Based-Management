@@ -25,7 +25,7 @@ class EBMUserDetailServiceTest {
     @Test
     void TestLoadUserByUsername() {
         Users user = new Users();
-        user.setUserName("myUser");
+        user.setUsername("myUser");
         user.setPassword("password");
         when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
 

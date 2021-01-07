@@ -10,7 +10,7 @@ import org.mapstruct.Mapping;
 public interface UsersMapper {
     @Mapping(source = "entityId", target = "id")
     @Mapping(source = "entityIdRol", target = "idRol")
-    @Mapping(source = "entityUserName", target = "userName")
+    @Mapping(source = "entityUserName", target = "username")
     @Mapping(source = "entityPassword", target = "password")
     @Mapping(source = "entityEmail", target = "email")
     Users toUsers(EntityUsers user);

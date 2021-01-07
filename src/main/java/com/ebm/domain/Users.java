@@ -3,7 +3,7 @@ package com.ebm.domain;
 public class Users {
     private Integer id;
     private Integer idRol;
-    private String userName;
+    private String username;
     private String password;
     private String email;
 
@@ -23,12 +23,12 @@ public class Users {
         this.idRol = idRol;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String userName) {
+        this.username = userName;
     }
 
     public String getPassword() {

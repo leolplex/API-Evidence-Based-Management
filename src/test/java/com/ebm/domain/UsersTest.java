@@ -19,7 +19,7 @@ class UsersTest {
 
         // Act & Assert
         assertNull(tester.getId(),"getId must be null");
-        assertNull(tester.getUserName(),"getUserName must be null");
+        assertNull(tester.getUsername(),"getUserName must be null");
         assertNull(tester.getPassword(),"getPassword must be null");
         assertNull(tester.getEmail(),"getEmail must be null");
         assertNull(tester.getIdRol(),"getIdRol must be null");
@@ -35,14 +35,14 @@ class UsersTest {
         final Integer idRol = 50;
 
         tester.setId(id);
-        tester.setUserName(userName);
+        tester.setUsername(userName);
         tester.setPassword(password);
         tester.setEmail(email);
         tester.setIdRol(idRol);
 
         final Integer getId = tester.getId();
         final Integer getIdRol = tester.getIdRol();
-        final String getUserName = tester.getUserName();
+        final String getUserName = tester.getUsername();
         final String getPassword = tester.getPassword();
         final String getEmail = tester.getEmail();
 

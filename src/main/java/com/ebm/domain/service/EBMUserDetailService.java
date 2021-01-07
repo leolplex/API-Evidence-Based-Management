@@ -23,6 +23,6 @@ public class EBMUserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         Optional<Users> user = usersRepository.findByUserName(username);
-        return new User(user.isPresent() ? user.get().getUserName() : "", user.isPresent() ? user.get().getPassword() : "", new ArrayList<>());
+        return new User(user.isPresent() ? user.get().getUsername() : "", user.isPresent() ? user.get().getPassword() : "", new ArrayList<>());
     }
 }
