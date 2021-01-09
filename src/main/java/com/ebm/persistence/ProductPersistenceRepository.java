@@ -12,14 +12,14 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ProductPersitencyRepository implements ProductRepository {
+public class ProductPersistenceRepository implements ProductRepository {
     @Autowired
     private ProductCrudRepository productCrudRepository;
 
     @Autowired
     private ProductMapper mapper;
 
-    ProductPersitencyRepository(ProductCrudRepository productCrudRepository, ProductMapper mapper) {
+    ProductPersistenceRepository(ProductCrudRepository productCrudRepository, ProductMapper mapper) {
         this.productCrudRepository = productCrudRepository;
         this.mapper = mapper;
     }
