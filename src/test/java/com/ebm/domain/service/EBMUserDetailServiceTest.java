@@ -39,6 +39,8 @@ class EBMUserDetailServiceTest {
     @Test
     void TestLoadUserByUserNameIsNotPresent() {
         Users user = new Users();
+        user.setUsername(null);
+        user.setPassword(null);
         when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
         UserDetails result = tester.loadUserByUsername("myUser");
         assertNull(result, "loadUserByUsername must be null");
