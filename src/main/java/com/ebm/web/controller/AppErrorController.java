@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @CrossOrigin(origins = {"http://localhost:4200", "https://leolplex.github.io"}, methods = {RequestMethod.GET})
 public class AppErrorController implements ErrorController {
-    private final static String PATH = "/error";
+
 
     @Override
-    @GetMapping(value = PATH)
+    @GetMapping(value = "/error")
     @ResponseBody
     public String getErrorPath() {
         return "No Mapping Found";
