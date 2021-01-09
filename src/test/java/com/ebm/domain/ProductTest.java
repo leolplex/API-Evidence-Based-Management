@@ -51,11 +51,9 @@ class ProductTest {
         final Integer getIdTeam = tester.getIdTeam();
 
         assertEquals(id, getId, "setId must be my 42");
-        assertEquals(name, getName, "setIdRol must be my 50");
-        assertEquals(iterations, getIterations, "setUserName must be my myusername");
-        assertEquals(startDate, getStartDate, "setPassword must be my myusername");
-        assertEquals(idTeam, getIdTeam, "setEmail must be my myusername@gmail.com");
-
-
+        assertEquals(name, getName, "setName must be my myusername");
+        assertEquals(iterations, getIterations, "setIterations must be new ArrayList<>()");
+        assertEquals(startDate, getStartDate, "setStartDate must be my LocalDateTime.now()");
+        assertEquals(idTeam, getIdTeam, "setIdTeam must be 50");
     }
 }
