@@ -38,7 +38,7 @@ class EBMUserDetailServiceTest {
     @Test
     void TestLoadUserByUserNameIsNotPresent() {
         Users user = new Users();
-        user.setUsername(null);
+        user.setUsername("");
         user.setPassword("");
         when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
         UserDetails result = tester.loadUserByUsername("myUser");
@@ -48,7 +48,7 @@ class EBMUserDetailServiceTest {
     @Test
     void TestLoadUserByUserNameIsNotPresentEmpty() {
         Users user = new Users();
-        user.setUsername("");
+        user.setUsername(null);
         user.setPassword(null);
 
         when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
