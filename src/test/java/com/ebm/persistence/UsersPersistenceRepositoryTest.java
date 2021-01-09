@@ -60,8 +60,25 @@ class UsersPersistenceRepositoryTest {
         Optional<Users> userResult = tester.getUserById(1);
 
         assertEquals(usersDomain, userResult, "getUserById must be Optional.of(new Users())");
-
     }
 
+
+    @Test
+    void TestFindByUserNameWithOutData() {
+        assertEquals(Optional.empty(), tester.findByUserName("myusername"), "findByUserName must be Optional.empty()");
+    }
+
+    @Test
+    void TestFindByUserNameWithData() {
+
+        Optional<Users> usersDomain = Optional.of(new Users());
+        Optional<EntityUsers> users = Optional.of(new EntityUsers());
+        when(usersCrudRepository.findByEntityUserName("Myusername")).thenReturn(users);
+        when(mapper.toUsers(users.get())).thenReturn(usersDomain.get());
+
+        Optional<Users> userResult = tester.findByUserName("Myusername");
+
+        assertEquals(usersDomain, userResult, "findByUserName must be Optional.of(new Users())");
+    }
 
 }
