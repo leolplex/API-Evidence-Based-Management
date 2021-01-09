@@ -3,7 +3,6 @@ package com.ebm.web.controller;
 
 import com.ebm.domain.Users;
 import com.ebm.domain.dto.AuthenticationRequest;
-import com.ebm.domain.dto.AuthenticationResponse;
 import com.ebm.domain.service.EBMUserDetailService;
 import com.ebm.domain.service.UsersService;
 import com.ebm.web.security.JWTUtil;
