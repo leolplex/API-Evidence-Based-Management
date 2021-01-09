@@ -38,7 +38,7 @@ class EBMUserDetailServiceTest {
     }
 
     @ParameterizedTest
-    @CsvSource(value = {":", "'':''",  ":user1", "user1:", ":''", "'':"}, delimiter = ':')
+    @CsvSource(value = {":", "'':''",  ":user1", "user1:", ":''", "'':","'':user1", "user1:''",}, delimiter = ':')
     void TestLoadUserByUserNameIsNotPresent(String username, String password) {
         Users user = new Users();
         user.setUsername(username);
