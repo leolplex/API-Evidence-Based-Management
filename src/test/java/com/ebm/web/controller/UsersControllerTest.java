@@ -2,6 +2,8 @@ package com.ebm.web.controller;
 
 
 import com.ebm.domain.Users;
+import com.ebm.domain.dto.AuthenticationRequest;
+import com.ebm.domain.dto.AuthenticationResponse;
 import com.ebm.domain.service.EBMUserDetailService;
 import com.ebm.domain.service.UsersService;
 import com.ebm.web.security.JWTUtil;
@@ -11,8 +13,11 @@ import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.Date;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -76,4 +81,32 @@ class UsersControllerTest {
 
         assertEquals(new ResponseEntity<>(false, HttpStatus.OK), tester.checkUserName("myuser"), "checkUserName must be new ResponseEntity with a value");
     }
+
+    @Test
+    void TestAuthenticateUser() {
+        AuthenticationRequest authenticationRequest = new AuthenticationRequest();
+        UserDetails userDetails = Mockito.mock(UserDetails.class);
+        Date dateNow = new Date();
+        Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10);
+
+        when(ebmUserDetailService.loadUserByUsername(authenticationRequest.getUsername())).thenReturn(userDetails);
+        when(jwtUtil.generateToken(userDetails, dateNow, dateExpiration)).thenReturn("jwt");
+
+        assertEquals(HttpStatus.OK, tester.authenticateUser(authenticationRequest).getStatusCode(), "authenticateUser must be new ResponseEntity with a value");
+    }
+
+    @Test
+    void TestAuthenticateUserFail() {
+        AuthenticationRequest authenticationRequest = new AuthenticationRequest();
+        UserDetails userDetails = Mockito.mock(UserDetails.class);
+        Date dateNow = new Date();
+        Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10);
+
+        when(ebmUserDetailService.loadUserByUsername(authenticationRequest.getUsername())).thenThrow(BadCredentialsException.class);
+        when(jwtUtil.generateToken(userDetails, dateNow, dateExpiration)).thenReturn("jwt");
+
+        assertEquals(HttpStatus.FORBIDDEN, tester.authenticateUser(authenticationRequest).getStatusCode(), "authenticateUser must be new ResponseEntity with a value");
+    }
+
+
 }
