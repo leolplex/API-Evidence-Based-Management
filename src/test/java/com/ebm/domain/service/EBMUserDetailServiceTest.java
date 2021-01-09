@@ -66,4 +66,26 @@ class EBMUserDetailServiceTest {
     }
 
 
+    @Test
+    void TestLoadUserByUserNameWithUserName() {
+        Users user = new Users();
+        user.setUsername("myuser");
+        user.setPassword("");
+
+        when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
+        UserDetails result = tester.loadUserByUsername("myUser");
+        assertNull(result, "loadUserByUsername must be null");
+    }
+
+    @Test
+    void TestLoadUserByUserNameWithPassword() {
+        Users user = new Users();
+        user.setUsername("");
+        user.setPassword("myuser");
+
+        when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
+        UserDetails result = tester.loadUserByUsername("myUser");
+        assertNull(result, "loadUserByUsername must be null");
+    }
+
 }
