@@ -19,20 +19,20 @@ class IterationTest {
     }
 
     @Test
-    void TestInstanceIterationDefaultValues(){
+    void TestInstanceIterationDefaultValues() {
 
         // Act & Assert
-        assertNull(tester.getId(),"getIdIteration must be null");
-        assertNull(tester.getGoal(),"getGoal must be null");
-        assertNull(tester.getStartDate(),"getStartDate must be null");
-        assertNull(tester.getEndDate(),"getEndDate must be null");
-        assertNull(tester.getState(),"getState must be null");
-        assertNull(tester.getKva(),"getKva must be null");
-        assertNull(tester.getIdProduct(),"getIdTeam must be null");
+        assertNull(tester.getId(), "getIdIteration must be null");
+        assertNull(tester.getGoal(), "getGoal must be null");
+        assertNull(tester.getStartDate(), "getStartDate must be null");
+        assertNull(tester.getEndDate(), "getEndDate must be null");
+        assertNull(tester.getState(), "getState must be null");
+        assertNull(tester.getKva(), "getKva must be null");
+        assertNull(tester.getIdProduct(), "getIdTeam must be null");
     }
 
     @Test
-    void  getAndSetId(){
+    void getAndSetId() {
         // Arrange
         final Integer id = 42;
 
@@ -45,7 +45,7 @@ class IterationTest {
     }
 
     @Test
-    void  getAndSetName(){
+    void getAndSetName() {
         // Arrange
         final String name = "Iteration 1";
 
@@ -58,7 +58,7 @@ class IterationTest {
     }
 
     @Test
-    void  getAndSetGoal(){
+    void getAndSetGoal() {
         // Arrange
         final String goal = "Set up deployment pipeline & release an empty site to production";
 
@@ -71,7 +71,7 @@ class IterationTest {
     }
 
     @Test
-    void  getAndSetStarDate(){
+    void getAndSetStarDate() {
         // Arrange
         final LocalDateTime startDate = LocalDateTime.now();
 
@@ -84,7 +84,7 @@ class IterationTest {
     }
 
     @Test
-    void  getAndSetEndDate(){
+    void getAndSetEndDate() {
         // Arrange
         final LocalDateTime endDate = LocalDateTime.now();
 
@@ -98,7 +98,7 @@ class IterationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"In_Progress", "Completed", "Fail"})
-    void  getAndSetStateStates(String state){
+    void getAndSetStateStates(String state) {
 
         //Act
         tester.setState(state);
@@ -110,7 +110,7 @@ class IterationTest {
 
 
     @Test
-    void  getAndSetKVA(){
+    void getAndSetKVA() {
         // Arrange
         final KVA kva = new KVA();
 
@@ -123,7 +123,7 @@ class IterationTest {
     }
 
     @Test
-    void  getAndSetIdTeam(){
+    void getAndSetIdTeam() {
         // Arrange
         final Integer idTeam = 42;
 

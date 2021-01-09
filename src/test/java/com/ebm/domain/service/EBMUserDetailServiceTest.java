@@ -4,6 +4,8 @@ import com.ebm.domain.Users;
 import com.ebm.domain.repository.UsersRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.Mockito;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -35,75 +37,23 @@ class EBMUserDetailServiceTest {
         assertEquals("myUser", result.getUsername(), "loadUserByUsername must contain myUser");
     }
 
-    @Test
-    void TestLoadUserByUserNameIsNotPresent() {
+    @ParameterizedTest
+    @CsvSource(value = {":", "'':''",  ":user1", "user1:", ":''", "'':"}, delimiter = ':')
+    void TestLoadUserByUserNameIsNotPresent(String username, String password) {
         Users user = new Users();
-        user.setUsername("");
-        user.setPassword("");
+        user.setUsername(username);
+        user.setPassword(password);
         when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
         UserDetails result = tester.loadUserByUsername("myUser");
         assertNull(result, "loadUserByUsername must be null");
     }
 
-    @Test
-    void TestLoadUserByUserNameIsNotPresent2() {
-        Users user = new Users();
-        user.setUsername(null);
-        user.setPassword("sadd");
-        when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
-        UserDetails result = tester.loadUserByUsername("myUser");
-        assertNull(result, "loadUserByUsername must be null");
-    }
-
-    @Test
-    void TestLoadUserByUserNameIsNotPresent3() {
-        Users user = new Users();
-        user.setUsername("asdsad");
-        user.setPassword(null);
-        when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
-        UserDetails result = tester.loadUserByUsername("myUser");
-        assertNull(result, "loadUserByUsername must be null");
-    }
-
-    @Test
-    void TestLoadUserByUserNameIsNotPresentEmpty() {
-        Users user = new Users();
-        user.setUsername(null);
-        user.setPassword(null);
-
-        when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
-        UserDetails result = tester.loadUserByUsername("myUser");
-        assertNull(result, "loadUserByUsername must be null");
-    }
 
     @Test
     void TestLoadUserByUsernameFindByUserNameNull() {
 
         UserDetails result = tester.loadUserByUsername("myUser");
 
-        assertNull(result, "loadUserByUsername must be null");
-    }
-
-
-    @Test
-    void TestLoadUserByUserNameWithUserName() {
-        Users user = new Users();
-        user.setUsername("myuser");
-        user.setPassword(null);
-
-        when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
-        UserDetails result = tester.loadUserByUsername("myUser");
-        assertNull(result, "loadUserByUsername must be null");
-    }
-
-    @Test
-    void TestLoadUserByUserNameWithPassword() {
-        Users user = new Users();
-        user.setUsername(null);
-        user.setPassword("myuser");
-
-        when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
-        UserDetails result = tester.loadUserByUsername("myUser");
         assertNull(result, "loadUserByUsername must be null");
     }
 
