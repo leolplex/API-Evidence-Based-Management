@@ -24,11 +24,12 @@ public class EBMUserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<Users> userRepo = usersRepository.findByUserName(username);
-        if (userRepo.isPresent() && userRepo.get().getUsername() != null && !userRepo.get().getUsername().isEmpty() &&
-                userRepo.get().getPassword() != null && !userRepo.get().getPassword().isEmpty()) {
-            return new User(userRepo.get().getUsername(), userRepo.get().getPassword(), new ArrayList<>());
-        } else {
-            return null;
+        if (userRepo.isPresent()) {
+            if (userRepo.get().getUsername() != null && !userRepo.get().getUsername().isEmpty() &&
+                    userRepo.get().getPassword() != null && !userRepo.get().getPassword().isEmpty()) {
+                return new User(userRepo.get().getUsername(), userRepo.get().getPassword(), new ArrayList<>());
+            }
         }
+        return null;
     }
 }
