@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 class EBMUserDetailServiceTest {
@@ -32,6 +33,24 @@ class EBMUserDetailServiceTest {
         UserDetails result = tester.loadUserByUsername("myUser");
 
         assertEquals("myUser", result.getUsername(), "loadUserByUsername must contain myUser");
+    }
+
+    @Test
+    void TestLoadUserByUserNameIsNotPresent() {
+        Users user = new Users();
+        when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
+        UserDetails result = tester.loadUserByUsername("myUser");
+        assertNull(result, "loadUserByUsername must be null");
+    }
+
+    @Test
+    void TestLoadUserByUserNameIsNotPresentEmpty() {
+        Users user = new Users();
+        user.setUsername("");
+        user.setPassword("");
+        when(usersRepository.findByUserName("myUser")).thenReturn(Optional.of(user));
+        UserDetails result = tester.loadUserByUsername("myUser");
+        assertNull(result, "loadUserByUsername must be null");
     }
 
 }

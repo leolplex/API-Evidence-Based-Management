@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,8 +22,13 @@ public class EBMUserDetailService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) {
-        Optional<Users> user = usersRepository.findByUserName(username);
-        return new User(user.isPresent() ? user.get().getUsername() : "", user.isPresent() ? user.get().getPassword() : "", new ArrayList<>());
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Optional<Users> userRepo = usersRepository.findByUserName(username);
+        if (userRepo.isPresent() && userRepo.get().getUsername() != null && !userRepo.get().getUsername().isEmpty() &&
+                userRepo.get().getPassword() != null && !userRepo.get().getPassword().isEmpty()) {
+            return new User(userRepo.get().getUsername(), userRepo.get().getPassword(), new ArrayList<>());
+        } else {
+            return null;
+        }
     }
 }
