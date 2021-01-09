@@ -6,19 +6,19 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class EntityIterationTeamTest {
-    EntityIterationTeam tester;
+class EntityIterationProductTest {
+    EntityIterationProduct tester;
 
     @BeforeEach
     void initEach() {
-        tester = new EntityIterationTeam();
+        tester = new EntityIterationProduct();
     }
 
     @Test
     void InstanceIterationDefaultValues(){
         // Act & Assert
         assertNull(tester.getEntityIteration(),"getIdIteration must be null");
-        assertNull(tester.getEntityTeam(),"getIdTeam must be null");
+        assertNull(tester.getEntityProduct(),"getIdTeam must be null");
         assertNull(tester.getEntityId(),"getIdTeam must be null");
     }
 
@@ -26,11 +26,11 @@ class EntityIterationTeamTest {
     @Test
     void  getAndSetEntityId(){
         // Arrange
-        final EntityIterationTeamPK id = new EntityIterationTeamPK();
+        final EntityIterationProductPK id = new EntityIterationProductPK();
 
         //Act
         tester.setEntityId(id);
-        final EntityIterationTeamPK getEntityId = tester.getEntityId();
+        final EntityIterationProductPK getEntityId = tester.getEntityId();
 
         // Assert
         assertEquals(id, getEntityId, "setEntityId must be new EntityIterationTeamPK()");
@@ -52,11 +52,11 @@ class EntityIterationTeamTest {
     @Test
     void  getAndSetEntityTeam(){
         // Arrange
-        final EntityTeam id = new EntityTeam();
+        final EntityProduct id = new EntityProduct();
 
         //Act
-        tester.setEntityTeam(id);
-        final EntityTeam getEntityTeam = tester.getEntityTeam();
+        tester.setEntityProduct(id);
+        final EntityProduct getEntityTeam = tester.getEntityProduct();
 
         // Assert
         assertEquals(id, getEntityTeam, "setEntityTeam must be new EntityTeam()");

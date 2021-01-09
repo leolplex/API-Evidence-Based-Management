@@ -14,23 +14,23 @@ class EntityTeamTest {
     EntityTeam tester;
 
     @BeforeEach
-    void  initEach(){
+    void initEach() {
         tester = new EntityTeam();
     }
 
     @Test
-    void InstanceIterationDefaultValues(){
+    void InstanceIterationDefaultValues() {
 
         // Act & Assert
-        assertNull(tester.getEntityId(),"getIdIteration must be null");
-        assertNull(tester.getEntityName(),"getEntityName must be null");
-        assertNull(tester.getEntityDateJoin(),"getEntityDateJoin must be null");
-        assertNull(tester.getEntityIterationTeams(),"getEntityIterationTeams must be null");
+        assertNull(tester.getEntityId(), "getIdIteration must be null");
+        assertNull(tester.getEntityName(), "getEntityName must be null");
+        assertNull(tester.getEntityDateJoin(), "getEntityDateJoin must be null");
+
 
     }
 
     @Test
-    void  getAndSetEntityId(){
+    void getAndSetEntityId() {
         // Arrange
         final Integer id = 42;
 
@@ -43,7 +43,7 @@ class EntityTeamTest {
     }
 
     @Test
-    void  getAndSetEntityName(){
+    void getAndSetEntityName() {
         // Arrange
         final String name = "My team";
 
@@ -57,7 +57,7 @@ class EntityTeamTest {
 
 
     @Test
-    void  getAndSetEntityDateJoin(){
+    void getAndSetEntityDateJoin() {
         // Arrange
         final LocalDateTime dateJoin = LocalDateTime.now();
 
@@ -69,17 +69,6 @@ class EntityTeamTest {
         assertEquals(dateJoin, getEntityDateJoin, "setEntityDateJoin must be LocalDateTime.now()");
     }
 
-    @Test
-    void  getAndSetEntityTeam(){
-        // Arrange
-        final List<EntityIterationTeam> teams = new ArrayList<>();
 
-        //Act
-        tester.setEntityIterationTeams(teams);
-        final List<EntityIterationTeam> getEntityIterationTeams = tester.getEntityIterationTeams();
-
-        // Assert
-        assertEquals(teams, getEntityIterationTeams, "setEntityIterationTeams must be new ArrayList<>()");
-    }
 }
 

@@ -2,12 +2,11 @@ package com.ebm.persistence;
 
 import com.ebm.domain.Iteration;
 import com.ebm.persistence.crud.IterationCrudRepository;
-import com.ebm.persistence.crud.IterationTeamCrudRepository;
+import com.ebm.persistence.crud.IterationProductCrudRepository;
 import com.ebm.persistence.entity.EntityIteration;
-import com.ebm.persistence.entity.EntityIterationTeam;
-import com.ebm.persistence.entity.EntityIterationTeamPK;
+import com.ebm.persistence.entity.EntityIterationProduct;
+import com.ebm.persistence.entity.EntityIterationProductPK;
 import com.ebm.persistence.mapper.IterationMapper;
-import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -25,15 +24,15 @@ class IterationPersistenceRepositoryTest {
     IterationPersistenceRepository tester;
     IterationCrudRepository iterationCrudRepository;
     IterationMapper mapper;
-    IterationTeamCrudRepository iterationTeamCrudRepository;
+    IterationProductCrudRepository iterationProductCrudRepository;
 
 
     @BeforeEach
     void initEach() {
         iterationCrudRepository = Mockito.mock(IterationCrudRepository.class);
         mapper = Mockito.mock(IterationMapper.class);
-        iterationTeamCrudRepository = Mockito.mock(IterationTeamCrudRepository.class);
-        tester = new IterationPersistenceRepository(iterationCrudRepository, mapper, iterationTeamCrudRepository);
+        iterationProductCrudRepository = Mockito.mock(IterationProductCrudRepository.class);
+        tester = new IterationPersistenceRepository(iterationCrudRepository, mapper, iterationProductCrudRepository);
     }
 
     @Test
@@ -94,14 +93,14 @@ class IterationPersistenceRepositoryTest {
 
         when(iterationCrudRepository.save(iteration)).thenReturn(iteration);
 
-        EntityIterationTeam entityIterationTeam = new EntityIterationTeam();
+        EntityIterationProduct entityIterationProduct = new EntityIterationProduct();
 
-        EntityIterationTeamPK entityIterationTeamPK = new EntityIterationTeamPK();
-        entityIterationTeamPK.setIdIteration(2);
-        entityIterationTeamPK.setIdTeam(2);
+        EntityIterationProductPK entityIterationProductPK = new EntityIterationProductPK();
+        entityIterationProductPK.setIdIteration(2);
+        entityIterationProductPK.setIdProduct(2);
 
-        entityIterationTeam.setEntityId(entityIterationTeamPK);
-        when(iterationTeamCrudRepository.save(entityIterationTeam)).thenReturn(entityIterationTeam);
+        entityIterationProduct.setEntityId(entityIterationProductPK);
+        when(iterationProductCrudRepository.save(entityIterationProduct)).thenReturn(entityIterationProduct);
 
 
         assertEquals(iterationDomain, tester.save(iterationDomain), "save must be new instance Iteration");

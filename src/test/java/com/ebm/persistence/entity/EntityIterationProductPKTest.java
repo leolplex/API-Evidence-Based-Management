@@ -6,19 +6,19 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class EntityIterationTeamPKTest {
-    EntityIterationTeamPK tester;
+class EntityIterationProductPKTest {
+    EntityIterationProductPK tester;
 
     @BeforeEach
     void initEach() {
-        tester = new EntityIterationTeamPK();
+        tester = new EntityIterationProductPK();
     }
 
     @Test
     void InstanceIterationDefaultValues(){
         // Act & Assert
         assertNull(tester.getIdIteration(),"getIdIteration must be null");
-        assertNull(tester.getIdTeam(),"getIdTeam must be null");
+        assertNull(tester.getIdProduct(),"getIdTeam must be null");
     }
 
     @Test
@@ -40,8 +40,8 @@ class EntityIterationTeamPKTest {
         final Integer id = 42;
 
         //Act
-        tester.setIdTeam(id);
-        final Integer getIdTeam = tester.getIdTeam();
+        tester.setIdProduct(id);
+        final Integer getIdTeam = tester.getIdProduct();
 
         // Assert
         assertEquals(id, getIdTeam, "setIdTeam must be my 42");

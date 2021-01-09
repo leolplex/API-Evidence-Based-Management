@@ -25,21 +25,37 @@ CREATE TABLE team
 )
 
 
+CREATE TABLE product
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    name character varying COLLATE pg_catalog."default" NOT NULL,
+    start_date timestamp with time zone NOT NULL,
+    id_team integer NOT NULL,
+    CONSTRAINT product_pkey PRIMARY KEY (id),
+    CONSTRAINT product_team FOREIGN KEY (id_team)
+        REFERENCES public.team (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+)
 
-CREATE TABLE iteration_team
+
+
+CREATE TABLE iteration_product
 (
     id_iteration integer NOT NULL,
-    id_team integer NOT NULL,
-    CONSTRAINT iteration_team_pkey PRIMARY KEY (id_iteration, id_team),
+    id_product integer NOT NULL,
     CONSTRAINT fk_iteration FOREIGN KEY (id_iteration)
         REFERENCES public.iteration (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION,
-    CONSTRAINT fk_team FOREIGN KEY (id_team)
-        REFERENCES team (id) MATCH SIMPLE
+    CONSTRAINT fk_product FOREIGN KEY (id_product)
+        REFERENCES public.product (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
+        NOT VALID
 )
+
 
 
 

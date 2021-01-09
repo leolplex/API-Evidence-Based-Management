@@ -53,10 +53,10 @@ public class IterationController {
     }
 
 
-    @GetMapping("/last/{idTeam}")
-    @ApiOperation("Get last iteration by team")
+    @GetMapping("/last/{idProduct}")
+    @ApiOperation("Get last iteration by product")
     @ApiResponse(code = 200, message = "ok")
-    public ResponseEntity<Iteration> getLastIteration(@ApiParam(value = "The id of the team", required = true, example = "7") @PathVariable("idTeam") int idTeam) {
-        return new ResponseEntity<>(iterationService.getLastIteration(idTeam), HttpStatus.OK);
+    public ResponseEntity<Iteration> getLastIteration(@ApiParam(value = "The id of the product", required = true, example = "7") @PathVariable("idProduct") int idProduct) {
+        return new ResponseEntity<>(iterationService.getLastIteration(idProduct), HttpStatus.OK);
     }
 }

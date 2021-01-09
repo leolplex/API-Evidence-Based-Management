@@ -4,10 +4,10 @@ package com.ebm.persistence;
 import com.ebm.domain.Iteration;
 import com.ebm.domain.repository.IterationRepository;
 import com.ebm.persistence.crud.IterationCrudRepository;
-import com.ebm.persistence.crud.IterationTeamCrudRepository;
+import com.ebm.persistence.crud.IterationProductCrudRepository;
 import com.ebm.persistence.entity.EntityIteration;
-import com.ebm.persistence.entity.EntityIterationTeam;
-import com.ebm.persistence.entity.EntityIterationTeamPK;
+import com.ebm.persistence.entity.EntityIterationProduct;
+import com.ebm.persistence.entity.EntityIterationProductPK;
 import com.ebm.persistence.mapper.IterationMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,15 +21,15 @@ public class IterationPersistenceRepository implements IterationRepository {
     private IterationCrudRepository iterationCrudRepository;
 
     @Autowired
-    private IterationTeamCrudRepository iterationTeamCrudRepository;
+    private IterationProductCrudRepository iterationProductCrudRepository;
 
     @Autowired
     private IterationMapper mapper;
 
-    IterationPersistenceRepository(IterationCrudRepository iterationCrudRepository, IterationMapper iterationMapper, IterationTeamCrudRepository iterationTeamCrudRepository) {
+    IterationPersistenceRepository(IterationCrudRepository iterationCrudRepository, IterationMapper iterationMapper, IterationProductCrudRepository iterationProductCrudRepository) {
         this.iterationCrudRepository = iterationCrudRepository;
         this.mapper = iterationMapper;
-        this.iterationTeamCrudRepository = iterationTeamCrudRepository;
+        this.iterationProductCrudRepository = iterationProductCrudRepository;
     }
 
     @Override
@@ -44,8 +44,8 @@ public class IterationPersistenceRepository implements IterationRepository {
     }
 
     @Override
-    public Iteration getLastIteration(int idTeam) {
-        return mapper.toIteration(iterationCrudRepository.getLastIteration(idTeam));
+    public Iteration getLastIteration(int idProduct) {
+        return mapper.toIteration(iterationCrudRepository.getLastIteration(idProduct));
     }
 
     @Override
@@ -54,14 +54,14 @@ public class IterationPersistenceRepository implements IterationRepository {
         Iteration entitySaved = mapper.toIteration(iterationCrudRepository.save(iteration));
 
         if (entitySaved != null) {
-            EntityIterationTeam entityIterationTeam = new EntityIterationTeam();
+            EntityIterationProduct entityIterationProduct = new EntityIterationProduct();
 
-            EntityIterationTeamPK entityIterationTeamPK = new EntityIterationTeamPK();
-            entityIterationTeamPK.setIdIteration(entitySaved.getId());
-            entityIterationTeamPK.setIdTeam(entitySaved.getIdTeam());
+            EntityIterationProductPK entityIterationProductPK = new EntityIterationProductPK();
+            entityIterationProductPK.setIdIteration(entitySaved.getId());
+            entityIterationProductPK.setIdProduct(entitySaved.getIdProduct());
 
-            entityIterationTeam.setEntityId(entityIterationTeamPK);
-            iterationTeamCrudRepository.save(entityIterationTeam);
+            entityIterationProduct.setEntityId(entityIterationProductPK);
+            iterationProductCrudRepository.save(entityIterationProduct);
         }
 
         return entitySaved;
@@ -72,7 +72,7 @@ public class IterationPersistenceRepository implements IterationRepository {
         return iterationCrudRepository.findById(idIteration).map(iterationDB -> {
 
             iteration.setId(iterationDB.getEntityId());
-            iteration.setIdTeam(iterationDB.getEntityIdTeam());
+            iteration.setIdProduct(iterationDB.getEntityIdProduct());
             iterationDB = mapper.toIterationDomain(iteration);
 
             return mapper.toIteration(iterationCrudRepository.save(iterationDB));

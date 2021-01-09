@@ -28,7 +28,7 @@ public class EntityIteration {
     private String entityState;
 
     @Transient
-    private  Integer entityIdTeam;
+    private  Integer entityIdProduct;
 
     @OneToOne(mappedBy = "entityIteration")
     private EntityKVAUnrealizedValue entityKVAUnrealizedValue;
@@ -123,11 +123,11 @@ public class EntityIteration {
         this.entityKVATimeToMarket = entityKVATimeToMarket;
     }
 
-    public Integer getEntityIdTeam() {
-        return entityIdTeam;
+    public Integer getEntityIdProduct() {
+        return entityIdProduct;
     }
 
-    public void setEntityIdTeam(Integer entityIdTeam) {
-        this.entityIdTeam = entityIdTeam;
+    public void setEntityIdProduct(Integer entityIdProduct) {
+        this.entityIdProduct = entityIdProduct;
     }
 }

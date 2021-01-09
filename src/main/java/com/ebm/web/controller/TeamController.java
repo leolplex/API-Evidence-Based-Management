@@ -32,7 +32,7 @@ public class TeamController {
     }
 
 
-    @GetMapping("/team/{idTeam}")
+    @GetMapping("/{idTeam}")
     @ApiOperation("Get a team by Id")
     @ApiResponses(
             {

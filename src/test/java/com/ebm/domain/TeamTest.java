@@ -23,7 +23,6 @@ class TeamTest {
 
         // Act & Assert
         assertNull(tester.getId(),"getId must be null");
-        assertNull(tester.getIterations(),"getIterations must be null");
         assertNull(tester.getName(),"getName must be null");
         assertNull(tester.getDateJoin(),"getDateJoin must be null");
     }
@@ -41,18 +40,7 @@ class TeamTest {
         assertEquals(id, getId, "setId must be my 42");
     }
 
-    @Test
-    void  getAndSetIterations(){
-        // Arrange
-        final List<Iteration> iteration = new ArrayList<>();
 
-        //Act
-        tester.setIterations(iteration);
-        final List<Iteration> getIterations = tester.getIterations();
-
-        // Assert
-        assertEquals(iteration, getIterations, "setIterations must be my new ArrayList<>()");
-    }
 
     @Test
     void  getAndSetName(){

@@ -28,7 +28,7 @@ class IterationTest {
         assertNull(tester.getEndDate(),"getEndDate must be null");
         assertNull(tester.getState(),"getState must be null");
         assertNull(tester.getKva(),"getKva must be null");
-        assertNull(tester.getIdTeam(),"getIdTeam must be null");
+        assertNull(tester.getIdProduct(),"getIdTeam must be null");
     }
 
     @Test
@@ -128,8 +128,8 @@ class IterationTest {
         final Integer idTeam = 42;
 
         //Act
-        tester.setIdTeam(idTeam);
-        final Integer getIdTeam = tester.getIdTeam();
+        tester.setIdProduct(idTeam);
+        final Integer getIdTeam = tester.getIdProduct();
 
         // Assert
         assertEquals(idTeam, getIdTeam, "setIdTeam must be 42");

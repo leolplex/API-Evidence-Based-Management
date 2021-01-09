@@ -1,12 +1,12 @@
 package com.ebm.persistence.mapper;
 
 import com.ebm.domain.Iteration;
-import com.ebm.persistence.entity.EntityIterationTeam;
+import com.ebm.persistence.entity.EntityIterationProduct;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring", uses = {IterationMapper.class})
-public interface TeamIterationsMapper {
+public interface TeamProductMapper {
 
     @Mapping(source = "entityId.idIteration", target = "id")
     @Mapping(source = "entityIteration.entityName", target = "name")
@@ -14,7 +14,7 @@ public interface TeamIterationsMapper {
     @Mapping(source = "entityIteration.entityStartDate", target = "startDate")
     @Mapping(source = "entityIteration.entityEndDate", target = "endDate")
     @Mapping(source = "entityIteration.entityState", target = "state")
-    @Mapping(source = "entityIteration.entityIdTeam", target = "idTeam")
+    @Mapping(source = "entityIteration.entityIdProduct", target = "idProduct")
 
     @Mapping(source = "entityIteration.entityKVAUnrealizedValue.entityId", target = "kva.kvaUnrealizedValue.id")
     @Mapping(source = "entityIteration.entityKVAUnrealizedValue.entityMarketShare", target = "kva.kvaUnrealizedValue.marketShare")
@@ -56,7 +56,7 @@ public interface TeamIterationsMapper {
     @Mapping(source = "entityIteration.entityKVATimeToMarket.entityTimeToLearn", target = "kva.kvaTimeToMarket.timeToLearn")
     @Mapping(source = "entityIteration.entityKVATimeToMarket.entityIdTeamT2M", target = "kva.kvaTimeToMarket.idTeam")
     @Mapping(source = "entityIteration.entityKVATimeToMarket.entityIdIterationT2M", target = "kva.kvaTimeToMarket.idIteration")
-    Iteration toTeamIteration(EntityIterationTeam iteration);
+    Iteration toTeamIteration(EntityIterationProduct iteration);
 
 
 }

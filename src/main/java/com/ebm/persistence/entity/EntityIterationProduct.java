@@ -3,10 +3,10 @@ package com.ebm.persistence.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name="iteration_team")
-public class EntityIterationTeam {
+@Table(name="iteration_product")
+public class EntityIterationProduct {
     @EmbeddedId
-    private EntityIterationTeamPK entityId;
+    private EntityIterationProductPK entityId;
 
     @ManyToOne
     @MapsId("entityId")
@@ -15,15 +15,15 @@ public class EntityIterationTeam {
 
 
     @ManyToOne
-    @JoinColumn(name = "id_team", insertable = false, updatable = false)
-    private EntityTeam entityTeam;
+    @JoinColumn(name = "id_product", insertable = false, updatable = false)
+    private EntityProduct entityProduct;
 
 
-    public EntityIterationTeamPK getEntityId() {
+    public EntityIterationProductPK getEntityId() {
         return entityId;
     }
 
-    public void setEntityId(EntityIterationTeamPK entityId) {
+    public void setEntityId(EntityIterationProductPK entityId) {
         this.entityId = entityId;
     }
 
@@ -35,12 +35,12 @@ public class EntityIterationTeam {
         this.entityIteration = entityIteration;
     }
 
-    public EntityTeam getEntityTeam() {
-        return entityTeam;
+    public EntityProduct getEntityProduct() {
+        return entityProduct;
     }
 
-    public void setEntityTeam(EntityTeam entityTeam) {
-        this.entityTeam = entityTeam;
+    public void setEntityProduct(EntityProduct entityProduct) {
+        this.entityProduct = entityProduct;
     }
 
 }

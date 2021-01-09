@@ -11,7 +11,7 @@ public class Iteration {
     private LocalDateTime startDate;
     private LocalDateTime endDate;
     private String state;
-    private Integer idTeam;
+    private Integer idProduct;
     private KVA kva;
 
 
@@ -63,12 +63,12 @@ public class Iteration {
         this.name = name;
     }
 
-    public Integer getIdTeam() {
-        return idTeam;
+    public Integer getIdProduct() {
+        return idProduct;
     }
 
-    public void setIdTeam(Integer idTeam) {
-        this.idTeam = idTeam;
+    public void setIdProduct(Integer idProduct) {
+        this.idProduct = idProduct;
     }
 
     public KVA getKva() {

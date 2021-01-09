@@ -17,7 +17,7 @@ public interface IterationMapper {
     @Mapping(source = "entityStartDate", target = "startDate")
     @Mapping(source = "entityEndDate", target = "endDate")
     @Mapping(source = "entityState", target = "state")
-    @Mapping(source = "entityIdTeam", target = "idTeam")
+    @Mapping(source = "entityIdProduct", target = "idProduct")
 
     @Mapping(source = "entityKVAUnrealizedValue.entityId", target = "kva.kvaUnrealizedValue.id")
     @Mapping(source = "entityKVAUnrealizedValue.entityMarketShare", target = "kva.kvaUnrealizedValue.marketShare")
@@ -62,7 +62,7 @@ public interface IterationMapper {
     @Mapping(source = "entityStartDate", target = "startDate")
     @Mapping(source = "entityEndDate", target = "endDate")
     @Mapping(source = "entityState", target = "state")
-    @Mapping(source = "entityIdTeam", target = "idTeam")
+    @Mapping(source = "entityIdProduct", target = "idProduct")
 
     @Mapping(source = "entityKVAUnrealizedValue.entityId", target = "kva.kvaUnrealizedValue.id")
     @Mapping(source = "entityKVAUnrealizedValue.entityMarketShare", target = "kva.kvaUnrealizedValue.marketShare")

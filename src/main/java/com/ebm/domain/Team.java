@@ -8,7 +8,7 @@ public class Team {
     private Integer id;
     private String name;
     private LocalDateTime dateJoin;
-    private List<Iteration> iterations;
+
 
     public Integer getId() {
         return id;
@@ -34,12 +34,5 @@ public class Team {
         this.dateJoin = dateJoin;
     }
 
-    public List<Iteration> getIterations() {
-        return iterations;
-    }
-
-    public void setIterations(List<Iteration> iterations) {
-        this.iterations = iterations;
-    }
 
 }

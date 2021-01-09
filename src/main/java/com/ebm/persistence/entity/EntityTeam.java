@@ -19,10 +19,6 @@ public class EntityTeam {
     private LocalDateTime entityDateJoin;
 
 
-    @OneToMany(mappedBy = "entityTeam", cascade = {CascadeType.ALL})
-    private List<EntityIterationTeam> entityIterationTeams;
-
-
     public Integer getEntityId() {
         return entityId;
     }
@@ -47,12 +43,5 @@ public class EntityTeam {
         this.entityDateJoin = entityDateJoin;
     }
 
-    public List<EntityIterationTeam> getEntityIterationTeams() {
-        return entityIterationTeams;
-    }
-
-    public void setEntityIterationTeams(List<EntityIterationTeam> entityIterationTeams) {
-        this.entityIterationTeams = entityIterationTeams;
-    }
 
 }
