@@ -38,7 +38,7 @@ public class ProductController {
                     @ApiResponse(code = 200, message = "Ok"),
                     @ApiResponse(code = 404, message = "Product not found")
             })
-    public ResponseEntity<Product> getTeamById(@ApiParam(value = "The id of the product", required = true, example = "7") @PathVariable("idProduct") int idProduct) {
+    public ResponseEntity<Product> getProductById(@ApiParam(value = "The id of the product", required = true, example = "7") @PathVariable("idProduct") int idProduct) {
         return productService.getProductById(idProduct).map(product -> new ResponseEntity<>(product, HttpStatus.OK)).orElse(new ResponseEntity<>((HttpStatus.NOT_FOUND)));
     }
 
