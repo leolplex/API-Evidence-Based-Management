@@ -85,7 +85,7 @@ class ProductPersistenceRepositoryTest {
         EntityProduct product = new EntityProduct();
         products.add(product);
 
-        when(productCrudRepository.findByEntityIdTeam(1)).thenReturn(products);
+        when(productCrudRepository.findByEntityIdUser(1)).thenReturn(products);
         when(mapper.toProducts(products)).thenReturn(productsDomain);
 
         List<Product> productsResult = tester.getProductsByUserId(1);

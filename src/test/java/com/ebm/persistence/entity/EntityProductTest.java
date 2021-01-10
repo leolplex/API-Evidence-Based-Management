@@ -26,6 +26,7 @@ class EntityProductTest {
         assertNull(tester.getEntityIterationProducts(), "getIterations must be null");
         assertNull(tester.getEntityStartDate(), "getStartDate must be null");
         assertNull(tester.getEntityIdTeam(), "getIdTeam must be null");
+        assertNull(tester.getEntityIdUser(), "getEntityIdUser must be null");
     }
 
     @Test
@@ -35,23 +36,28 @@ class EntityProductTest {
         final List<EntityIterationProduct> iterationsProduct = new ArrayList<>();
         final LocalDateTime startDate = LocalDateTime.now();
         final Integer idTeam = 50;
+        final Integer idUser = 5;
 
         tester.setEntityId(id);
         tester.setEntityName(name);
         tester.setEntityIterationProducts(iterationsProduct);
         tester.setEntityStartDate(startDate);
         tester.setEntityIdTeam(idTeam);
+        tester.setEntityIdUser(idUser);
 
         final Integer getId = tester.getEntityId();
         final String getName = tester.getEntityName();
         final List<EntityIterationProduct> getEntityIterationProducts = tester.getEntityIterationProducts();
         final LocalDateTime getStartDate = tester.getEntityStartDate();
         final Integer getIdTeam = tester.getEntityIdTeam();
+        final Integer getEntityIdUser = tester.getEntityIdUser();
+
 
         assertEquals(id, getId, "setEntityId must be my 42");
         assertEquals(name, getName, "setEntityName must be myusername");
         assertEquals(iterationsProduct, getEntityIterationProducts, "setEntityIterationProducts must be new ArrayList<>()");
         assertEquals(startDate, getStartDate, "setEntityStartDate must be LocalDateTime.now()");
         assertEquals(idTeam, getIdTeam, "setEntityIdTeam must be 50");
+        assertEquals(idUser, getEntityIdUser, "setEntityIdUser must be 5");
     }
 }

@@ -21,6 +21,9 @@ public class EntityProduct {
     @Column(name = "id_team")
     private Integer entityIdTeam;
 
+    @Column(name = "id_user")
+    private Integer entityIdUser;
+
     @OneToMany(mappedBy = "entityProduct", cascade = {CascadeType.ALL})
     private List<EntityIterationProduct> entityIterationProducts;
 
@@ -62,5 +65,13 @@ public class EntityProduct {
 
     public void setEntityIterationProducts(List<EntityIterationProduct> entityIterationProducts) {
         this.entityIterationProducts = entityIterationProducts;
+    }
+
+    public Integer getEntityIdUser() {
+        return entityIdUser;
+    }
+
+    public void setEntityIdUser(Integer entityIdUser) {
+        this.entityIdUser = entityIdUser;
     }
 }

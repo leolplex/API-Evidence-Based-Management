@@ -10,6 +10,7 @@ public class Product {
     private String name;
     private LocalDateTime startDate;
     private Integer idTeam;
+    private Integer idUser;
     private List<Iteration> iterations;
 
     public Integer getId() {
@@ -50,5 +51,13 @@ public class Product {
 
     public void setIdTeam(Integer idTeam) {
         this.idTeam = idTeam;
+    }
+
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 }

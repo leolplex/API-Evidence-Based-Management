@@ -37,7 +37,7 @@ public class ProductPersistenceRepository implements ProductRepository {
 
     @Override
     public List<Product> getProductsByUserId(int idUser) {
-        return mapper.toProducts(productCrudRepository.findByEntityIdTeam(idUser));
+        return mapper.toProducts(productCrudRepository.findByEntityIdUser(idUser));
 
     }
 }

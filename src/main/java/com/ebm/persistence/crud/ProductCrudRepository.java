@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ProductCrudRepository extends CrudRepository<EntityProduct, Integer> {
 
-    List<EntityProduct> findByEntityIdTeam(int idUser);
+    List<EntityProduct> findByEntityIdUser(int idUser);
 }

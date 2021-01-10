@@ -15,6 +15,7 @@ public interface ProductMapper {
     @Mapping(source = "entityName", target = "name")
     @Mapping(source = "entityStartDate", target = "startDate")
     @Mapping(source = "entityIdTeam", target = "idTeam")
+    @Mapping(source = "entityIdUser", target = "idUser")
     @Mapping(source = "entityIterationProducts", target = "iterations")
     Product toProduct(EntityProduct product);
 

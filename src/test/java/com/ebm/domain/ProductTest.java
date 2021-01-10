@@ -27,6 +27,7 @@ class ProductTest {
         assertNull(tester.getIterations(), "getIterations must be null");
         assertNull(tester.getStartDate(), "getStartDate must be null");
         assertNull(tester.getIdTeam(), "getIdTeam must be null");
+        assertNull(tester.getIdUser(), "getIdUser must be null");
 
     }
 
@@ -37,23 +38,27 @@ class ProductTest {
         final List<Iteration> iterations = new ArrayList<>();
         final LocalDateTime startDate = LocalDateTime.now();
         final Integer idTeam = 50;
+        final Integer idUser = 5;
 
         tester.setId(id);
         tester.setName(name);
         tester.setIterations(iterations);
         tester.setStartDate(startDate);
         tester.setIdTeam(idTeam);
+        tester.setIdUser(idUser);
 
         final Integer getId = tester.getId();
         final String getName = tester.getName();
         final List<Iteration> getIterations = tester.getIterations();
         final LocalDateTime getStartDate = tester.getStartDate();
         final Integer getIdTeam = tester.getIdTeam();
+        final Integer getIdUser = tester.getIdUser();
 
         assertEquals(id, getId, "setId must be my 42");
         assertEquals(name, getName, "setName must be my myusername");
         assertEquals(iterations, getIterations, "setIterations must be new ArrayList<>()");
         assertEquals(startDate, getStartDate, "setStartDate must be my LocalDateTime.now()");
         assertEquals(idTeam, getIdTeam, "setIdTeam must be 50");
+        assertEquals(idUser, getIdUser, "setIdTeam must be 5");
     }
 }
