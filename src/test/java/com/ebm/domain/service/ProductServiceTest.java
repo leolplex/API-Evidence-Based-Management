@@ -58,4 +58,23 @@ class ProductServiceTest {
         assertEquals(products, productsResult, "getAll must have a product");
     }
 
+
+    @Test
+    void TestGetProductsByUserIdWithOutData() {
+        assertEquals(new ArrayList<>(), tester.getProductsByUserId(1), "getProductsByUserId must be [])");
+    }
+
+
+    @Test
+    void TestGetProductsByUserIdWithData() {
+        List<Product> products = new ArrayList<>();
+        Product product = new Product();
+        products.add(product);
+
+        when(productRepository.getProductsByUserId(1)).thenReturn(products);
+
+        List<Product> productsResult = tester.getProductsByUserId(1);
+
+        assertEquals(products, productsResult, "getProductsByUserId must have a product");
+    }
 }

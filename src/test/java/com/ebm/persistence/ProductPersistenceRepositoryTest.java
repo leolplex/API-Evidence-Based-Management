@@ -70,4 +70,28 @@ class ProductPersistenceRepositoryTest {
 
     }
 
+    @Test
+    void TestGetProductsByUserIdWithOutData() {
+        assertEquals(new ArrayList<>(), tester.getProductsByUserId(1), "getProductsByUserId must be []");
+    }
+
+    @Test
+    void TestGetProductsByUserIdWithData() {
+        List<Product> productsDomain = new ArrayList<>();
+        Product productDomain = new Product();
+        productsDomain.add(productDomain);
+
+        List<EntityProduct> products = new ArrayList<>();
+        EntityProduct product = new EntityProduct();
+        products.add(product);
+
+        when(productCrudRepository.findByEntityIdTeam(1)).thenReturn(products);
+        when(mapper.toProducts(products)).thenReturn(productsDomain);
+
+        List<Product> productsResult = tester.getProductsByUserId(1);
+
+        assertEquals(1, productsResult.size(), "getProductsByUserId must have a product");
+        assertEquals(productDomain, productsResult.toArray()[0], "getProductsByUserId must have a product equal to object defined");
+    }
+
 }

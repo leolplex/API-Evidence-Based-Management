@@ -34,4 +34,10 @@ public class ProductPersistenceRepository implements ProductRepository {
     public Optional<Product> getProductById(int idProduct) {
         return productCrudRepository.findById(idProduct).map(product -> mapper.toProduct(product));
     }
+
+    @Override
+    public List<Product> getProductsByUserId(int idUser) {
+        return mapper.toProducts(productCrudRepository.findByEntityIdTeam(idUser));
+
+    }
 }

@@ -24,4 +24,8 @@ public class ProductService {
     public Optional<Product> getProductById(int idProduct) {
         return productRepository.getProductById(idProduct);
     }
+
+    public List<Product> getProductsByUserId(int idUser) {
+        return productRepository.getProductsByUserId(idUser);
+    }
 }

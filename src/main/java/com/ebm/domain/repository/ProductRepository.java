@@ -11,4 +11,6 @@ public interface ProductRepository {
     List<Product> getAll();
 
     Optional<Product> getProductById(int idProduct);
+
+    List<Product> getProductsByUserId(int idUser);
 }

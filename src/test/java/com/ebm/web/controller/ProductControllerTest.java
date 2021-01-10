@@ -59,4 +59,20 @@ class ProductControllerTest {
 
         assertEquals(new ResponseEntity<>(optionalProduct.get(), HttpStatus.OK), tester.getProductById(idProduct), "getProductById must be new ResponseEntity with a value and status Ok");
     }
+
+    @Test
+    void TestGetByUserIdWithoutData() {
+        assertEquals(new ResponseEntity<>(new ArrayList<Product>(), HttpStatus.OK), tester.getByUserId(1), "getByUserId must be []");
+    }
+
+    @Test
+    void TestGetByUserIdWithData() {
+        List<Product> products = new ArrayList<>();
+        Product product = new Product();
+        products.add(product);
+
+        when(productService.getProductsByUserId(1)).thenReturn(products);
+
+        assertEquals(new ResponseEntity<>(products, HttpStatus.OK), tester.getByUserId(1), "getByUserId must be new ResponseEntity with a value");
+    }
 }

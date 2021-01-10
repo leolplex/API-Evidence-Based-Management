@@ -42,4 +42,11 @@ public class ProductController {
         return productService.getProductById(idProduct).map(product -> new ResponseEntity<>(product, HttpStatus.OK)).orElse(new ResponseEntity<>((HttpStatus.NOT_FOUND)));
     }
 
+
+    @GetMapping("/byuser/{idUser}")
+    @ApiOperation("Get all products with iterations")
+    @ApiResponse(code = 200, message = "ok")
+    public ResponseEntity<List<Product>> getByUserId(@ApiParam(value = "The id of the product", required = true, example = "7") @PathVariable("idUser") int idUser) {
+        return new ResponseEntity<>(productService.getProductsByUserId(idUser), HttpStatus.OK);
+    }
 }
