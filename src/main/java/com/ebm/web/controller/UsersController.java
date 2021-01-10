@@ -15,11 +15,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
@@ -76,7 +78,8 @@ public class UsersController {
             Date dateNow = new Date();
             Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10);
             String jwt = jwtUtil.generateToken(userDetails, dateNow, dateExpiration);
-            return new ResponseEntity<>(new AuthenticationResponse(jwt, request.getUsername()), HttpStatus.OK);
+            Optional<Users> user = usersService.findByUserName(request.getUsername());
+            return new ResponseEntity<>(new AuthenticationResponse(user.isPresent() ? user.get().getId() : -1, jwt, request.getUsername()), HttpStatus.OK);
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }

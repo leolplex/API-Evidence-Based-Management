@@ -83,26 +83,32 @@ class UsersControllerTest {
 
     @Test
     void TestAuthenticateUser() {
+        Optional<Users> users = Optional.of(new Users());
         AuthenticationRequest authenticationRequest = new AuthenticationRequest();
+        authenticationRequest.setUsername("myser");
         UserDetails userDetails = Mockito.mock(UserDetails.class);
         Date dateNow = new Date();
         Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10);
 
         when(ebmUserDetailService.loadUserByUsername(authenticationRequest.getUsername())).thenReturn(userDetails);
         when(jwtUtil.generateToken(userDetails, dateNow, dateExpiration)).thenReturn("jwt");
+        when(usersService.findByUserName("myuser")).thenReturn(users);
 
         assertEquals(HttpStatus.OK, tester.authenticateUser(authenticationRequest).getStatusCode(), "authenticateUser must be new ResponseEntity with a value");
     }
 
     @Test
     void TestAuthenticateUserFail() {
+        Optional<Users> users = Optional.of(new Users());
         AuthenticationRequest authenticationRequest = new AuthenticationRequest();
+        authenticationRequest.setUsername("myser");
         UserDetails userDetails = Mockito.mock(UserDetails.class);
         Date dateNow = new Date();
         Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10);
 
         when(ebmUserDetailService.loadUserByUsername(authenticationRequest.getUsername())).thenThrow(BadCredentialsException.class);
         when(jwtUtil.generateToken(userDetails, dateNow, dateExpiration)).thenReturn("jwt");
+        when(usersService.findByUserName("myuser")).thenReturn(users);
 
         assertEquals(HttpStatus.FORBIDDEN, tester.authenticateUser(authenticationRequest).getStatusCode(), "authenticateUser must be new ResponseEntity with a value");
     }
