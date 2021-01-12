@@ -15,6 +15,7 @@ public interface TeamMapper {
     @Mapping(source = "entityId", target = "id")
     @Mapping(source = "entityName", target = "name")
     @Mapping(source = "entityDateJoin", target = "dateJoin")
+    @Mapping(source = "entityIdUser", target = "idUser")
     Team toTeam(EntityTeam team);
 
 

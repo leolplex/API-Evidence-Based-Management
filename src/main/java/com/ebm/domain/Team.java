@@ -7,6 +7,7 @@ public class Team {
     private Integer id;
     private String name;
     private LocalDateTime dateJoin;
+    private Integer idUser;
 
 
     public Integer getId() {
@@ -33,5 +34,11 @@ public class Team {
         this.dateJoin = dateJoin;
     }
 
+    public Integer getIdUser() {
+        return idUser;
+    }
 
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
+    }
 }

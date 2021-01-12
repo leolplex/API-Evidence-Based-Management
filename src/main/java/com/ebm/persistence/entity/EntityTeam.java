@@ -17,6 +17,9 @@ public class EntityTeam {
     @Column(name = "date_join")
     private LocalDateTime entityDateJoin;
 
+    @Column(name = "id_user")
+    private Integer entityIdUser;
+
 
     public Integer getEntityId() {
         return entityId;
@@ -42,5 +45,11 @@ public class EntityTeam {
         this.entityDateJoin = entityDateJoin;
     }
 
+    public Integer getEntityIdUser() {
+        return entityIdUser;
+    }
 
+    public void setEntityIdUser(Integer entityIdUser) {
+        this.entityIdUser = entityIdUser;
+    }
 }

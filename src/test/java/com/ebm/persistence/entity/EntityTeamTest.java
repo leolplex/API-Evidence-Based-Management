@@ -25,48 +25,36 @@ class EntityTeamTest {
         assertNull(tester.getEntityId(), "getIdIteration must be null");
         assertNull(tester.getEntityName(), "getEntityName must be null");
         assertNull(tester.getEntityDateJoin(), "getEntityDateJoin must be null");
+        assertNull(tester.getEntityIdUser(), "getEntityIdUser must be null");
 
 
     }
 
     @Test
-    void getAndSetEntityId() {
+    void getAndSetNewObject() {
         // Arrange
         final Integer id = 42;
+        final String name = "My team";
+        final LocalDateTime dateJoin = LocalDateTime.now();
+        final Integer idUser = 4;
+
 
         //Act
         tester.setEntityId(id);
+        tester.setEntityName(name);
+        tester.setEntityDateJoin(dateJoin);
+        tester.setEntityIdUser(idUser);
+
         final Integer getEntityId = tester.getEntityId();
+        final String getEntityName = tester.getEntityName();
+        final LocalDateTime getEntityDateJoin = tester.getEntityDateJoin();
+        final Integer getEntityIdUser = tester.getEntityIdUser();
 
         // Assert
         assertEquals(id, getEntityId, "setEntityId must be my 42");
-    }
-
-    @Test
-    void getAndSetEntityName() {
-        // Arrange
-        final String name = "My team";
-
-        //Act
-        tester.setEntityName(name);
-        final String getEntityName = tester.getEntityName();
-
-        // Assert
         assertEquals(name, getEntityName, "setEntityName must be my My team");
-    }
-
-
-    @Test
-    void getAndSetEntityDateJoin() {
-        // Arrange
-        final LocalDateTime dateJoin = LocalDateTime.now();
-
-        //Act
-        tester.setEntityDateJoin(dateJoin);
-        final LocalDateTime getEntityDateJoin = tester.getEntityDateJoin();
-
-        // Assert
         assertEquals(dateJoin, getEntityDateJoin, "setEntityDateJoin must be LocalDateTime.now()");
+        assertEquals(idUser, getEntityIdUser, "setEntityIdUser must be 4");
     }
 
 
