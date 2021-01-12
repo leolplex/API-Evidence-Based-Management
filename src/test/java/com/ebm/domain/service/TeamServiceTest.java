@@ -61,4 +61,22 @@ class TeamServiceTest {
         assertEquals(myTeamOptional, result, "getTeamById must be Optional.of(new Team())");
     }
 
+
+    @Test
+    void TestGetTeamsByIdUserWithOutData() {
+        assertEquals(new ArrayList<>(), tester.getTeamsByIdUser(1), "getTeamsByIdUser must be []");
+    }
+
+    @Test
+    void TestGetTeamsByIdUserWithData() {
+        List<Team> teams = new ArrayList<>();
+        Team team = new Team();
+        teams.add(team);
+
+        when(teamRepository.getTeamsByIdUser(1)).thenReturn(teams);
+
+        List<Team> teamsResult = tester.getTeamsByIdUser(1);
+        assertEquals(1, teamsResult.size(), "getTeamsByIdUser must have a team");
+        assertEquals(team, teamsResult.toArray()[0], "getTeamsByIdUser must have a team equal to object defined");
+    }
 }

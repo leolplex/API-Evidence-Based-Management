@@ -10,4 +10,6 @@ public interface TeamRepository {
 
     Optional<Team> getTeamById(int idTeam);
 
+    List<Team> getTeamsByIdUser(int idUser);
+
 }

@@ -34,4 +34,9 @@ public class TeamPersistenceRepository implements TeamRepository {
         return teamCrudRepository.findById(idTeam).map(team -> mapper.toTeam(team));
     }
 
+    @Override
+    public List<Team> getTeamsByIdUser(int idUser) {
+        return mapper.toTeams(teamCrudRepository.findByEntityIdUser(idUser));
+    }
+
 }

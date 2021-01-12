@@ -74,4 +74,30 @@ class TeamPersistenceRepositoryTest {
         assertEquals(myTeam, result, "getTeamById must be Optional.of(new Team())");
     }
 
+
+    @Test
+    void TestGetTeamsByIdUserWithOutData() {
+        assertEquals(new ArrayList<>(), tester.getTeamsByIdUser(1), "getTeamsByIdUser must be []");
+    }
+
+
+    @Test
+    void TestGetTeamsByIdUseWithData() {
+        List<Team> teamsDomain = new ArrayList<>();
+        Team team = new Team();
+        teamsDomain.add(team);
+
+        List<EntityTeam> iterations = new ArrayList<>();
+        EntityTeam iteration = new EntityTeam();
+        iterations.add(iteration);
+
+        when(teamCrudRepository.findByEntityIdUser(1)).thenReturn(iterations);
+        when(mapper.toTeams(iterations)).thenReturn(teamsDomain);
+
+
+        List<Team> teamsResult = tester.getTeamsByIdUser(1);
+        assertEquals(1, teamsResult.size(), "getTeamsByIdUser must have a team");
+        assertEquals(team, teamsResult.toArray()[0], "getTeamsByIdUser must have a team equal to object defined");
+    }
+
 }
