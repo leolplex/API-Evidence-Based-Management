@@ -59,4 +59,21 @@ class TeamControllerTest {
 
         assertEquals(new ResponseEntity<>(optionalTeam.get(), HttpStatus.OK), tester.getTeamById(idTeam), "getTeamById must be new ResponseEntity with a value and status Ok");
     }
+
+    @Test
+    void TestGetTeamsByIdUserWithoutData() {
+        assertEquals(new ResponseEntity<>(new ArrayList<Team>(), HttpStatus.OK), tester.getTeamsByIdUser(1), "getTeamsByIdUser must be []");
+    }
+
+    @Test
+    void TestGetTeamsByIdUserWithData() {
+        List<Team> teams = new ArrayList<>();
+        Team team = new Team();
+        teams.add(team);
+
+        when(teamService.getTeamsByIdUser(1)).thenReturn(teams);
+
+        assertEquals(new ResponseEntity<>(teams, HttpStatus.OK), tester.getTeamsByIdUser(1), "getTeamsByIdUser must be new ResponseEntity with a value");
+    }
+
 }

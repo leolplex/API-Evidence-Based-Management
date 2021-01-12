@@ -44,4 +44,12 @@ public class TeamController {
     }
 
 
+    @GetMapping("/byuserid/{idUser}")
+    @ApiOperation("Get all teams by idUser")
+    @ApiResponse(code = 200, message = "ok")
+    public ResponseEntity<List<Team>> getTeamsByIdUser(@ApiParam(value = "The id of the user", required = true, example = "7") @PathVariable("idUser") int idUser) {
+        return new ResponseEntity<>(teamService.getTeamsByIdUser(idUser), HttpStatus.OK);
+    }
+
+
 }
