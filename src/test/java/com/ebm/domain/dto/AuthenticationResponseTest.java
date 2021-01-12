@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class AuthenticationResponseTest {
     AuthenticationResponse tester;
@@ -11,6 +12,15 @@ class AuthenticationResponseTest {
     @BeforeEach
     void initEach() {
         tester = new AuthenticationResponse(1, "token", "myusername");
+
+    }
+
+    @Test
+    void TestOnlyTokenConstructor() {
+        tester = new AuthenticationResponse("token");
+        assertEquals("token", tester.getJwt(), "getJwt must be token");
+        assertNull(tester.getUserName(), "getJwt must be null");
+        assertNull(tester.getId(), "getJwt must be null");
     }
 
     @Test

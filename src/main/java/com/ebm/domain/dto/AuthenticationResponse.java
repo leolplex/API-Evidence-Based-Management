@@ -11,6 +11,10 @@ public class AuthenticationResponse {
         this.userName = userName;
     }
 
+    public AuthenticationResponse(String jwt) {
+        this.jwt = jwt;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -75,14 +75,13 @@ public class UsersController {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
             UserDetails userDetails = userDetailService.loadUserByUsername(request.getUsername());
             Date dateNow = new Date();
-            Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10);
+            Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10); // 10 hours = 36000 milliseconds
             String jwt = jwtUtil.generateToken(userDetails, dateNow, dateExpiration);
             Optional<Users> user = usersService.findByUserName(request.getUsername());
             return new ResponseEntity<>(new AuthenticationResponse(user.isPresent() ? user.get().getId() : -1, jwt, request.getUsername()), HttpStatus.OK);
         } catch (BadCredentialsException e) {
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
-
     }
 
     @GetMapping("/checkusername/{userName}")
@@ -90,5 +89,17 @@ public class UsersController {
     @ApiResponse(code = 200, message = "ok")
     public ResponseEntity<Boolean> checkUserName(@ApiParam(value = "The username", required = true, example = "myusername") @PathVariable("userName") String userName) {
         return new ResponseEntity<>(usersService.findByUserName(userName).isEmpty(), HttpStatus.OK);
+    }
+
+    @GetMapping("/renewtoken/{token}")
+    @ApiOperation("renewtoken a user")
+    @ApiResponse(code = 200, message = "ok")
+    public ResponseEntity<AuthenticationResponse> renewToken(@ApiParam(value = "The token", required = true, example = "{token}") @PathVariable("token") String token) {
+        try {
+            String jwt = jwtUtil.renewToken(token);
+            return new ResponseEntity<>(new AuthenticationResponse(jwt), HttpStatus.OK);
+        } catch (BadCredentialsException e) {
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
     }
 }

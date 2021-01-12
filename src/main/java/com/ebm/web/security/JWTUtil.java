@@ -31,12 +31,29 @@ public class JWTUtil {
                 .signWith(SignatureAlgorithm.HS256, key).compact();
     }
 
+    public String renewToken(String token) {
+        if (validateToken(token)) {
+            Claims claims = getClaims(token);
+            Date dateNow = new Date();
+            Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10); // 10 hours = 36000 milliseconds
+            return Jwts.builder().setClaims(claims).setIssuedAt(dateNow) // new Date()
+                    .setExpiration(dateExpiration) // new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)
+                    .signWith(SignatureAlgorithm.HS256, key).compact();
+        } else {
+            return "Can't renew token!";
+        }
+    }
+
     public boolean validateToken(String token, UserDetails userDetails) {
         if (!isTokenExpire(token)) {
             return userDetails.getUsername().equals(extractUsername(token));
         } else {
             return false;
         }
+    }
+
+    public boolean validateToken(String token) {
+        return !isTokenExpire(token);
     }
 
     public String extractUsername(String token) {

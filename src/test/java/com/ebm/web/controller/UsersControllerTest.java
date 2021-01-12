@@ -3,6 +3,7 @@ package com.ebm.web.controller;
 
 import com.ebm.domain.Users;
 import com.ebm.domain.dto.AuthenticationRequest;
+import com.ebm.domain.dto.AuthenticationResponse;
 import com.ebm.domain.service.EBMUserDetailService;
 import com.ebm.domain.service.UsersService;
 import com.ebm.web.security.JWTUtil;
@@ -114,4 +115,20 @@ class UsersControllerTest {
     }
 
 
+    @Test
+    void TestRenewToken() {
+        when(jwtUtil.renewToken("jwt")).thenReturn("jwt");
+        AuthenticationResponse authenticationResponse = tester.renewToken("jwt").getBody();
+        assert authenticationResponse != null;
+        assertEquals("jwt", authenticationResponse.getJwt(), "renewToken must be new ResponseEntity with a value");
+    }
+
+
+    @Test
+    void TestRenewTokenFail() {
+        when(jwtUtil.renewToken("")).thenReturn("Can't renew token!");
+        AuthenticationResponse authenticationResponse = tester.renewToken("").getBody();
+        assert authenticationResponse != null;
+        assertEquals("Can't renew token!", authenticationResponse.getJwt(), "renewToken must be Can't renew token!");
+    }
 }
