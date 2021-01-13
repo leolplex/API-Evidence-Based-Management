@@ -40,4 +40,10 @@ public class ProductPersistenceRepository implements ProductRepository {
         return mapper.toProducts(productCrudRepository.findByEntityIdUser(idUser));
 
     }
+
+    @Override
+    public Product save(Product productDomain) {
+        EntityProduct product = mapper.toProductDomain(productDomain);
+        return mapper.toProduct(productCrudRepository.save(product));
+    }
 }

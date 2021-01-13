@@ -49,4 +49,11 @@ public class ProductController {
     public ResponseEntity<List<Product>> getByUserId(@ApiParam(value = "The id of the product", required = true, example = "7") @PathVariable("idUser") int idUser) {
         return new ResponseEntity<>(productService.getProductsByUserId(idUser), HttpStatus.OK);
     }
+
+    @PostMapping("/save")
+    @ApiOperation("Create a new product")
+    @ApiResponse(code = 200, message = "ok")
+    public ResponseEntity<Product> save(@RequestBody Product product) {
+        return new ResponseEntity<>(productService.save(product), HttpStatus.CREATED);
+    }
 }

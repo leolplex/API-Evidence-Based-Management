@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 class ProductServiceTest {
@@ -76,5 +77,18 @@ class ProductServiceTest {
         List<Product> productsResult = tester.getProductsByUserId(1);
 
         assertEquals(products, productsResult, "getProductsByUserId must have a product");
+    }
+
+    @Test
+    void TestSaveNull() {
+        assertNull(tester.save(new Product()), "save must be null");
+    }
+
+    @Test
+    void TestSaveWithData() {
+        Product product = new Product();
+        when(productRepository.save(product)).thenReturn(product);
+
+        assertEquals(product, tester.save(product), "save must be new instance Product");
     }
 }

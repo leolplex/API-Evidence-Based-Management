@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 class ProductPersistenceRepositoryTest {
@@ -93,5 +94,24 @@ class ProductPersistenceRepositoryTest {
         assertEquals(1, productsResult.size(), "getProductsByUserId must have a product");
         assertEquals(productDomain, productsResult.toArray()[0], "getProductsByUserId must have a product equal to object defined");
     }
+
+
+    @Test
+    void TestSaveNull() {
+        assertNull(tester.save(new Product()), "save must be null");
+    }
+
+    @Test
+    void TestSaveWithData() {
+        EntityProduct product = new EntityProduct();
+        Product productDomain = new Product();
+        when(mapper.toProductDomain(productDomain)).thenReturn(product);
+        when(mapper.toProduct(product)).thenReturn(productDomain);
+
+        when(productCrudRepository.save(product)).thenReturn(product);
+
+        assertEquals(productDomain, tester.save(productDomain), "save must be new instance Product");
+    }
+
 
 }

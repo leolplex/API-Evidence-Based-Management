@@ -13,4 +13,6 @@ public interface ProductRepository {
     Optional<Product> getProductById(int idProduct);
 
     List<Product> getProductsByUserId(int idUser);
+
+    Product save(Product product);
 }

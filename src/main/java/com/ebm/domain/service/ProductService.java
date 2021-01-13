@@ -28,4 +28,8 @@ public class ProductService {
     public List<Product> getProductsByUserId(int idUser) {
         return productRepository.getProductsByUserId(idUser);
     }
+
+    public Product save(Product product) {
+        return productRepository.save(product);
+    }
 }

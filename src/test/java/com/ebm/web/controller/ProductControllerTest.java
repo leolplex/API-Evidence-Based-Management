@@ -75,4 +75,18 @@ class ProductControllerTest {
 
         assertEquals(new ResponseEntity<>(products, HttpStatus.OK), tester.getByUserId(1), "getByUserId must be new ResponseEntity with a value");
     }
+
+
+    @Test
+    void TestSaveNull() {
+        assertEquals(new ResponseEntity<>(HttpStatus.CREATED), tester.save(new Product()), "save must be null");
+    }
+
+    @Test
+    void TestSaveWithData() {
+        Product product = new Product();
+        when(productService.save(product)).thenReturn(product);
+
+        assertEquals(new ResponseEntity<>(product, HttpStatus.CREATED), tester.save(product), "save must be new instance Product");
+    }
 }
