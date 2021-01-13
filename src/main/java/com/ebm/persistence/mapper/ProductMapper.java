@@ -17,6 +17,10 @@ public interface ProductMapper {
     @Mapping(source = "entityIdTeam", target = "idTeam")
     @Mapping(source = "entityIdUser", target = "idUser")
     @Mapping(source = "entityIterationProducts", target = "iterations")
+    @Mapping(source = "entityTeam.entityId", target = "team.id")
+    @Mapping(source = "entityTeam.entityName", target = "team.name")
+    @Mapping(source = "entityTeam.entityDateJoin", target = "team.dateJoin")
+    @Mapping(source = "entityTeam.entityIdUser", target = "team.idUser")
     Product toProduct(EntityProduct product);
 
     @InheritInverseConfiguration

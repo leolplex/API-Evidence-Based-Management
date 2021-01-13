@@ -27,6 +27,7 @@ class EntityProductTest {
         assertNull(tester.getEntityStartDate(), "getStartDate must be null");
         assertNull(tester.getEntityIdTeam(), "getIdTeam must be null");
         assertNull(tester.getEntityIdUser(), "getEntityIdUser must be null");
+        assertNull(tester.getEntityTeam(), "getEntityTeam must be null");
     }
 
     @Test
@@ -37,6 +38,7 @@ class EntityProductTest {
         final LocalDateTime startDate = LocalDateTime.now();
         final Integer idTeam = 50;
         final Integer idUser = 5;
+        final EntityTeam entityTeam = new EntityTeam();
 
         tester.setEntityId(id);
         tester.setEntityName(name);
@@ -44,6 +46,7 @@ class EntityProductTest {
         tester.setEntityStartDate(startDate);
         tester.setEntityIdTeam(idTeam);
         tester.setEntityIdUser(idUser);
+        tester.setEntityTeam(entityTeam);
 
         final Integer getId = tester.getEntityId();
         final String getName = tester.getEntityName();
@@ -51,6 +54,7 @@ class EntityProductTest {
         final LocalDateTime getStartDate = tester.getEntityStartDate();
         final Integer getIdTeam = tester.getEntityIdTeam();
         final Integer getEntityIdUser = tester.getEntityIdUser();
+        final EntityTeam getEntityTeam = tester.getEntityTeam();
 
 
         assertEquals(id, getId, "setEntityId must be my 42");
@@ -59,5 +63,6 @@ class EntityProductTest {
         assertEquals(startDate, getStartDate, "setEntityStartDate must be LocalDateTime.now()");
         assertEquals(idTeam, getIdTeam, "setEntityIdTeam must be 50");
         assertEquals(idUser, getEntityIdUser, "setEntityIdUser must be 5");
+        assertEquals(entityTeam, getEntityTeam, "setEntityTeam must be new EntityTeam()");
     }
 }

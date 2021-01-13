@@ -1,5 +1,7 @@
 package com.ebm.persistence.entity;
 
+import com.ebm.domain.Team;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,6 +25,11 @@ public class EntityProduct {
 
     @Column(name = "id_user")
     private Integer entityIdUser;
+
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_team", referencedColumnName = "id", insertable = false, updatable = false)
+    private EntityTeam entityTeam;
 
     @OneToMany(mappedBy = "entityProduct", cascade = {CascadeType.ALL})
     private List<EntityIterationProduct> entityIterationProducts;
@@ -73,5 +80,13 @@ public class EntityProduct {
 
     public void setEntityIdUser(Integer entityIdUser) {
         this.entityIdUser = entityIdUser;
+    }
+
+    public EntityTeam getEntityTeam() {
+        return entityTeam;
+    }
+
+    public void setEntityTeam(EntityTeam entityTeam) {
+        this.entityTeam = entityTeam;
     }
 }
