@@ -1,6 +1,5 @@
 package com.ebm.persistence.entity;
 
-import com.ebm.domain.Team;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

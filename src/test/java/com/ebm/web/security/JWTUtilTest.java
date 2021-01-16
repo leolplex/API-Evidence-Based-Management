@@ -130,6 +130,26 @@ class JWTUtilTest {
         assertEquals(renewTokenMock, token, "generateToken must be tokenMock");
     }
 
+    @Test
+    void NotRenewToken() {
+
+        // Act
+        String token = tester.renewToken("MockTokenError");
+
+        // Assert
+        assertEquals(token, "Can't renew token!", "generateToken must be Can't renew token!");
+    }
+
+    @Test
+    void tokenIsExpired() {
+
+        // Act
+        boolean isValid = tester.validateToken("MockTokenError");
+
+        // Assert
+        assertFalse(isValid, "validateToken must be false");
+    }
+
 
     private String mockGenerateToken(String username, Date dateNow, Date dateExpiration) {
         return Jwts.builder().setSubject(username)
