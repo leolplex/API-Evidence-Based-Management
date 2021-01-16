@@ -84,9 +84,12 @@ class UsersControllerTest {
 
     @Test
     void TestAuthenticateUser() {
-        Optional<Users> users = Optional.of(new Users());
+        Users user = new Users();
+        user.setUsername("myuser");
+        user.setId(21);
+        Optional<Users> users = Optional.of(user);
         AuthenticationRequest authenticationRequest = new AuthenticationRequest();
-        authenticationRequest.setUsername("myser");
+        authenticationRequest.setUsername("myuser");
         UserDetails userDetails = Mockito.mock(UserDetails.class);
         Date dateNow = new Date();
         Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10);
@@ -116,9 +119,9 @@ class UsersControllerTest {
 
     @Test
     void TestAuthenticateUserFailWithoutUser() {
-        Optional<Users> users = Optional.of(new Users());
+
         AuthenticationRequest authenticationRequest = new AuthenticationRequest();
-        authenticationRequest.setUsername("\"daniel\"");
+        authenticationRequest.setUsername("daniel");
         UserDetails userDetails = Mockito.mock(UserDetails.class);
         Date dateNow = new Date();
         Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10);
