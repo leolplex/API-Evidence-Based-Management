@@ -111,7 +111,7 @@ class UsersControllerTest {
         when(jwtUtil.generateToken(userDetails, dateNow, dateExpiration)).thenReturn("jwt");
         when(usersService.findByUserName("myuser")).thenReturn(users);
 
-        assertEquals(HttpStatus.FORBIDDEN, tester.authenticateUser(authenticationRequest).getStatusCode(), "authenticateUser must be new ResponseEntity with a value");
+        assertEquals(HttpStatus.FORBIDDEN, tester.authenticateUser(authenticationRequest).getStatusCode(), "authenticateUser must be FORBIDDEN");
     }
 
 
@@ -130,5 +130,11 @@ class UsersControllerTest {
         AuthenticationResponse authenticationResponse = tester.renewToken("").getBody();
         assert authenticationResponse != null;
         assertEquals("Can't renew token!", authenticationResponse.getJwt(), "renewToken must be Can't renew token!");
+    }
+
+    @Test
+    void TestRenewTokenFailBadCredentials() {
+        when(jwtUtil.renewToken("")).thenThrow(BadCredentialsException.class);
+        assertEquals(HttpStatus.FORBIDDEN, tester.renewToken("").getStatusCode(), "renewToken must be FORBIDDEN");
     }
 }
