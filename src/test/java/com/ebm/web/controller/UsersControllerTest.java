@@ -118,13 +118,15 @@ class UsersControllerTest {
     void TestAuthenticateUserFailWithoutUser() {
         Optional<Users> users = Optional.of(new Users());
         AuthenticationRequest authenticationRequest = new AuthenticationRequest();
+        authenticationRequest.setUsername("\"daniel\"");
         UserDetails userDetails = Mockito.mock(UserDetails.class);
         Date dateNow = new Date();
         Date dateExpiration = new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10);
 
         when(ebmUserDetailService.loadUserByUsername(authenticationRequest.getUsername())).thenReturn(userDetails);
         when(jwtUtil.generateToken(userDetails, dateNow, dateExpiration)).thenReturn("jwt");
-        when(usersService.findByUserName("")).thenReturn(null);
+        when(usersService.findByUserName(null)).thenReturn(null);
+
 
         assertEquals(HttpStatus.OK, tester.authenticateUser(authenticationRequest).getStatusCode(), "authenticateUser must be new ResponseEntity with a value");
     }
