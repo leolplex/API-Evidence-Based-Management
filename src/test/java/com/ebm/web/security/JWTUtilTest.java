@@ -48,6 +48,7 @@ class JWTUtilTest {
 
     @Test
     void generateToken() {
+        final String key = tester.getKey();
         // Arrange
         final String tokenMock = mockGenerateToken(userDetails.getUsername(), dateNow, dateExpiration);
 
@@ -56,6 +57,7 @@ class JWTUtilTest {
 
         // Assert
         assertEquals(tokenMock, token, "generateToken must be tokenMock");
+        assertEquals(key, "Ph4nth3r4", "generateToken must be tokenMock");
     }
 
     @Test
@@ -137,7 +139,7 @@ class JWTUtilTest {
         String token = tester.renewToken("MockTokenError");
 
         // Assert
-        assertEquals(token, "Can't renew token!", "generateToken must be Can't renew token!");
+        assertEquals("Can't renew token!", token, "generateToken must be Can't renew token!");
     }
 
     @Test
