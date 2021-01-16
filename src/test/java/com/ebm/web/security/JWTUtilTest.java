@@ -57,7 +57,7 @@ class JWTUtilTest {
 
         // Assert
         assertEquals(tokenMock, token, "generateToken must be tokenMock");
-        assertEquals(key, "Ph4nth3r4", "generateToken must be tokenMock");
+        assertEquals("Ph4nth3r4", key, "generateToken must be tokenMock");
     }
 
     @Test
