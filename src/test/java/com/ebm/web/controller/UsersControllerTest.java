@@ -124,7 +124,7 @@ class UsersControllerTest {
 
         when(ebmUserDetailService.loadUserByUsername(authenticationRequest.getUsername())).thenReturn(userDetails);
         when(jwtUtil.generateToken(userDetails, dateNow, dateExpiration)).thenReturn("jwt");
-        when(usersService.findByUserName("myuser")).thenReturn(users);
+        when(usersService.findByUserName("")).thenReturn(null);
 
         assertEquals(HttpStatus.OK, tester.authenticateUser(authenticationRequest).getStatusCode(), "authenticateUser must be new ResponseEntity with a value");
     }
