@@ -12,4 +12,5 @@ public interface TeamRepository {
 
     List<Team> getTeamsByIdUser(int idUser);
 
+    Team save(Team team);
 }

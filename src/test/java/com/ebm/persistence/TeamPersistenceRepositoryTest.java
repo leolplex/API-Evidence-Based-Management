@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 class TeamPersistenceRepositoryTest {
@@ -98,6 +99,23 @@ class TeamPersistenceRepositoryTest {
         List<Team> teamsResult = tester.getTeamsByIdUser(1);
         assertEquals(1, teamsResult.size(), "getTeamsByIdUser must have a team");
         assertEquals(team, teamsResult.toArray()[0], "getTeamsByIdUser must have a team equal to object defined");
+    }
+
+    @Test
+    void TestSaveNull() {
+        assertNull(tester.save(new Team()), "save must be null");
+    }
+
+    @Test
+    void TestSaveWithData() {
+        EntityTeam team = new EntityTeam();
+        Team teamDomain = new Team();
+        when(mapper.toTeamDomain(teamDomain)).thenReturn(team);
+        when(mapper.toTeam(team)).thenReturn(teamDomain);
+
+        when(teamCrudRepository.save(team)).thenReturn(team);
+
+        assertEquals(teamDomain, tester.save(teamDomain), "save must be new instance team");
     }
 
 }

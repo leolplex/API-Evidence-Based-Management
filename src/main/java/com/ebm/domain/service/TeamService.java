@@ -29,4 +29,9 @@ public class TeamService {
         return teamRepository.getTeamsByIdUser(idUser);
     }
 
+    public Team save(Team team) {
+        return teamRepository.save(team);
+    }
+
+
 }

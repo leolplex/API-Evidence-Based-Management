@@ -39,4 +39,10 @@ public class TeamPersistenceRepository implements TeamRepository {
         return mapper.toTeams(teamCrudRepository.findByEntityIdUser(idUser));
     }
 
+    @Override
+    public Team save(Team teamDomain) {
+        EntityTeam team = mapper.toTeamDomain(teamDomain);
+        return mapper.toTeam(teamCrudRepository.save(team));
+    }
+
 }

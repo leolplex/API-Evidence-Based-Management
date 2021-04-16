@@ -51,5 +51,11 @@ public class TeamController {
         return new ResponseEntity<>(teamService.getTeamsByIdUser(idUser), HttpStatus.OK);
     }
 
+    @PostMapping("/save")
+    @ApiOperation("Create a new team")
+    @ApiResponse(code = 200, message = "ok")
+    public ResponseEntity<Team> save(@RequestBody Team team) {
+        return new ResponseEntity<>(teamService.save(team), HttpStatus.CREATED);
+    }
 
 }

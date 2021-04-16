@@ -76,4 +76,17 @@ class TeamControllerTest {
         assertEquals(new ResponseEntity<>(teams, HttpStatus.OK), tester.getTeamsByIdUser(1), "getTeamsByIdUser must be new ResponseEntity with a value");
     }
 
+    @Test
+    void TestSaveNull() {
+        assertEquals(new ResponseEntity<>(HttpStatus.CREATED), tester.save(new Team()), "save must be null");
+    }
+
+    @Test
+    void TestSaveWithData() {
+        Team team = new Team();
+        when(teamService.save(team)).thenReturn(team);
+
+        assertEquals(new ResponseEntity<>(team, HttpStatus.CREATED), tester.save(team), "save must be new instance Team");
+    }
+
 }

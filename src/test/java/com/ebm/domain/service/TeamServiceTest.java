@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
 class TeamServiceTest {
@@ -78,5 +79,18 @@ class TeamServiceTest {
         List<Team> teamsResult = tester.getTeamsByIdUser(1);
         assertEquals(1, teamsResult.size(), "getTeamsByIdUser must have a team");
         assertEquals(team, teamsResult.toArray()[0], "getTeamsByIdUser must have a team equal to object defined");
+    }
+
+    @Test
+    void TestSaveNull() {
+        assertNull(tester.save(new Team()), "save must be null");
+    }
+
+    @Test
+    void TestSaveWithData() {
+        Team team = new Team();
+        when(teamRepository.save(team)).thenReturn(team);
+
+        assertEquals(team, tester.save(team), "save must be new instance Team");
     }
 }
